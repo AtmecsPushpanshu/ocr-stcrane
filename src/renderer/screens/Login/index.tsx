@@ -1,20 +1,18 @@
-import * as React from 'react'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
-import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
-import Paper from '@mui/material/Paper'
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
-import { useNavigate } from 'react-router-dom'
-import stcrane from '../../assets/img/stcrane.png'
-import mainimage from '../../assets/img/ship.png'
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { useNavigate } from 'react-router-dom';
+import stcrane from '../../assets/img/stcrane.png';
+import mainimage from '../../assets/img/ship.png';
 function Copyright(props: any) {
   return (
     <Typography
@@ -29,39 +27,43 @@ function Copyright(props: any) {
       </Link>{' '}
       {new Date().getFullYear()}
     </Typography>
-  )
+  );
 }
 
 export default function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('userId'),
       password: data.get('password'),
-    })
-    navigate('anotherScreen')
-  }
+    });
+    navigate('anotherScreen');
+  };
 
   return (
-    <Grid container component="main"
-        sx={{ height: '100vh',
-          backgroundImage: `url(${mainimage})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: 'rgba(24, 40, 94, 0.69)',
-          backgroundSize: 'strech',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'lighten',
-        }}>
+    <Grid
+      container
+      component="main"
+      sx={{
+        height: '100vh',
+        backgroundImage: `url(${mainimage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: 'rgba(24, 40, 94, 0.69)',
+        backgroundSize: 'strech',
+        backgroundPosition: 'center',
+        backgroundBlendMode: 'lighten',
+      }}
+    >
       <CssBaseline />
-<Container component="main" maxWidth="xs">
-<Box
+      <Container component="main" maxWidth="xs">
+        <Box
           sx={{
             my: 8,
             mx: 4,
-            backgroundColor:'#FFF',
+            backgroundColor: '#FFF',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -119,7 +121,6 @@ export default function Login() {
           </Box>
         </Box>
       </Container>
-
     </Grid>
-  )
+  );
 }
