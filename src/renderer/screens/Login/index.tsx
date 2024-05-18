@@ -1,5 +1,4 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+import React, { FormEvent, Fragment } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,8 +10,10 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
-import stcrane from '../../assets/img/stcrane.png';
+import { Stack } from '@mui/material';
+import stcrane from '../../assets/img/smart-tecs.png';
 import mainimage from '../../assets/img/ship.png';
+
 function Copyright(props: any) {
   return (
     <Typography
@@ -33,7 +34,7 @@ function Copyright(props: any) {
 export default function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -44,83 +45,80 @@ export default function Login() {
   };
 
   return (
-    <Grid
-      container
-      component="main"
-      sx={{
-        height: '100vh',
-        backgroundImage: `url(${mainimage})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: 'rgba(24, 40, 94, 0.69)',
-        backgroundSize: 'strech',
-        backgroundPosition: 'center',
-        backgroundBlendMode: 'lighten',
-      }}
-    >
-      <CssBaseline />
-      <Container component="main" maxWidth="xs">
-        <Box
+    <div className="grid-container">
+      <div className="grid-header">
+        <Grid container justifyContent="space-between">
+          <Grid item>
+            <img src={stcrane} alt="logo" className="header-logo" />
+          </Grid>
+          <Grid item alignSelf="center">
+            <Typography variant="h5" color="white" align="center">
+              Configuration manager
+            </Typography>
+          </Grid>
+        </Grid>
+      </div>
+      <div className="grid-content">
+        <Grid
+          container
           sx={{
-            my: 8,
-            mx: 4,
-            backgroundColor: '#FFF',
-            display: 'flex',
-            flexDirection: 'column',
+            height: 'calc(100vh - 99px)',
+            backgroundImage: `url(${mainimage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
             alignItems: 'center',
           }}
+          justifyContent="center"
         >
-          <img src={stcrane} alt="logo" width={200} />
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              variant={'standard'}
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant={'standard'}
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+          <CssBaseline />
+
+          <Grid item xs={3}>
+            <Box
+              sx={{
+                backgroundColor: '#FFF',
+                padding: 2,
+                borderRadius: 4,
+              }}
             >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ mt: 5 }} />
-          </Box>
-        </Box>
-      </Container>
-    </Grid>
+              <Typography variant="h6">Sign In</Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  variant="standard"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email ID"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  variant="standard"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+
+                <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+                  Sign In
+                </Button>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </div>
+    </div>
   );
 }
