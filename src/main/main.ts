@@ -79,10 +79,10 @@ const createWindow = async () => {
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
-    frame: false,
+    frame: true,
   });
 
-  mainWindow.setWindowButtonVisibility(true)
+  //mainWindow.setWindowButtonVisibility(true)
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {
