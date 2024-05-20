@@ -1,37 +1,22 @@
 import { Outlet } from 'react-router-dom';
-import {Container, Box } from '@mui/material';
 import SideNav from './sideNav';
 
-const MainLayout = (props) => {
+function MainLayout() {
   return (
-    <>
-      <Box
-        sx={{
-          bgcolor: 'var(--mui-palette-background-default)',
-          display: 'flex',
-          flexDirection: 'column',
-          position: 'relative',
-          minHeight: '100%',
-        }}
-      >
+    <div className="grid-main-layout-container">
+      <aside className="grid-main-layout-sidebar">
         <SideNav />
-        <Box
-          sx={{
-            display: 'flex',
-            flex: '1 1 auto',
-            flexDirection: 'column',
-            pl: { lg: 'var(--SideNav-width)' },
-          }}
-        >
-          <main>
-            <Container maxWidth="xl" sx={{ py: '64px' }}>
-              <Outlet />
-            </Container>
-          </main>
-        </Box>
-      </Box>
-    </>
+      </aside>
+      <main className="grid-main-layout-content">
+        <div className="grid-main-sub-layout-container">
+          <header className="grid-main-layout-header"></header>
+          <div className="grid-main-sub-layout-content">
+            <Outlet />
+          </div>
+        </div>
+      </main>
+    </div>
   );
-};
+}
 
 export default MainLayout;

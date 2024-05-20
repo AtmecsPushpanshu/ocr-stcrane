@@ -1,35 +1,13 @@
-import React, { FormEvent, Fragment } from 'react';
+import React, { FormEvent } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
-import { Stack } from '@mui/material';
 import stcrane from '../../assets/img/smart-tecs.png';
 import mainimage from '../../assets/img/ship.png';
-
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="https://stcrane.com/">
-        smart-tech System
-      </Link>{' '}
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
 
 export default function Login() {
   const navigate = useNavigate();
@@ -52,7 +30,13 @@ export default function Login() {
             <img src={stcrane} alt="logo" className="header-logo" />
           </Grid>
           <Grid item alignSelf="center">
-            <Typography variant="h5" color="white" align="center">
+            <Typography
+              variant="h5"
+              color="white"
+              align="center"
+              fontSize="40px"
+              fontWeight="600"
+            >
               Configuration manager
             </Typography>
           </Grid>
@@ -73,7 +57,7 @@ export default function Login() {
         >
           <CssBaseline />
 
-          <Grid item xs={3}>
+          <Grid item xs={4} sm={3}>
             <Box
               sx={{
                 backgroundColor: '#FFF',
@@ -81,7 +65,9 @@ export default function Login() {
                 borderRadius: 4,
               }}
             >
-              <Typography variant="h6">Sign In</Typography>
+              <Typography variant="h6" fontSize="32px" fontWeight="600">
+                Sign In
+              </Typography>
               <Box
                 component="form"
                 noValidate

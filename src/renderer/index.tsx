@@ -1,29 +1,34 @@
 import { createRoot } from 'react-dom/client';
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import '@fontsource/open-sans';
 import App from './App';
 
 declare module '@mui/material/styles' {
   interface Theme {
     status: {
-      danger: string
-    }
+      danger: string;
+    };
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
     status?: {
-      danger?: string
-    }
+      danger?: string;
+    };
   }
 }
 
-const theme = createTheme({})
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Open Sans, sans-serif',
+  },
+});
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
 root.render(
   <ThemeProvider theme={theme}>
     <App />
-  </ThemeProvider>
+  </ThemeProvider>,
 );
 
 // calling IPC exposed from preload script

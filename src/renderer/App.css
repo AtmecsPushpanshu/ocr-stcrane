@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 .grid-container {
   display: grid;
   height: 100vh; /* Full viewport height */
@@ -21,4 +26,51 @@
 .header-logo {
   width: 233px;
   height: 68px;
+}
+
+.grid-main-layout-container {
+  display: grid;
+  grid-template-areas: 'sidebar headercontent';
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 64px 1fr;
+  height: 100vh;
+}
+
+.grid-main-sub-layout-container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'content';
+  grid-template-rows: 64px 1fr;
+  height: 100vh;
+}
+
+.grid-main-layout-header {
+  grid-area: header;
+  height: 64px;
+  z-index: 1;
+  background: #fff;
+  box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.grid-main-layout-sidebar {
+  grid-area: sidebar;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  height: 100vh;
+  background: #F8F9FA;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.grid-main-layout-content {
+  grid-area: headercontent;
+  height: 100vh;
+}
+
+.grid-main-sub-layout-content {
+  grid-area: content;
+  overflow-y: auto;
+  height: calc(100vh - 60px);
 }
