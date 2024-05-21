@@ -1,5 +1,8 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/no-children-prop */
+/* eslint-disable react/function-component-definition */
 import React, { forwardRef } from 'react';
-import ListItem from '@material-ui/core/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 
 export interface MenuItemComponentProps {
@@ -9,12 +12,12 @@ export interface MenuItemComponentProps {
 }
 
 const MenuItemComponent: React.FC<MenuItemComponentProps> = (props) => {
-  const { className, onClick, link, children } = props;
+  const { className, onClick, link } = props;
 
   // If link is not set return the orinary ListItem
   if (!link || typeof link !== 'string') {
     return (
-      <ListItem
+      <ListItemButton
         button
         className={className}
         children={children}

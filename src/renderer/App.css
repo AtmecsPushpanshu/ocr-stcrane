@@ -49,7 +49,7 @@ body {
   grid-area: header;
   height: 64px;
   z-index: 1;
-  background: #fff;
+  background: #24558D;
   box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 

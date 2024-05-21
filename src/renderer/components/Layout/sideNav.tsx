@@ -19,13 +19,18 @@ function SideNav() {
         top: 0,
       }}
     >
-      <Stack spacing={2} sx={{ p: 2 }}>
+      <Stack
+        spacing={2}
+        justifyContent="center"
+        alignItems="center"
+        sx={{ height: '64px', background: '#24558D' }}
+      >
         <Box component={Link} to={paths.login} sx={{ display: 'inline-flex' }}>
-          <Logo color="dark" height={32} width={122} />
+          <Logo color="light" height={38} width={130} />
         </Box>
       </Stack>
       <Divider />
-      <Box component="nav" sx={{ flex: '1 1 auto', p: '12px' }}>
+      <Box component="nav">
         <MenuList />
       </Box>
       <Divider />
