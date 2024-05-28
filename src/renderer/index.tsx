@@ -1,27 +1,49 @@
 import { createRoot } from 'react-dom/client';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeOptions, ThemeProvider } from '@mui/material/styles';
 import '@fontsource/open-sans';
 import App from './App';
 
 declare module '@mui/material/styles' {
-  interface Theme {
-    status: {
-      danger: string;
+  interface ThemeOptions {
+    colors?: {
+      primary?: string;
+      secondary?: string;
+    };
+    general?: {
+      [key: string]: any;
+    };
+    sidebar?: {
+      [key: string]: any;
+    };
+    header?: {
+      [key: string]: any;
     };
   }
-  // allow configuration using `createTheme`
-  interface ThemeOptions {
-    status?: {
-      danger?: string;
+
+  interface Theme {
+    colors: {
+      primary: string;
+      secondary: string;
+    };
+    general: {
+      [key: string]: any;
+    };
+    sidebar: {
+      [key: string]: any;
+    };
+    header: {
+      [key: string]: any;
     };
   }
 }
 
-const theme = createTheme({
+const themeOptions: ThemeOptions = {
   typography: {
     fontFamily: 'Open Sans, sans-serif',
   },
-});
+};
+
+const theme = createTheme(themeOptions);
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);

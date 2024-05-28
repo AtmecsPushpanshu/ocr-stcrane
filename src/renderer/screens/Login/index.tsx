@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import { FormEvent } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import stcrane from '../../assets/img/smart-tecs.png';
 import mainimage from '../../assets/img/ship.png';
-
+import {PATHS} from '../../constants/paths';
 export default function Login() {
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export default function Login() {
       email: data.get('userId'),
       password: data.get('password'),
     });
-    navigate('anotherScreen');
+    navigate(PATHS.DASHBOARD.viewcameraconfig);
   };
 
   return (
