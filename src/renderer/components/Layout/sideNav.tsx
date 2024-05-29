@@ -32,7 +32,6 @@ function SideNav() {
       <Box component="nav">
         <MenuList />
       </Box>
-      <Divider />
     </Box>
   );
 }

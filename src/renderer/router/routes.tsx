@@ -22,6 +22,9 @@ const Loader =
 const ViewCameraConfig = Loader(
   lazy(() => import('../screens/CameraConfig/ViewCameraConfig')),
 );
+const AddCamera = Loader(
+  lazy(() => import('../screens/CameraConfig/AddCamera')),
+);
 const Login = Loader(lazy(() => import('../screens/Login/index')));
 
 const Routes: RouteObject[] = [
@@ -48,8 +51,8 @@ const Routes: RouteObject[] = [
         element: <ViewCameraConfig />,
       },
       {
-        path: 'overview',
-        element: <Navigate to="/" replace />,
+        path: 'add-camera',
+        element: <AddCamera />,
       },
     ],
   },

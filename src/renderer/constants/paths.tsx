@@ -13,25 +13,28 @@ export const PATHS = {
 export const SideMenuPaths = [
   {
     name: 'Camera Configuration',
-    Icon: <CameraIcon />,
-    link:'',
+    Icon: CameraIcon,
+    link: '',
     items: [
       {
-        title: 'Live View',
+        name: 'Live View',
         Icon: null,
+        link: '',
       },
       {
-        title: 'Image Analysis',
+        name: 'Image Analysis',
         Icon: null,
+        link: '',
       },
       {
-        title: 'Add Device',
+        name: 'Add Device',
         Icon: null,
+        link: PATHS.DASHBOARD.addcamera,
       },
     ],
   },
   {
     name: 'Central Server',
-    Icon: <ServerIcon />,
+    Icon: ServerIcon,
   },
 ];

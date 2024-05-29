@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Collapse,
-  Divider,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-// React runtime PropTypes
+
 export const MenuItemPropTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string,
@@ -17,12 +16,9 @@ export const MenuItemPropTypes = {
   items: PropTypes.array,
 };
 
-// TypeScript compile-time props type, infered from propTypes
-// https://dev.to/busypeoples/notes-on-typescript-inferring-react-proptypes-1g88
 type MenuItemPropTypes = PropTypes.InferProps<typeof MenuItemPropTypes>;
 type MenuItemPropsWithoutItems = Omit<MenuItemPropTypes, 'items'>;
 
-// Improve child items declaration
 export type MenuItemProps = MenuItemPropsWithoutItems & {
   items?: MenuItemProps[];
 };
@@ -53,7 +49,6 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
 
   const MenuItemChildren = isExpandable ? (
     <Collapse in={open} timeout="auto" unmountOnExit>
-      <Divider />
       <List component="div" disablePadding>
         {items.map((item, index) => (
           <MenuItem {...item} key={index} />

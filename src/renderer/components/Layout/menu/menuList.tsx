@@ -1,34 +1,17 @@
-import * as React from 'react';
 import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import { ListItemIcon } from '@mui/material';
-import { CameraIcon } from '../../../constants/systemIcons';
-
+import MenuItem from './menuItemComponent';
+import {SideMenuPaths} from '../../../constants/paths'
 export default function MenuList() {
-  const [open, setOpen] = React.useState(true);
 
   return (
     <List
-      sx={{ width: '100%', maxWidth: 360 }}
+      sx={{ width: '100%', maxWidth: 360, padding:'40px 0' }}
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
-      <ListItemButton>
-        <ListItemIcon>
-          <CameraIcon />
-        </ListItemIcon>
-        <ListItemText primary="Camera Configuration" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Central Server" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="OCR Engine" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Sample App" />
-      </ListItemButton>
+      {SideMenuPaths.map((menu, index) => (
+        <MenuItem {...menu} key={index} />
+      ))}
     </List>
   );
 }
