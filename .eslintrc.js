@@ -1,5 +1,11 @@
 module.exports = {
-  extends: 'erb',
+  extends: [
+    'erb',
+    'eslint:recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+  ],
   plugins: [
     '@typescript-eslint',
     'simple-import-sort',
