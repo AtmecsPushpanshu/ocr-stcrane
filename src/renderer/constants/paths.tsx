@@ -17,6 +17,11 @@ export const SideMenuPaths = [
     link: '',
     items: [
       {
+        name: 'Add Device',
+        Icon: null,
+        link: 'view-camera-config',
+      },
+      {
         name: 'Live View',
         Icon: null,
         link: '',
@@ -25,11 +30,6 @@ export const SideMenuPaths = [
         name: 'Image Analysis',
         Icon: null,
         link: '',
-      },
-      {
-        name: 'Add Device',
-        Icon: null,
-        link: PATHS.DASHBOARD.addcamera,
       },
     ],
   },

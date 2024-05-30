@@ -3,9 +3,8 @@ import { Grid } from '@mui/material';
 
 // Creating a styled button component
 export const WithPadding = styled(Grid)(() => ({
-  display:'flex',
-  flexDirection:'column',
-  height: 'inherit',
+  display: 'flex',
+  flexDirection: 'column',
   padding: 20,
 }));
 
@@ -14,6 +13,10 @@ export const WithFlexGrow = styled(Grid)(() => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  margin: '20px 0',
   border: '1px solid #E5E0EB',
 }));
+
+export const HeadTextCss = {
+  fontSize: '24px',
+  fontWeight: 600,
+};

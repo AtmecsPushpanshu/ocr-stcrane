@@ -1,35 +1,43 @@
 import React from 'react';
-import { Box, Button, Grid, Tab, Tabs, Typography } from '@mui/material';
-import { WithPadding } from '../../components/Styles';
+import { Box, Button, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
+import { WithPadding, HeadTextCss } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
-
+import { useNavigate } from 'react-router-dom';
 interface ViewCameraConfigProps {}
-  const Description: React.FC = () => (
-    <>
-      Click on <span>Add Device</span> to configure
-    </>
-  );
+const Description: React.FC = () => (
+  <>
+    Click on <span>Add Device</span> to configure
+  </>
+);
 const ViewCameraConfig: React.FC<ViewCameraConfigProps> = () => {
-
+  const navigate = useNavigate();
   return (
-    <WithPadding>
-      <Grid container justifyContent={'space-between'}>
-        <Typography variant="h5">Add Camera</Typography>
-        <Button variant="contained">Add Device</Button>
-      </Grid>
+    <Stack direction="column" height="inherit">
+      <WithPadding>
+        <Grid container justifyContent={'space-between'}>
+          <Typography variant="h5" {...HeadTextCss}>
+            Add Camera
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={() => navigate('/dashboard/add-camera')}
+          >
+            Add Device
+          </Button>
+        </Grid>
+      </WithPadding>
       <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={1} aria-label="basic tabs example">
-          <Tab label="Devices" value={1}  />
-          <Tab label="Preset Setting" value={2} />
-        </Tabs>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={1} aria-label="basic tabs example">
+            <Tab label="Devices" value={1} />
+            <Tab label="Preset Setting" value={2} />
+          </Tabs>
+        </Box>
       </Box>
-    </Box>
-      <Empty
-        title="No devices"
-        description={<Description />}
-      />
-    </WithPadding>
+      <WithPadding flexGrow={1}>
+        <Empty title="No devices" description={<Description />} />
+      </WithPadding>
+    </Stack>
   );
 };
 

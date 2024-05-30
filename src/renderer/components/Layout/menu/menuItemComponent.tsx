@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import {
   Collapse,
   List,
@@ -24,12 +25,16 @@ export type MenuItemProps = MenuItemPropsWithoutItems & {
 };
 
 const MenuItem: React.FC<MenuItemProps> = (props) => {
-  const { name, Icon, items = [] } = props;
-  const isExpandable = items && items.length > 0;
+  const { name,link, Icon, items = [] } = props;
+  const isExpandable = items && items?.length > 0;
   const [open, setOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   function handleClick() {
-    setOpen(!open);
+    if (isExpandable) {
+      setOpen(!open);
+      return;
+    }
+    navigate(link);
   }
 
   const MenuItemRoot = (
