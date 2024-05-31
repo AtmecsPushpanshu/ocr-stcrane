@@ -47,7 +47,8 @@ const themeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           textTransform: 'none', // Disable uppercase transformation
-          boxShadow:'none'
+          boxShadow:'none',
+          borderRadius: 1,
         },
       },
     },

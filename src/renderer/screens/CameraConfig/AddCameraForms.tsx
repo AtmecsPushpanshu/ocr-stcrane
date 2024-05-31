@@ -1,6 +1,8 @@
-import { Box, Button, FormControl, FormHelperText, InputAdornment, OutlinedInput, Select, TextField } from '@mui/material';
+import { Box, Button, Grid, Divider, Stack, Typography, List, ListItem, ListItemText } from '@mui/material';
 import { FormEvent } from 'react';
-import Input from '../../components/common/Input';
+import TextField from '../../components/common/TextField';
+import SelectField from '../../components/common/SelectField';
+import { cameraDetails } from '../../data/mock';
 
 const AddCameraForm = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -9,35 +11,51 @@ const AddCameraForm = () => {
     console.log(data);
   };
   return (
-    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-<Input />
-      <TextField
-        variant="standard"
-        margin="normal"
-        required
-        fullWidth
-        id="email"
-        label="Email ID"
-        name="email"
-        autoComplete="email"
-        autoFocus
-      />
-      <TextField
-        variant="standard"
-        margin="normal"
-        required
-        fullWidth
-        name="password"
-        label="Password"
-        type="password"
-        id="password"
-        autoComplete="current-password"
-      />
-
-      <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-        Sign In
-      </Button>
-    </Box>
+    <>
+      <Box
+        component="form"
+        noValidate
+        onSubmit={handleSubmit}
+        sx={{ mt: 1, flexDirection: 'row' }}
+      >
+        <Grid container spacing={3}>
+          <Grid item xs={3}>
+            <SelectField label="Terminal" placeholder="IP Address" />
+          </Grid>
+          <Grid item xs={3}>
+            <SelectField label="Choose crane" placeholder="IP Address" />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField label="IP Address" placeholder="IP Address" />
+          </Grid>
+          <Grid item xs={3} alignSelf={'self-end'}>
+            <Button type="submit" variant="contained">
+              Search
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
+      <Stack>
+        <Divider />
+        <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+        >
+          {cameraDetails.map(({name, value}) => (
+            <ListItem
+              key={value}
+              disableGutters
+              secondaryAction={
+                <>
+                  <Typography variant="h5">{value}</Typography>
+                </>
+              }
+            >
+              <ListItemText primary={name} />
+            </ListItem>
+          ))}
+        </List>
+      </Stack>
+    </>
   );
 };
 

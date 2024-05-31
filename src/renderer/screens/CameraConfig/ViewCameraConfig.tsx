@@ -3,13 +3,14 @@ import { Box, Button, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { WithPadding, HeadTextCss } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
 import { useNavigate } from 'react-router-dom';
-interface ViewCameraConfigProps {}
+import  ViewCameraList from './ViewCameraList';
+
 const Description: React.FC = () => (
   <>
     Click on <span>Add Device</span> to configure
   </>
 );
-const ViewCameraConfig: React.FC<ViewCameraConfigProps> = () => {
+const ViewCameraConfig: React.FC = () => {
   const navigate = useNavigate();
   return (
     <Stack direction="column" height="inherit">
@@ -36,6 +37,7 @@ const ViewCameraConfig: React.FC<ViewCameraConfigProps> = () => {
       </Box>
       <WithPadding flexGrow={1}>
         <Empty title="No devices" description={<Description />} />
+        <ViewCameraList />
       </WithPadding>
     </Stack>
   );
