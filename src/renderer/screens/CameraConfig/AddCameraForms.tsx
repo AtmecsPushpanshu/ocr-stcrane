@@ -1,4 +1,4 @@
-import { Box, Button, Select, TextField } from '@mui/material';
+import { Box, Button, FormControl, FormHelperText, InputAdornment, OutlinedInput, Select, TextField } from '@mui/material';
 import { FormEvent } from 'react';
 import Input from '../../components/common/Input';
 
@@ -10,7 +10,7 @@ const AddCameraForm = () => {
   };
   return (
     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-
+<Input />
       <TextField
         variant="standard"
         margin="normal"
@@ -23,7 +23,7 @@ const AddCameraForm = () => {
         autoFocus
       />
       <TextField
-        variant=""
+        variant="standard"
         margin="normal"
         required
         fullWidth
