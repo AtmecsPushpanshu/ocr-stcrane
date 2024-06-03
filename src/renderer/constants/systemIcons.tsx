@@ -65,3 +65,137 @@ export const IllustrationIcon: React.FC<IconsProps>  = ({ isActive = false }) =>
     </svg>
   );
 }
+
+export const PTZIcon = () => {
+  return (
+    <>
+      <svg
+        width="202"
+        height="202"
+        viewBox="0 0 202 202"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g filter="url(#filter0_d_785_14791)">
+          <circle cx="101" cy="101" r="78" fill="#8E8E8E" />
+        </g>
+        <path
+          d="M50.9875 146.774L54.5952 133.264L64.9661 147.137L50.9875 146.774Z"
+          fill="white"
+        />
+        <path
+          d="M51.8069 51.8397L66.3472 52.7971L52.8253 66.3759L51.8069 51.8397Z"
+          fill="white"
+        />
+        <path d="M42 100L55.2766 91.3397V108.66L42 100Z" fill="white" />
+        <path
+          d="M149.573 147.603L134.071 144.296L146.352 132.083L149.573 147.603Z"
+          fill="white"
+        />
+        <path
+          d="M159.702 100L146.426 108.66V91.3397L159.702 100Z"
+          fill="white"
+        />
+        <path
+          d="M150.885 49.2694L151.167 66.2102L136.488 51.8872L150.885 49.2694Z"
+          fill="white"
+        />
+        <path
+          d="M102 165.504L93.3397 151.972H110.66L102 165.504Z"
+          fill="white"
+        />
+        <path d="M101 41L109.66 52.1983H92.3397L101 41Z" fill="white" />
+        <g filter="url(#filter1_d_785_14791)">
+          <circle cx="101" cy="101" r="35" fill="#8E8E8E" />
+        </g>
+        <circle cx="101" cy="101" r="15.9091" fill="#9F9F9F" />
+        <g clip-path="url(#clip0_785_14791)">
+          <path
+            d="M91.4546 97.182C91.4546 96.132 92.3137 95.2729 93.3637 95.2729H96.2273L98.1364 93.3638H103.864L105.773 95.2729H108.636C109.143 95.2729 109.628 95.474 109.986 95.832C110.344 96.19 110.545 96.6756 110.545 97.182V106.727C110.545 107.234 110.344 107.719 109.986 108.077C109.628 108.435 109.143 108.636 108.636 108.636H93.3637C92.8574 108.636 92.3718 108.435 92.0137 108.077C91.6557 107.719 91.4546 107.234 91.4546 106.727V97.182ZM101 106.727C102.266 106.727 103.48 106.225 104.375 105.33C105.27 104.434 105.773 103.22 105.773 101.955C105.773 100.689 105.27 99.4749 104.375 98.5799C103.48 97.6848 102.266 97.182 101 97.182C99.7342 97.182 98.5203 97.6848 97.6252 98.5799C96.7302 99.4749 96.2273 100.689 96.2273 101.955C96.2273 103.22 96.7302 104.434 97.6252 105.33C98.5203 106.225 99.7342 106.727 101 106.727ZM101 104.818C100.624 104.818 100.252 104.744 99.9042 104.6C99.5567 104.456 99.2411 104.245 98.9751 103.98C98.7092 103.714 98.4983 103.398 98.3544 103.051C98.2105 102.703 98.1364 102.331 98.1364 101.955C98.1364 101.579 98.2105 101.206 98.3544 100.859C98.4983 100.511 98.7092 100.196 98.9751 99.9298C99.2411 99.6639 99.5567 99.4529 99.9042 99.309C100.252 99.1651 100.624 99.091 101 99.091C101.76 99.091 102.488 99.3927 103.025 99.9298C103.562 100.467 103.864 101.195 103.864 101.955C103.864 102.714 103.562 103.443 103.025 103.98C102.488 104.517 101.76 104.818 101 104.818Z"
+            fill="white"
+          />
+        </g>
+        <defs>
+          <filter
+            id="filter0_d_785_14791"
+            x="0"
+            y="0"
+            width="202"
+            height="202"
+            filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB"
+          >
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset />
+            <feGaussianBlur stdDeviation="11.5" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow_785_14791"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow_785_14791"
+              result="shape"
+            />
+          </filter>
+          <filter
+            id="filter1_d_785_14791"
+            x="58"
+            y="58"
+            width="86"
+            height="86"
+            filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB"
+          >
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset />
+            <feGaussianBlur stdDeviation="4" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.72 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow_785_14791"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow_785_14791"
+              result="shape"
+            />
+          </filter>
+          <clipPath id="clip0_785_14791">
+            <rect
+              width="19.0909"
+              height="19.0909"
+              fill="white"
+              transform="translate(91.4546 91.4546)"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    </>
+  );
+}

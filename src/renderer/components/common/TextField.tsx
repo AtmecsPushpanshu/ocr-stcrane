@@ -6,9 +6,9 @@ import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 
 const BootstrapInput = styled(OutlinedInput)(() => ({
   borderRadius: 1,
-  border: '1px solid #E5E0EB',
   '& .MuiInputBase-input': {
     padding: '6.5px 6px',
+    border: '1px solid #E5E0EB',
   },
 }));
 

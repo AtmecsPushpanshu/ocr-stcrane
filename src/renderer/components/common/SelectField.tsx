@@ -5,9 +5,9 @@ import InputLabel from '@mui/material/InputLabel';
 
 const BootstrapSelect = styled(Select)(() => ({
   borderRadius: 1,
-  border: '1px solid #E5E0EB',
   '& .MuiSelect-select': {
     padding: '6.5px 6px',
+    border: '1px solid #E5E0EB',
   },
 }));
 

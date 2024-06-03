@@ -2,7 +2,7 @@ import { FC, SyntheticEvent, useState } from 'react';
 import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
 import { WithPadding, HeadTextCss } from '../../components/Styles';
 import TabPanel, { a11yProps } from '../../components/common/TabPanel';
-import AddCameraForm from './AddCameraForms';
+import { AddCameraFormAuto, AddCameraFormManual } from './AddCameraForms';
 
 interface AddCameraProps {}
 
@@ -33,10 +33,10 @@ const handleChange = (event: SyntheticEvent, newValue: number) => {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-          <AddCameraForm />
+          <AddCameraFormAuto />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+          <AddCameraFormManual />
         </TabPanel>
       </Box>
     </>

@@ -35,9 +35,9 @@ const ViewCameraConfig: React.FC = () => {
           </Tabs>
         </Box>
       </Box>
+      <WithPadding><ViewCameraList /></WithPadding>
       <WithPadding flexGrow={1}>
         <Empty title="No devices" description={<Description />} />
-        <ViewCameraList />
       </WithPadding>
     </Stack>
   );
