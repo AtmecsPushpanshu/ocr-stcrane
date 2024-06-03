@@ -3,7 +3,8 @@ import { Box, Button, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { WithPadding, HeadTextCss } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
 import { useNavigate } from 'react-router-dom';
-import  ViewCameraList from './ViewCameraList';
+import ViewCameraList from './ViewCameraList';
+import SearchField from '../../components/common/SearchField';
 
 const Description: React.FC = () => (
   <>
@@ -30,12 +31,24 @@ const ViewCameraConfig: React.FC = () => {
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={1} aria-label="basic tabs example">
-            <Tab label="Devices" value={1} />
-            <Tab label="Preset Setting" value={2} />
+            <Tab label="Devices" value={1} sx={{ textTransform: 'none' }} />
+            <Tab
+              label="Preset Setting"
+              value={2}
+              sx={{ textTransform: 'none' }}
+            />
           </Tabs>
         </Box>
       </Box>
-      <WithPadding><ViewCameraList /></WithPadding>
+      <WithPadding>
+        <Grid container sx={{marginBottom: 2}}>
+          <Grid item>
+            <SearchField />
+          </Grid>
+          <Grid item></Grid>
+        </Grid>
+        <ViewCameraList />
+      </WithPadding>
       <WithPadding flexGrow={1}>
         <Empty title="No devices" description={<Description />} />
       </WithPadding>

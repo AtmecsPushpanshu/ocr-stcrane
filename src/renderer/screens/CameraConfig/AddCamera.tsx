@@ -28,8 +28,8 @@ const handleChange = (event: SyntheticEvent, newValue: number) => {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Automatic" value={0} {...a11yProps(0)} />
-            <Tab label="Manual" value={1} {...a11yProps(1)} />
+            <Tab label="Automatic" value={0} {...a11yProps(0)} sx={{textTransform:'none'}}/>
+            <Tab label="Manual" value={1} {...a11yProps(1)} sx={{textTransform:'none'}}/>
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>

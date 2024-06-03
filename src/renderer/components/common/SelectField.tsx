@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { MenuItem, Select, OutlinedSelectProps, Stack, MenuProps } from '@mui/material';
+import {
+  MenuItem,
+  Select,
+  OutlinedSelectProps,
+  Stack,
+  MenuProps,
+} from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 
 const BootstrapSelect = styled(Select)(() => ({
@@ -35,10 +41,12 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
     <>
       <Stack spacing={1}>
         <Label htmlFor={name}>{label}</Label>
-        <BootstrapSelect MenuProps={MenuProps} {...selectProps}>
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+        <BootstrapSelect
+          defaultValue={'select'}
+          MenuProps={MenuProps}
+          {...selectProps}
+        >
+          <MenuItem value="select">Select</MenuItem>
           <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
