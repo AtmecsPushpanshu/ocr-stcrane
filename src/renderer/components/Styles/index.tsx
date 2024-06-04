@@ -1,5 +1,11 @@
 import { styled } from '@mui/material/styles';
-import { Button, ButtonGroup, Grid, IconButton, Typography } from '@mui/material';
+import {
+  Button,
+  ButtonGroup,
+  Grid,
+  IconButton,
+  Typography,
+} from '@mui/material';
 
 // Creating a styled button component
 export const WithPadding = styled(Grid)(() => ({
@@ -22,15 +28,40 @@ export const IconButtonPtz = styled(IconButton)(() => ({
 export const ButtonPtz = styled(Button)(() => ({
   padding: 0,
   borderRadius: 0,
-  height: '39px',
-  width: '39px',
+  height: '52px',
+  width: '52px',
+  background: '#8E8E8E',
 }));
+export const CameraButtonPtz = styled(Button)(() => ({
+  padding: 0,
+  background: '#8E8E8E',
+  position: 'absolute',
+  width: '72px',
+  height: '72px',
+  top: 44,
+  left: 44,
+  zIndex: 1,
+  borderRadius: '16px',
+  boxShadow: '0px 0px 8px 0px #000000B8 !important',
+}));
+
+export const CameraBG = styled('div')(() => ({
+  width: '32px',
+  height: '32px',
+  background: 'rgb(159 159 159 / 42%)',
+  borderRadius: '20px',
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+}))
 
 export const ButtonGroupPtz = styled(ButtonGroup)(() => ({
   padding: 0,
   borderRadius: 0,
-  height: '39px',
-  width: '39px',
+  height: '52px',
+  width: '52px',
+  background: 'transparent',
+  boxShadow: 'none',
 }));
 export const CameraDetailText = styled(Typography)(() => ({
   fontSize: '16px',

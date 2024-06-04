@@ -6,6 +6,10 @@ interface IconsProps {
   isActive?: boolean;
 }
 
+interface PtzIconProps {
+  style?: React.CSSProperties
+}
+
 export const CameraIcon: React.FC<IconsProps> = ({ isActive = false }) => {
   const fill = isActive
     ? SystemColors.link.icons.active
@@ -70,282 +74,159 @@ export const IllustrationIcon: React.FC<IconsProps> = ({
   );
 };
 
-export const LeftPtzIcon = () => {
+export const LeftPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="55"
-      height="46"
-      viewBox="0 0 55 46"
+      width="14"
+      height="18"
+      viewBox="0 0 14 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
-      <path
-        d="M53.3712 0H3.58598C3.15845 0 2.77785 0.269032 2.64672 0.67596C-2.10461 15.4205 0.57797 35.9605 2.69248 45.2368C2.79519 45.6874 3.19689 46 3.65902 46H53.3712C53.9235 46 54.3712 45.5523 54.3712 45V1C54.3712 0.447715 53.9235 0 53.3712 0Z"
-        fill="#4693E9"
-      />
-      <path d="M18 23L31.2766 14.3397V31.6603L18 23Z" fill="white" />
+      <path d="M0 9L13.2766 0.339745V17.6603L0 9Z" fill="white" />
     </svg>
   );
 };
-export const LeftTopPtzIcon = () => {
+export const TopLeftPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="52"
-      height="51"
-      viewBox="0 0 52 51"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
       <path
-        d="M51.5 50V1.71618C51.5 1.08633 50.923 0.613068 50.3089 0.752889C25.3263 6.44068 7.21937 34.7308 0.597345 49.62C0.306803 50.2732 0.790289 51 1.50525 51H50.5C51.0523 51 51.5 50.5523 51.5 50Z"
-        fill="#4693E9"
-      />
-      <path
-        d="M25.8069 25.3397L40.3472 26.2971L26.8253 39.8759L25.8069 25.3397Z"
+        d="M0.806858 0.83972L15.3472 1.79713L1.82534 15.3759L0.806858 0.83972Z"
         fill="white"
       />
     </svg>
   );
 };
-export const LeftDownPtzIcon = () => {
+export const BottomLeftPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="52"
-      height="51"
-      viewBox="0 0 52 52"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
       <path
-        d="M50.5 0.5H1.34403C0.674168 0.5 0.195875 1.15257 0.400269 1.79049C10.0604 31.9399 36.7545 47.2377 50.2266 51.6076C50.8606 51.8133 51.5 51.3338 51.5 50.6673V1.5C51.5 0.947715 51.0523 0.5 50.5 0.5Z"
-        fill="#4693E9"
-      />
-      <path
-        d="M24.988 24.2741L28.5957 10.7642L38.9666 24.6367L24.988 24.2741Z"
+        d="M15.5735 15.6033L0.0708703 12.2962L12.3521 0.0826171L15.5735 15.6033Z"
         fill="white"
       />
     </svg>
   );
 };
-export const RightPtzIcon = () => {
+export const RightPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="56"
-      height="46"
-      viewBox="0 0 56 46"
+      width="14"
+      height="18"
+      viewBox="0 0 14 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
-      <rect width="55.3129" height="46" fill="#4693E9" />
       <path
-        d="M36.7021 23L23.4256 31.6603L23.4256 14.3397L36.7021 23Z"
+        d="M13.7021 9L0.425552 17.6603L0.425552 0.339746L13.7021 9Z"
         fill="white"
       />
     </svg>
   );
 };
-export const RightTopPtzIcon = () => {
+export const TopRightPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="52"
-      height="51"
-      viewBox="0 0 52 51"
+      width="16"
+      height="18"
+      viewBox="0 0 16 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
       <path
-        d="M0 50V1.41435C0 0.72413 0.690023 0.244379 1.33696 0.484959C32.1353 11.9381 47.3298 37.1985 51.5894 49.7221C51.8053 50.3567 51.3246 51 50.6542 51H1C0.447715 51 0 50.5523 0 50Z"
-        fill="#4693E9"
-      />
-      <path
-        d="M26.8846 23.2694L27.1675 40.2102L12.4877 25.8872L26.8846 23.2694Z"
+        d="M14.8846 0.269409L15.1675 17.2102L0.487679 2.88718L14.8846 0.269409Z"
         fill="white"
       />
     </svg>
   );
 };
-export const RightDownPtzIcon = () => {
+export const BottomRightPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="52"
-      height="51"
-      viewBox="0 0 52 52"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
       <path
-        d="M1 0.5H50.6078C51.2917 0.5 51.7697 1.18274 51.5425 1.82782C39.3226 36.5161 13.6521 49.3979 1.14364 51.8033C0.543004 51.9188 0 51.4497 0 50.838V1.5C0 0.947715 0.447716 0.5 1 0.5Z"
-        fill="#4693E9"
-      />
-      <path
-        d="M25.5735 25.1033L10.0709 21.7963L22.3521 9.58268L25.5735 25.1033Z"
+        d="M15.5735 15.6033L0.0708703 12.2962L12.3521 0.0826171L15.5735 15.6033Z"
         fill="white"
       />
     </svg>
   );
 };
-export const TopPtzIcon = () => {
+export const TopPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="46"
-      height="51"
-      viewBox="0 0 46 55"
+      width="18"
+      height="12"
+      viewBox="0 0 18 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
-      <path
-        d="M0 53.7831V4.93812C0 4.54034 0.234467 4.1796 0.601882 4.02715C15.7443 -2.25567 36.1808 0.970884 45.2923 3.57534C45.7163 3.69653 46 4.08487 46 4.52584V53.7831C46 54.3354 45.5523 54.7831 45 54.7831H1C0.447715 54.7831 0 54.3354 0 53.7831Z"
-        fill="#4693E9"
-      />
-      <path d="M23 18.3916L31.6603 29.5899H14.3397L23 18.3916Z" fill="white" />
+      <path d="M9 0L17.6603 11.1983L0.339746 11.1983L9 0Z" fill="white" />
     </svg>
   );
 };
-export const DownPtzIcon = () => {
+export const BottomPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="46"
-      height="51"
-      viewBox="0 0 46 57"
+      width="18"
+      height="15"
+      viewBox="0 0 18 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
-      <rect
-        width="46"
-        height="55.7546"
-        transform="translate(0 0.754639)"
-        fill="#4693E9"
-      />
-      <path d="M24 43.2587L15.3397 29.7268H32.6603L24 43.2587Z" fill="white" />
+      <path d="M9 14.5L0.339745 0.968085H17.6603L9 14.5Z" fill="white" />
     </svg>
   );
 };
-export const CameraPtzIcon = () => {
+export const CameraPtzIcon = ({ style }:PtzIconProps) => {
   return (
     <svg
-      width="86"
-      height="86"
-      viewBox="0 0 86 86"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
-      <g filter="url(#filter0_d_785_14333)">
-        <circle cx="43" cy="43" r="35" fill="#8E8E8E" />
-      </g>
-      <circle cx="42.9999" cy="43" r="15.9091" fill="#9F9F9F" />
-      <g clip-path="url(#clip0_785_14333)">
+      <g clip-path="url(#clip0_826_5137)">
         <path
-          d="M33.4541 39.1819C33.4541 38.1319 34.3132 37.2728 35.3632 37.2728H38.2268L40.1359 35.3637H45.8632L47.7723 37.2728H50.6359C51.1422 37.2728 51.6278 37.474 51.9859 37.832C52.3439 38.19 52.545 38.6756 52.545 39.1819V48.7274C52.545 49.2337 52.3439 49.7193 51.9859 50.0773C51.6278 50.4353 51.1422 50.6365 50.6359 50.6365H35.3632C34.8569 50.6365 34.3713 50.4353 34.0133 50.0773C33.6552 49.7193 33.4541 49.2337 33.4541 48.7274V39.1819ZM42.9996 48.7274C44.2654 48.7274 45.4793 48.2245 46.3744 47.3295C47.2694 46.4344 47.7723 45.2205 47.7723 43.9546C47.7723 42.6888 47.2694 41.4749 46.3744 40.5798C45.4793 39.6848 44.2654 39.1819 42.9996 39.1819C41.7338 39.1819 40.5198 39.6848 39.6247 40.5798C38.7297 41.4749 38.2268 42.6888 38.2268 43.9546C38.2268 45.2205 38.7297 46.4344 39.6247 47.3295C40.5198 48.2245 41.7338 48.7274 42.9996 48.7274ZM42.9996 46.8183C42.6235 46.8183 42.2511 46.7442 41.9037 46.6003C41.5563 46.4564 41.2406 46.2455 40.9747 45.9795C40.7087 45.7136 40.4978 45.3979 40.3539 45.0505C40.21 44.7031 40.1359 44.3307 40.1359 43.9546C40.1359 43.5786 40.21 43.2062 40.3539 42.8588C40.4978 42.5113 40.7087 42.1957 40.9747 41.9297C41.2406 41.6638 41.5563 41.4529 41.9037 41.309C42.2511 41.1651 42.6235 41.091 42.9996 41.091C43.759 41.091 44.4874 41.3927 45.0245 41.9297C45.5615 42.4668 45.8632 43.1952 45.8632 43.9546C45.8632 44.7141 45.5615 45.4425 45.0245 45.9795C44.4874 46.5166 43.759 46.8183 42.9996 46.8183Z"
+          d="M0.454102 6.18195C0.454102 5.13195 1.31319 4.27286 2.36319 4.27286H5.22683L7.13592 2.36377H12.8632L14.7723 4.27286H17.6359C18.1422 4.27286 18.6278 4.474 18.9859 4.83202C19.3439 5.19004 19.545 5.67563 19.545 6.18195V15.7274C19.545 16.2337 19.3439 16.7193 18.9859 17.0773C18.6278 17.4354 18.1422 17.6365 17.6359 17.6365H2.36319C1.85687 17.6365 1.37129 17.4354 1.01326 17.0773C0.655237 16.7193 0.454102 16.2337 0.454102 15.7274V6.18195ZM9.99956 15.7274C11.2654 15.7274 12.4793 15.2246 13.3744 14.3295C14.2694 13.4344 14.7723 12.2205 14.7723 10.9547C14.7723 9.68887 14.2694 8.47491 13.3744 7.57985C12.4793 6.68479 11.2654 6.18195 9.99956 6.18195C8.73375 6.18195 7.51979 6.68479 6.62473 7.57985C5.72967 8.47491 5.22683 9.68887 5.22683 10.9547C5.22683 12.2205 5.72967 13.4344 6.62473 14.3295C7.51979 15.2246 8.73375 15.7274 9.99956 15.7274ZM9.99956 13.8183C9.6235 13.8183 9.25112 13.7442 8.90369 13.6003C8.55626 13.4564 8.24057 13.2455 7.97466 12.9796C7.70875 12.7137 7.49781 12.398 7.3539 12.0505C7.20999 11.7031 7.13592 11.3307 7.13592 10.9547C7.13592 10.5786 7.20999 10.2062 7.3539 9.85881C7.49781 9.51138 7.70875 9.19569 7.97466 8.92978C8.24057 8.66387 8.55626 8.45293 8.90369 8.30902C9.25112 8.16511 9.6235 8.09104 9.99956 8.09104C10.759 8.09104 11.4874 8.39274 12.0245 8.92978C12.5615 9.46682 12.8632 10.1952 12.8632 10.9547C12.8632 11.7142 12.5615 12.4425 12.0245 12.9796C11.4874 13.5166 10.759 13.8183 9.99956 13.8183Z"
           fill="white"
         />
       </g>
       <defs>
-        <filter
-          id="filter0_d_785_14333"
-          x="0"
-          y="0"
-          width="86"
-          height="86"
-          filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
-        >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset />
-          <feGaussianBlur stdDeviation="4" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.72 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_785_14333"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow_785_14333"
-            result="shape"
-          />
-        </filter>
-        <clipPath id="clip0_785_14333">
+        <clipPath id="clip0_826_5137">
           <rect
             width="19.0909"
             height="19.0909"
             fill="white"
-            transform="translate(33.4541 33.4547)"
+            transform="translate(0.454102 0.454712)"
           />
         </clipPath>
       </defs>
     </svg>
-  );
-};
-
-export const PtzIcon = () => {
-  return (
-    <>
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          width: '156px',
-          height: '156px',
-          gap: 0, // Adjust the gap between buttons
-        }}
-      >
-          <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <LeftTopPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-        <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <TopPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-        <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <RightTopPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-        <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <LeftPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-        <ButtonGroup variant="outlined" orientation="vertical">
-
-        </ButtonGroup>
-
-        <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <RightPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-        <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <LeftDownPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-        <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <DownPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-
-        <ButtonGroup variant="outlined" orientation="vertical">
-          <IconButtonPtz>
-            <RightDownPtzIcon />
-          </IconButtonPtz>
-        </ButtonGroup>
-      </Box>
-    </>
   );
 };

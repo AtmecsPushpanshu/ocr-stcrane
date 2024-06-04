@@ -1,8 +1,9 @@
-import { Box, Button, ButtonGroup, Grid, Typography } from '@mui/material';
-import { ButtonGroupPtz, ButtonPtz, HeadTextCss, WithPadding } from '../../components/Styles';
-import { PtzIcon } from '../../constants/systemIcons';
+import { Grid, Typography } from '@mui/material';
+import {  HeadTextCss, WithPadding } from '../../components/Styles';
+import PTZbutton from '../../components/common/PTZbutton';
 
 const AddCameraPreset = () => {
+
   return (
     <WithPadding>
       <Typography variant="h5" {...HeadTextCss}>
@@ -10,30 +11,10 @@ const AddCameraPreset = () => {
       </Typography>
       <Grid container columns={18}>
         <Grid item xs={8}>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              width: '120px',
-              gap: 0, // Adjust the gap between buttons
-              whiteSpace:'none',
-            }}
-
-
-          >
-            {Array.from({ length: 9 }).map((_, index) => (
-              <ButtonGroupPtz
-                key={index}
-                variant="contained"
-                orientation="vertical"
-              >
-                <ButtonPtz>{` ${index + 1}`}</ButtonPtz>
-              </ButtonGroupPtz>
-            ))}
-          </Box>
+         <PTZbutton />
         </Grid>
         <Grid item xs={10}>
-          <PtzIcon />
+
         </Grid>
       </Grid>
     </WithPadding>
