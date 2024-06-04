@@ -14,7 +14,7 @@ import TextField from '../../components/common/TextField';
 import SelectField from '../../components/common/SelectField';
 import { cameraDetails } from '../../data/mock';
 import { useNavigate } from 'react-router-dom';
-import { CameraDetailHeadText, CameraDetailText, HeadText } from '../../components/Styles';
+import { CameraDetailHeadText, HeadText16, HeadText } from '../../components/Styles';
 
 export const AddCameraFormAuto = () => {
   const navigate = useNavigate()
@@ -61,7 +61,7 @@ export const AddCameraFormAuto = () => {
               sx={{paddingBottom:0}}
               secondaryAction={
                 <>
-                  <CameraDetailText variant="h5">{value}</CameraDetailText>
+                  <HeadText16 variant="h5">{value}</HeadText16>
                 </>
               }
             >

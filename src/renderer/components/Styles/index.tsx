@@ -63,23 +63,35 @@ export const ButtonGroupPtz = styled(ButtonGroup)(() => ({
   background: 'transparent',
   boxShadow: 'none',
 }));
-export const CameraDetailText = styled(Typography)(() => ({
-  fontSize: '16px',
-  fontWeight: 600,
-  lineHeight: '22.4px',
-  textAlign: 'center',
-}));
+
 export const CameraDetailHeadText = styled(Typography)(() => ({
   fontSize: '18px',
   fontWeight: 400,
   lineHeight: '23.76px',
 }));
+
 export const HeadText = styled(Typography)(() => ({
   fontSize: '18px',
   fontWeight: 600,
   lineHeight: '23.76px',
 }));
+
+export const HeadText16 = styled(Typography)(() => ({
+  fontSize: '16px',
+  fontWeight: 600,
+  lineHeight: '22.4px',
+}));
+
 export const HeadTextCss = {
   fontSize: '24px',
   fontWeight: 600,
 };
+
+export const GridWithBorder = styled(Grid)(() => ({
+  border: '1px solid #C5C5C5'
+}));
+
+export const ImageFill = styled('img')(() => ({
+  width: '100%',
+  height: 'auto',
+}));
