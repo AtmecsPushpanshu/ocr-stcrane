@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
-import { WithPadding, HeadTextCss, TabTextCss } from '../../components/Styles';
+import { WithPadding, HeadTextCss, TabTextCss, PageTitle } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
 import { useNavigate } from 'react-router-dom';
 import ViewCameraList from './ViewCameraList';
@@ -17,9 +17,9 @@ const ViewCameraConfig: React.FC = () => {
     <Stack direction="column" height="inherit">
       <WithPadding>
         <Grid container justifyContent={'space-between'}>
-          <Typography variant="h5" {...HeadTextCss}>
+          <PageTitle>
             Add Camera
-          </Typography>
+          </PageTitle>
           <Button
             variant="contained"
             onClick={() => navigate('/dashboard/add-camera')}

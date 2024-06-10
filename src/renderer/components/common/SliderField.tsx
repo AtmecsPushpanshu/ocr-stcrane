@@ -1,23 +1,28 @@
-import React from 'react';
-import { Stack, Slider } from '@mui/material';
-import { GreyBox } from '../Styles';
+import { Slider, Box, Typography } from '@mui/material';
+import { PrettoSlider, SubHeadText } from '../Styles';
 interface SliderFieldProps {
   topText?: string;
   bottomText?: string;
 }
+
 const SliderField = (props: SliderFieldProps) => {
   const { topText, bottomText } = props;
   return (
-    <Stack sx={{ height: 'inherit' }} alignItems={'center'} spacing={2}>
-      {topText && <GreyBox>{topText}</GreyBox>}
-      <Slider
+    <Box>
+      <PrettoSlider
         aria-label="Temperature"
         orientation="horizontal"
-        valueLabelDisplay="auto"
-        defaultValue={30}
+        defaultValue={100}
       />
-      {bottomText && <GreyBox>{bottomText}</GreyBox>}
-    </Stack>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+       {topText && <SubHeadText sx={{ cursor: 'pointer' }}>
+          {topText}
+        </SubHeadText>}
+        {bottomText && <SubHeadText sx={{ cursor: 'pointer' }}>
+          {bottomText}
+        </SubHeadText>}
+      </Box>
+    </Box>
   );
 };
 

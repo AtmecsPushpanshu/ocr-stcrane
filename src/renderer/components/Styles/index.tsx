@@ -5,11 +5,14 @@ import {
   ButtonGroup,
   Grid,
   IconButton,
+  Slider,
+  TabOwnProps,
   Typography,
 } from '@mui/material';
 
 export const GridWithBorder = styled(Grid)(() => ({
   border: '1px solid #C5C5C5',
+  borderRadius: '2px',
 }));
 
 // Creating a styled button component
@@ -88,6 +91,11 @@ export const HeadText = styled(Typography)(() => ({
   fontWeight: 600,
   lineHeight: '23.76px',
 }));
+export const SubHeadText = styled(Typography)(() => ({
+  fontSize: '10px',
+  fontWeight: 600,
+  lineHeight: '13.2px',
+}));
 
 export const HeadText16 = styled(Typography)(() => ({
   fontSize: '16px',
@@ -105,13 +113,27 @@ export const HeadTextCss: React.CSSProperties = {
   fontWeight: 600,
 };
 
-export const TabTextCss: React.CSSProperties = {
+export const TabTextCss: TabOwnProps['sx'] = {
   fontSize: '18px',
   fontWeight: '400',
   lineHeight: '24px',
   textAlign: 'center',
   textDecoration: 'none',
   textTransform: 'none',
+};
+
+export const TabPresetTextCss:  TabOwnProps['sx'] = {
+  fontSize: '14px',
+  fontWeight: '600',
+  lineHeight: '24px',
+  textAlign: 'center',
+  textDecoration: 'none',
+  textTransform: 'none',
+  width: '50%',
+  '&.Mui-selected':{
+    color: '#FFFFFF',
+    backgroundColor:'#24558D'
+  }
 };
 
 export const GreyBox = styled(Box)(() => ({
@@ -128,3 +150,43 @@ export const ImageFill = styled('img')(() => ({
   width: '100%',
   height: 'auto',
 }));
+
+export const PrettoSlider = styled(Slider)({
+  color: '#24558D',
+  height: 8,
+  '& .MuiSlider-track': {
+    border: 'none',
+  },
+  '& .MuiSlider-thumb': {
+    height: 24,
+    width: 24,
+    backgroundColor: '#24558D',
+    border: '4px solid #FFF',
+    boxShadow: '0px 0px 20px 0px #13384D33',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      boxShadow: 'inherit',
+    },
+    '&::before': {
+      display: 'none',
+    },
+  },
+  '& .MuiSlider-valueLabel': {
+    lineHeight: 1.2,
+    fontSize: 12,
+    background: 'unset',
+    padding: 0,
+    width: 32,
+    height: 32,
+    borderRadius: '50% 50% 50% 0',
+    backgroundColor: '#24558D',
+    transformOrigin: 'bottom left',
+    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+    '&::before': { display: 'none' },
+    '&.MuiSlider-valueLabelOpen': {
+      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+    },
+    '& > *': {
+      transform: 'rotate(45deg)',
+    },
+  },
+});

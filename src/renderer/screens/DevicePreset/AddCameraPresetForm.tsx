@@ -1,24 +1,34 @@
-import { Grid, Stack } from '@mui/material';
-import SelectField from '../../components/common/SelectField';
-import { WithPadding } from '../../components/Styles';
+import { SyntheticEvent, useState } from 'react';
+import { Box, Tab, Tabs } from '@mui/material';
+import { TabPresetTextCss, TabTextCss, WithPadding } from '../../components/Styles';
+import TabPanel, { a11yProps } from '../../components/common/TabPanel';
 
 const AddCameraPresetForm = () => {
+  const [value, setValue] = useState(0);
+
+const handleChange = (event: SyntheticEvent, newValue: number) => {
+  setValue(newValue);
+};
   return (
     <WithPadding>
-      <Grid container justifyContent={'space-between'} >
-        <Grid item >
-          <Stack spacing={2} sx={{ width: '100%' }}>
-            <SelectField label={'Image/ Video Location'} />
-            <SelectField label={'Brightness Level'} />
-            <SelectField label={'Max Shutter Speed'} />
-            <SelectField label={'Frames Per Second'} />
-            <SelectField label={'Choose Preset'} />
-            <SelectField label={'Video Encoding/Decoding'} />
-            <SelectField label={'Image Resolution'} />
-            <SelectField label={'Max Shutter Speed'} />
-          </Stack>
-        </Grid>
-      </Grid>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab label="Automatic" value={0} {...a11yProps(0)} sx={TabPresetTextCss}/>
+            <Tab label="Manual" value={1} {...a11yProps(1)} sx={TabPresetTextCss}/>
+          </Tabs>
+        </Box>
+        <TabPanel value={value} index={0}>
+          hj
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          hj
+        </TabPanel>
+      </Box>
     </WithPadding>
   );
 }

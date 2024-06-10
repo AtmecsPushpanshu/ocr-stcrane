@@ -9,7 +9,7 @@ import { WithFlexGrow } from '../Styles';
 interface EmptyProps {
   showIcon?: boolean;
   title: string;
-  description?: string | React.ComponentType | undefined;
+  description?: any;
   onActionClick?: () => void;
   actionLabel?: string;
 }

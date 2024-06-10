@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent, useState } from 'react';
-import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
-import { WithPadding, HeadTextCss, TabTextCss } from '../../components/Styles';
+import { Box, Grid, Tab, Tabs } from '@mui/material';
+import { WithPadding, TabTextCss, PageTitle } from '../../components/Styles';
 import TabPanel, { a11yProps } from '../../components/common/TabPanel';
 import { AddCameraFormAuto, AddCameraFormManual } from './AddCameraForms';
 
@@ -16,9 +16,9 @@ const handleChange = (event: SyntheticEvent, newValue: number) => {
     <>
       <WithPadding>
         <Grid container justifyContent={'space-between'}>
-          <Typography variant="h5" {...HeadTextCss}>
+          <PageTitle>
             Add Camera
-          </Typography>
+          </PageTitle>
         </Grid>
       </WithPadding>
       <Box sx={{ width: '100%' }}>
