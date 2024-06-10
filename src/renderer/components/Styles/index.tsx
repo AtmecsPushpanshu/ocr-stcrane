@@ -1,11 +1,16 @@
 import { styled } from '@mui/material/styles';
 import {
+  Box,
   Button,
   ButtonGroup,
   Grid,
   IconButton,
   Typography,
 } from '@mui/material';
+
+export const GridWithBorder = styled(Grid)(() => ({
+  border: '1px solid #C5C5C5',
+}));
 
 // Creating a styled button component
 export const WithPadding = styled(Grid)(() => ({
@@ -22,9 +27,17 @@ export const WithFlexGrow = styled(Grid)(() => ({
   border: '1px solid #E5E0EB',
 }));
 
+export const CameraPresetGrid = styled('div')(() => ({
+  display: 'grid',
+  gridTemplateAreas: `'camera' 'setting'`,
+  gridTemplateColumns: '1fr 280px',
+  height: '100vh',
+}));
+
 export const IconButtonPtz = styled(IconButton)(() => ({
   padding: 0,
 }));
+
 export const ButtonPtz = styled(Button)(() => ({
   padding: 0,
   borderRadius: 0,
@@ -46,14 +59,14 @@ export const CameraButtonPtz = styled(Button)(() => ({
 }));
 
 export const CameraBG = styled('div')(() => ({
-  width: '32px',
-  height: '32px',
+  width: '50px',
+  height: '50px',
   background: 'rgb(159 159 159 / 42%)',
-  borderRadius: '20px',
+  borderRadius: '50px',
   alignItems: 'center',
   display: 'flex',
   justifyContent: 'center',
-}))
+}));
 
 export const ButtonGroupPtz = styled(ButtonGroup)(() => ({
   padding: 0,
@@ -81,14 +94,34 @@ export const HeadText16 = styled(Typography)(() => ({
   fontWeight: 600,
   lineHeight: '22.4px',
 }));
+export const PageTitle = styled(Typography)(() => ({
+  fontSize: '24px',
+  fontWeight: 600,
+  lineHeight: '31.68px',
+}));
 
-export const HeadTextCss = {
+export const HeadTextCss: React.CSSProperties = {
   fontSize: '24px',
   fontWeight: 600,
 };
 
-export const GridWithBorder = styled(Grid)(() => ({
-  border: '1px solid #C5C5C5'
+export const TabTextCss: React.CSSProperties = {
+  fontSize: '18px',
+  fontWeight: '400',
+  lineHeight: '24px',
+  textAlign: 'center',
+  textDecoration: 'none',
+  textTransform: 'none',
+};
+
+export const GreyBox = styled(Box)(() => ({
+  width: '69px',
+  height: '33px',
+  background: '#E7E7E7',
+  fontSize: '18px',
+  fontWeight: 600,
+  lineHeight: '23.76px',
+  textAlign: 'center',
 }));
 
 export const ImageFill = styled('img')(() => ({

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
-import { WithPadding, HeadTextCss } from '../../components/Styles';
+import { WithPadding, HeadTextCss, TabTextCss } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
 import { useNavigate } from 'react-router-dom';
 import ViewCameraList from './ViewCameraList';
@@ -31,11 +31,11 @@ const ViewCameraConfig: React.FC = () => {
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={1} aria-label="basic tabs example">
-            <Tab label="Devices" value={1} sx={{ textTransform: 'none' }} />
+            <Tab label="Devices" value={1} sx={TabTextCss} />
             <Tab
               label="Preset Setting"
               value={2}
-              sx={{ textTransform: 'none' }}
+              sx={TabTextCss}
             />
           </Tabs>
         </Box>

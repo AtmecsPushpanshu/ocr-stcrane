@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { Box, Grid, Tab, Tabs, Typography } from '@mui/material';
-import { WithPadding, HeadTextCss } from '../../components/Styles';
+import { WithPadding, HeadTextCss, TabTextCss } from '../../components/Styles';
 import TabPanel, { a11yProps } from '../../components/common/TabPanel';
 import { AddCameraFormAuto, AddCameraFormManual } from './AddCameraForms';
 
@@ -28,8 +28,8 @@ const handleChange = (event: SyntheticEvent, newValue: number) => {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Automatic" value={0} {...a11yProps(0)} sx={{textTransform:'none'}}/>
-            <Tab label="Manual" value={1} {...a11yProps(1)} sx={{textTransform:'none'}}/>
+            <Tab label="Automatic" value={0} {...a11yProps(0)} sx={TabTextCss}/>
+            <Tab label="Manual" value={1} {...a11yProps(1)} sx={TabTextCss}/>
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
