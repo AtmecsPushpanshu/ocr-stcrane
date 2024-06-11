@@ -1,4 +1,4 @@
-import { CameraIcon, ServerIcon } from './systemIcons';
+import { CameraIcon, CraneIcon, ServerIcon, PlcIcon } from './systemIcons';
 
 export const PATHS = {
   AUTH: { signIn: '/', signUp: 'sign-up', resetPassword: 'reset-password' },
@@ -11,6 +11,28 @@ export const PATHS = {
 } as const;
 
 export const SideMenuPaths = [
+  {
+    name: 'Cranes',
+    Icon: CraneIcon,
+    link: '',
+    items: [
+      {
+        name: 'Add Device',
+        Icon: null,
+        link: 'view-camera-config',
+      },
+      {
+        name: 'Live View',
+        Icon: null,
+        link: '',
+      },
+      {
+        name: 'Image Analysis',
+        Icon: null,
+        link: '',
+      },
+    ],
+  },
   {
     name: 'Camera Configuration',
     Icon: CameraIcon,
@@ -36,5 +58,9 @@ export const SideMenuPaths = [
   {
     name: 'Central Server',
     Icon: ServerIcon,
+  },
+  {
+    name: 'PLC',
+    Icon: PlcIcon,
   },
 ];

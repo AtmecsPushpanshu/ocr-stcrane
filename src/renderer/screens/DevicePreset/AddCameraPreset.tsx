@@ -1,4 +1,4 @@
-import {  Grid, Stack } from '@mui/material';
+import {  Button, Grid, Stack } from '@mui/material';
 import {
   HeadText16,
   GridWithBorder,
@@ -13,25 +13,41 @@ import AddCameraPresetForm from './AddCameraPresetForm';
 
 const AddCameraPreset = () => {
   return (
-    <WithPadding>
-      <PageTitle>Device Preset</PageTitle>
+    <WithPadding sx={{ paddingTop: '10px' }}>
+      <PageTitle sx={{ paddingBottom: '10px' }}>Device Preset</PageTitle>
       <CameraPresetGrid>
-        <Grid>
+        <Grid sx={{ paddingRight: '10px' }}>
           <Stack>
             <GridWithBorder>
-              <ImageFill src={containeImg} alt="img" style={{maxHeight: '600px'}} />
+              <ImageFill
+                src={containeImg}
+                alt="img"
+                style={{ maxHeight: '600px' }}
+              />
             </GridWithBorder>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
             </HeadText16>
-            <GridWithBorder>
-              <ImageFill src={containeImg} alt="img" />
-            </GridWithBorder>
+            <Grid container columns={8} columnSpacing={2}>
+              <Grid item xs={4}>
+                <ImageFill src={containeImg} alt="img" />
+              </Grid>
+              <Grid item xs={4}>
+                <ImageFill src={containeImg} alt="img" />
+              </Grid>
+
+            </Grid>
           </Stack>
         </Grid>
-        <Grid>
-          <CameraPresetControls />
-          <AddCameraPresetForm />
+        <Grid sx={{ paddingBottom: '40px' }}>
+          <Stack direction={'row'} spacing={1}>
+            <CameraPresetControls />
+            <AddCameraPresetForm />
+          </Stack>
+          <Stack spacing={1} sx={{ marginTop: '10px' }}>
+            <Button variant="outlined">Advance Setting</Button>
+            <Button variant="contained">Apply</Button>
+          </Stack>
         </Grid>
       </CameraPresetGrid>
     </WithPadding>

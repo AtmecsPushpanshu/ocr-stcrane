@@ -1,15 +1,17 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
+  sxBox?: BoxProps['sx'];
+  style?: React.CSSProperties
 }
 
 export default function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, sxBox = { p: 3 }, ...other } = props;
 
   return (
     <div
@@ -20,7 +22,7 @@ export default function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={sxBox}>
           <Typography>{children}</Typography>
         </Box>
       )}

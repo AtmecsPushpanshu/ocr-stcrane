@@ -3,12 +3,14 @@ import {
   Box,
   Button,
   ButtonGroup,
+  ButtonProps,
   Grid,
   IconButton,
   Slider,
   TabOwnProps,
   Typography,
 } from '@mui/material';
+import { green, orange, red } from '@mui/material/colors';
 
 export const GridWithBorder = styled(Grid)(() => ({
   border: '1px solid #C5C5C5',
@@ -33,7 +35,7 @@ export const WithFlexGrow = styled(Grid)(() => ({
 export const CameraPresetGrid = styled('div')(() => ({
   display: 'grid',
   gridTemplateAreas: `'camera' 'setting'`,
-  gridTemplateColumns: '1fr 280px',
+  gridTemplateColumns: '1fr 450px',
   height: '100vh',
 }));
 
@@ -46,11 +48,11 @@ export const ButtonPtz = styled(Button)(() => ({
   borderRadius: 0,
   height: '52px',
   width: '52px',
-  background: '#8E8E8E',
+  background: '#24558D',
 }));
 export const CameraButtonPtz = styled(Button)(() => ({
   padding: 0,
-  background: '#8E8E8E',
+  background: '#24558D',
   position: 'absolute',
   width: '72px',
   height: '72px',
@@ -59,6 +61,27 @@ export const CameraButtonPtz = styled(Button)(() => ({
   zIndex: 1,
   borderRadius: '16px',
   boxShadow: '0px 0px 8px 0px #000000B8 !important',
+}));
+export const SuccessButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText(green[500]),
+  backgroundColor: green[500],
+  '&:hover': {
+    backgroundColor: green[700],
+  },
+}));
+export const DangerButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText(red[500]),
+  backgroundColor: red[500],
+  '&:hover': {
+    backgroundColor: red[700],
+  },
+}));
+export const WarningButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText(orange[500]),
+  backgroundColor: orange[500],
+  '&:hover': {
+    backgroundColor: orange[700],
+  },
 }));
 
 export const CameraBG = styled('div')(() => ({
@@ -127,6 +150,10 @@ export const TabPresetTextCss:  TabOwnProps['sx'] = {
   fontWeight: '600',
   lineHeight: '24px',
   textAlign: 'center',
+  minHeight:'42px',
+  padding: '8px 10px',
+  border: '1px solid #c4c4c4',
+  borderBottom: 'none',
   textDecoration: 'none',
   textTransform: 'none',
   width: '50%',
@@ -153,6 +180,7 @@ export const ImageFill = styled('img')(() => ({
 
 export const PrettoSlider = styled(Slider)({
   color: '#24558D',
+  padding: 0,
   height: 8,
   '& .MuiSlider-track': {
     border: 'none',
