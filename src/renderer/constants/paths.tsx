@@ -62,5 +62,6 @@ export const SideMenuPaths = [
   {
     name: 'PLC',
     Icon: PlcIcon,
+    link: 'view-plc-config',
   },
 ];
