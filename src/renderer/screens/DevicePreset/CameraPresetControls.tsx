@@ -5,7 +5,6 @@ import {
   WithPadding,
 } from '../../components/Styles';
 import PTZbutton from '../../components/common/PTZbutton';
-import ResponsiveDialog from '../../components/common/Popup';
 
 const CameraPresetControls = () => {
   return (
@@ -15,7 +14,6 @@ const CameraPresetControls = () => {
           <HeadText16 sx={{ marginBottom: '4px' }}>Pan / Tilt</HeadText16>
           <Stack spacing={2} sx={{ width: '100%', alignItems: 'center' }}>
             <PTZbutton />
-            <ResponsiveDialog />
             <Button variant="outlined" sx={{ width: '100%' }}>
               Reconnect
             </Button>

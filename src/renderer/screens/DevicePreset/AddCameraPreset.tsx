@@ -10,6 +10,7 @@ import {
 import containeImg from '../../assets/img/container.png';
 import CameraPresetControls from './CameraPresetControls';
 import AddCameraPresetForm from './AddCameraPresetForm';
+import Popup from '../../components/common/Popup';
 
 const AddCameraPreset = () => {
   return (
@@ -45,7 +46,7 @@ const AddCameraPreset = () => {
             <AddCameraPresetForm />
           </Stack>
           <Stack spacing={1} sx={{ marginTop: '10px' }}>
-            <Button variant="outlined">Advance Setting</Button>
+            <Popup btnText='Advance Setting' />
             <Button variant="contained">Apply</Button>
           </Stack>
         </Grid>
