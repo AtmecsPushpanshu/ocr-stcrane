@@ -28,6 +28,7 @@ const MenuProps: Partial<MenuProps> = {
   PaperProps: {
     sx: {
       boxShadow: '0px 8px 16px 0px #3E134D12',
+      '& .MuiList-root .MuiMenuItem-root': { fontSize: '14px' },
     },
   },
 };
@@ -37,6 +38,9 @@ interface SelectFieldProps extends OutlinedSelectProps {
   required?: boolean;
   testId?: string;
   direction?: GridOwnProps['direction'];
+  items?: any;
+  selectedValue?: string;
+  selectedName?: string;
 }
 
 const SelectField: React.FC<SelectFieldProps> = (props) => {
@@ -46,11 +50,16 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
     name,
     direction = 'column',
     size = 'small',
+    items = [],
+    selectedName = 'name',
+    selectedValue = 'value',
     ...selectProps
   } = props;
-  const labelXs = direction === 'column'?12:5;
-  const InputXs = direction === 'column'?12:7;
-  const mainProps = { ...(direction !== 'column'?{alignItems:'center'}:{})};
+  const labelXs = direction === 'column' ? 12 : 5;
+  const InputXs = direction === 'column' ? 12 : 7;
+  const mainProps = {
+    ...(direction !== 'column' ? { alignItems: 'center' } : {}),
+  };
   return (
     <>
       <Grid container spacing={1} flexDirection={direction} {...mainProps}>
@@ -64,9 +73,11 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
             {...selectProps}
           >
             <MenuItem value="select">Select</MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {items.map((item: any) => (
+              <MenuItem value={item[selectedValue]}>
+                {item[selectedName]}
+              </MenuItem>
+            ))}
           </BootstrapSelect>
         </Grid>
       </Grid>

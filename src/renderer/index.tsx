@@ -48,7 +48,7 @@ const themeOptions: ThemeOptions = {
         root: {
           textTransform: 'none', // Disable uppercase transformation
           boxShadow:'none',
-          borderRadius: 1,
+          borderRadius: '4px',
         },
       },
     },

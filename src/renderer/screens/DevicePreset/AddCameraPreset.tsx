@@ -12,10 +12,23 @@ import CameraPresetControls from './CameraPresetControls';
 import AddCameraPresetForm from './AddCameraPresetForm';
 import Popup from '../../components/common/Popup';
 import AdvancePresetConfig from './AdvancePresetConfig';
+import SuccessLoader from '../../components/messages/SuccessLoader';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { PATHS } from '../../constants/paths';
 
 const AddCameraPreset = () => {
+  const navigate = useNavigate()
+  const [loader, setLoader] = useState<boolean>(false)
+  const applyForm =() =>{
+    setLoader(true)
+    setTimeout(()=>{
+      navigate(`../../${PATHS.DASHBOARD.viewcameraconfig}`);
+    }, 1000)
+  }
   return (
     <WithPadding sx={{ paddingTop: '10px' }}>
+      <SuccessLoader loader={loader} />
       <PageTitle sx={{ paddingBottom: '10px' }}>Device Preset</PageTitle>
       <CameraPresetGrid>
         <Grid sx={{ paddingRight: '10px' }}>
@@ -50,7 +63,7 @@ const AddCameraPreset = () => {
             <Popup dialogTitle='Advance Setting' btnText='Advance Setting'>
               <AdvancePresetConfig />
             </Popup>
-            <Button variant="contained">Apply</Button>
+            <Button variant="contained" onClick={applyForm}>Apply</Button>
           </Stack>
         </Grid>
       </CameraPresetGrid>

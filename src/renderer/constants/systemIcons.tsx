@@ -5,7 +5,7 @@ interface IconsProps {
 }
 
 interface PtzIconProps {
-  style?: React.CSSProperties
+  style?: React.CSSProperties;
 }
 
 export const CraneIcon: React.FC<IconsProps> = ({ isActive = false }) => {
@@ -43,50 +43,20 @@ export const PlcIcon: React.FC<IconsProps> = ({ isActive = false }) => {
         d="M13.6608 0H2.33945L0.0361328 10.5137H15.9641L13.6608 0ZM12.9404 1.27014H10.2731C10.1897 1.27014 10.1214 1.2019 10.1214 1.11848C10.1214 1.03507 10.1897 0.966825 10.2731 0.966825H12.9404C13.0238 0.966825 13.0921 1.03507 13.0921 1.11848C13.0921 1.2019 13.0238 1.27014 12.9404 1.27014Z"
         fill={fill}
       />
-      <path
-        d="M11.6702 13.4501H10.4229V13.8937H11.6702V13.4501Z"
-        fill={fill}
-      />
-      <path
-        d="M8.62575 13.4501H7.37646V13.8937H8.62575V13.4501Z"
-        fill={fill}
-      />
-      <path
-        d="M5.57552 11.8766H4.32812V12.3202H5.57552V11.8766Z"
-        fill={fill}
-      />
-      <path
-        d="M8.62575 11.8766H7.37646V12.3202H8.62575V11.8766Z"
-        fill={fill}
-      />
-      <path
-        d="M2.52913 11.8766H1.28174V12.3202H2.52913V11.8766Z"
-        fill={fill}
-      />
-      <path
-        d="M5.57552 13.4501H4.32812V13.8937H5.57552V13.4501Z"
-        fill={fill}
-      />
-      <path
-        d="M2.52913 13.4501H1.28174V13.8937H2.52913V13.4501Z"
-        fill={fill}
-      />
-      <path
-        d="M14.7166 13.4501H13.4692V13.8937H14.7166V13.4501Z"
-        fill={fill}
-      />
-      <path
-        d="M14.7166 11.8766H13.4692V12.3202H14.7166V11.8766Z"
-        fill={fill}
-      />
+      <path d="M11.6702 13.4501H10.4229V13.8937H11.6702V13.4501Z" fill={fill} />
+      <path d="M8.62575 13.4501H7.37646V13.8937H8.62575V13.4501Z" fill={fill} />
+      <path d="M5.57552 11.8766H4.32812V12.3202H5.57552V11.8766Z" fill={fill} />
+      <path d="M8.62575 11.8766H7.37646V12.3202H8.62575V11.8766Z" fill={fill} />
+      <path d="M2.52913 11.8766H1.28174V12.3202H2.52913V11.8766Z" fill={fill} />
+      <path d="M5.57552 13.4501H4.32812V13.8937H5.57552V13.4501Z" fill={fill} />
+      <path d="M2.52913 13.4501H1.28174V13.8937H2.52913V13.4501Z" fill={fill} />
+      <path d="M14.7166 13.4501H13.4692V13.8937H14.7166V13.4501Z" fill={fill} />
+      <path d="M14.7166 11.8766H13.4692V12.3202H14.7166V11.8766Z" fill={fill} />
       <path
         d="M0 10.8171V14.9536H16V10.8171H0ZM2.83412 14.0475C2.83412 14.1309 2.76588 14.1991 2.68246 14.1991H1.12986C1.04645 14.1991 0.978199 14.1309 0.978199 14.0475V13.3006C0.978199 13.2171 1.04645 13.1489 1.12986 13.1489H2.68057C2.76398 13.1489 2.83223 13.2171 2.83223 13.3006V14.0475H2.83412ZM2.83412 12.4721C2.83412 12.5555 2.76588 12.6238 2.68246 12.6238H1.12986C1.04645 12.6238 0.978199 12.5555 0.978199 12.4721V11.7252C0.978199 11.6418 1.04645 11.5735 1.12986 11.5735H2.68057C2.76398 11.5735 2.83223 11.6418 2.83223 11.7252V12.4721H2.83412ZM5.88057 14.0475C5.88057 14.1309 5.81232 14.1991 5.72891 14.1991H4.1782C4.09479 14.1991 4.02654 14.1309 4.02654 14.0475V13.3006C4.02654 13.2171 4.09479 13.1489 4.1782 13.1489H5.72891C5.81232 13.1489 5.88057 13.2171 5.88057 13.3006V14.0475ZM5.88057 12.4721C5.88057 12.5555 5.81232 12.6238 5.72891 12.6238H4.1782C4.09479 12.6238 4.02654 12.5555 4.02654 12.4721V11.7252C4.02654 11.6418 4.09479 11.5735 4.1782 11.5735H5.72891C5.81232 11.5735 5.88057 11.6418 5.88057 11.7252V12.4721ZM8.92701 14.0475C8.92701 14.1309 8.85877 14.1991 8.77536 14.1991H7.22275C7.13934 14.1991 7.07109 14.1309 7.07109 14.0475V13.3006C7.07109 13.2171 7.13934 13.1489 7.22275 13.1489H8.77536C8.85877 13.1489 8.92701 13.2171 8.92701 13.3006V14.0475ZM8.92701 12.4721C8.92701 12.5555 8.85877 12.6238 8.77536 12.6238H7.22275C7.13934 12.6238 7.07109 12.5555 7.07109 12.4721V11.7252C7.07109 11.6418 7.13934 11.5735 7.22275 11.5735H8.77536C8.85877 11.5735 8.92701 11.6418 8.92701 11.7252V12.4721ZM11.9735 14.0475C11.9735 14.1309 11.9052 14.1991 11.8218 14.1991H10.2711C10.1877 14.1991 10.1194 14.1309 10.1194 14.0475V13.3006C10.1194 13.2171 10.1877 13.1489 10.2711 13.1489H11.8218C11.9052 13.1489 11.9735 13.2171 11.9735 13.3006V14.0475ZM11.9735 12.4721C11.9735 12.5555 11.9052 12.6238 11.8218 12.6238H10.2711C10.1877 12.6238 10.1194 12.5555 10.1194 12.4721V11.7252C10.1194 11.6418 10.1877 11.5735 10.2711 11.5735H11.8218C11.9052 11.5735 11.9735 11.6418 11.9735 11.7252V12.4721ZM15.0199 14.0475C15.0199 14.1309 14.9517 14.1991 14.8682 14.1991H13.3175C13.2341 14.1991 13.1659 14.1309 13.1659 14.0475V13.3006C13.1659 13.2171 13.2341 13.1489 13.3175 13.1489H14.8682C14.9517 13.1489 15.0199 13.2171 15.0199 13.3006V14.0475ZM15.0199 12.4721C15.0199 12.5555 14.9517 12.6238 14.8682 12.6238H13.3175C13.2341 12.6238 13.1659 12.5555 13.1659 12.4721V11.7252C13.1659 11.6418 13.2341 11.5735 13.3175 11.5735H14.8682C14.9517 11.5735 15.0199 11.6418 15.0199 11.7252V12.4721Z"
         fill={fill}
       />
-      <path
-        d="M11.6702 11.8766H10.4229V12.3202H11.6702V11.8766Z"
-        fill={fill}
-      />
+      <path d="M11.6702 11.8766H10.4229V12.3202H11.6702V11.8766Z" fill={fill} />
     </svg>
   );
 };
@@ -154,7 +124,7 @@ export const IllustrationIcon: React.FC<IconsProps> = ({
   );
 };
 
-export const LeftPtzIcon = ({ style }:PtzIconProps) => {
+export const LeftPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="14"
@@ -168,7 +138,7 @@ export const LeftPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const TopLeftPtzIcon = ({ style }:PtzIconProps) => {
+export const TopLeftPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="16"
@@ -185,7 +155,7 @@ export const TopLeftPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const BottomLeftPtzIcon = ({ style }:PtzIconProps) => {
+export const BottomLeftPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="16"
@@ -202,7 +172,7 @@ export const BottomLeftPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const RightPtzIcon = ({ style }:PtzIconProps) => {
+export const RightPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="14"
@@ -219,7 +189,7 @@ export const RightPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const TopRightPtzIcon = ({ style }:PtzIconProps) => {
+export const TopRightPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="16"
@@ -236,7 +206,7 @@ export const TopRightPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const BottomRightPtzIcon = ({ style }:PtzIconProps) => {
+export const BottomRightPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="16"
@@ -253,7 +223,7 @@ export const BottomRightPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const TopPtzIcon = ({ style }:PtzIconProps) => {
+export const TopPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="18"
@@ -267,7 +237,7 @@ export const TopPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const BottomPtzIcon = ({ style }:PtzIconProps) => {
+export const BottomPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="18"
@@ -281,7 +251,7 @@ export const BottomPtzIcon = ({ style }:PtzIconProps) => {
     </svg>
   );
 };
-export const CameraPtzIcon = ({ style }:PtzIconProps) => {
+export const CameraPtzIcon = ({ style }: PtzIconProps) => {
   return (
     <svg
       width="20"
@@ -307,6 +277,22 @@ export const CameraPtzIcon = ({ style }:PtzIconProps) => {
           />
         </clipPath>
       </defs>
+    </svg>
+  );
+};
+export const SuccessIcon = () => {
+  return (
+    <svg
+      width="110"
+      height="110"
+      viewBox="0 0 110 110"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M55 0C24.75 0 0 24.75 0 55C0 85.25 24.75 110 55 110C85.25 110 110 85.25 110 55C110 24.75 85.25 0 55 0ZM44 82.5L16.5 55L24.255 47.245L44 66.935L85.745 25.19L93.5 33L44 82.5Z"
+        fill="#17A851"
+      />
     </svg>
   );
 };

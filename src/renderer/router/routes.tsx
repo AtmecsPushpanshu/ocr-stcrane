@@ -5,6 +5,7 @@ import BaseLayout from '../components/Layout/baseLayout';
 import SuspenseLoader from '../components/SuspenseLoader';
 import { Navigate } from 'react-router-dom';
 
+
 const Loader =
   <P extends object>(Component: ComponentType<P>) =>
   (props: P) => {
@@ -31,6 +32,7 @@ const AddCameraPreset = Loader(
 const Login = Loader(lazy(() => import('../screens/Login/index')));
 const ViewPlc = Loader(lazy(() => import('../screens/PLC/ViewPlc')));
 const AddPlcDevice = Loader(lazy(() => import('../screens/PLC/AddPlcDevice')));
+const LiveView = Loader(lazy(() => import('../screens/LiveView/LiveView')));
 
 const Routes: RouteObject[] = [
   {
@@ -70,7 +72,11 @@ const Routes: RouteObject[] = [
       {
         path: 'add-plc-config',
         element: <AddPlcDevice />,
-      }
+      },
+      {
+        path: 'live-view',
+        element: <LiveView />,
+      },
     ],
   },
 ];

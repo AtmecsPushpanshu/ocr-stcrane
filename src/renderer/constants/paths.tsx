@@ -46,7 +46,7 @@ export const SideMenuPaths = [
       {
         name: 'Live View',
         Icon: null,
-        link: '',
+        link: 'live-view',
       },
 
     ],

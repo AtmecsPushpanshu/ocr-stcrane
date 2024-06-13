@@ -2,11 +2,23 @@ import { Box, Button, Grid, Divider, Stack } from '@mui/material';
 import { PageTitle, WithPadding, HeadText16 } from '../../components/Styles';
 import SelectField from '../../components/common/SelectField';
 import TextField from '../../components/common/TextField';
+import { useNavigate } from 'react-router-dom';
+import SuccessLoader from '../../components/messages/SuccessLoader';
+import { useState } from 'react';
 
 const AddPlcDevice = () => {
+  const [loader, setLoader] = useState<boolean>(false)
+  const navigate = useNavigate();
+  const applyForm =() =>{
+    setLoader(true)
+    setTimeout(()=>{
+      navigate(`../view-plc-config`);
+    }, 1000)
+  }
   return (
     <>
       <WithPadding>
+      <SuccessLoader loader={loader} />
         <Grid container justifyContent={'space-between'}>
           <PageTitle>PLC Interface</PageTitle>
         </Grid>
@@ -119,7 +131,7 @@ const AddPlcDevice = () => {
 
           <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
           <Grid item xs={6} textAlign={'start'}>
-            <Button type="submit" variant="contained">
+            <Button type="button" variant="contained" onClick={applyForm}>
               Save
             </Button>
           </Grid>

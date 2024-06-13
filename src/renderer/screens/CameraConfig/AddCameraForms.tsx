@@ -9,15 +9,19 @@ import {
   ListItem,
   ListItemText,
 } from '@mui/material';
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import TextField from '../../components/common/TextField';
 import SelectField from '../../components/common/SelectField';
-import { cameraDetails } from '../../data/mock';
+import { cameraDetails, mockData } from '../../data/mock';
 import { useNavigate } from 'react-router-dom';
-import { CameraDetailHeadText, HeadText16, HeadText } from '../../components/Styles';
+import {
+  CameraDetailHeadText,
+  HeadText16,
+  HeadText,
+} from '../../components/Styles';
 
 export const AddCameraFormAuto = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -51,26 +55,34 @@ export const AddCameraFormAuto = () => {
       <Stack>
         <Divider sx={{ marginTop: 4, marginBottom: 4 }} />
         <HeadText variant={'h4'}>Details</HeadText>
-        <List
-          sx={{ width: '100%', maxWidth: 360 }}
-        >
+        <List sx={{ width: '100%', maxWidth: 360 }}>
           {cameraDetails.map(({ name, value }) => (
             <ListItem
               key={value}
               disableGutters
-              sx={{paddingBottom:0}}
+              sx={{ paddingBottom: 0 }}
               secondaryAction={
                 <>
                   <HeadText16 variant="h5">{value}</HeadText16>
                 </>
               }
             >
-              <ListItemText primary={<CameraDetailHeadText variant="h5">{name}</CameraDetailHeadText>} />
+              <ListItemText
+                primary={
+                  <CameraDetailHeadText variant="h5">
+                    {name}
+                  </CameraDetailHeadText>
+                }
+              />
             </ListItem>
           ))}
         </List>
       </Stack>
-      <Button type="button" variant="contained" onClick={()=>navigate("/dashboard/add-camera-preset")}>
+      <Button
+        type="button"
+        variant="contained"
+        onClick={() => navigate('/dashboard/add-camera-preset')}
+      >
         Continue
       </Button>
     </>
@@ -78,7 +90,7 @@ export const AddCameraFormAuto = () => {
 };
 
 export const AddCameraFormManual = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -96,15 +108,24 @@ export const AddCameraFormManual = () => {
           <Grid item xs={12} md={9}>
             <Grid container spacing={3} columns={9}>
               <Grid item xs={3}>
-                <SelectField label="Terminal" placeholder="IP Address" />
+                <SelectField
+                  label="Terminal"
+                  placeholder="IP Address"
+                  items={mockData.terminal}
+                />
               </Grid>
               <Grid item xs={3}>
-                <SelectField label="Choose crane" placeholder="Choose crane" />
+                <SelectField
+                  label="Choose crane"
+                  placeholder="Choose crane"
+                  items={mockData.crane}
+                />
               </Grid>
               <Grid item xs={3}>
                 <SelectField
                   label="Choose Location"
                   placeholder="Choose Location"
+                  items={mockData.location}
                 />
               </Grid>
               <Grid item xs={3}>
