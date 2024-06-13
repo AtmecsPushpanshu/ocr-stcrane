@@ -7,50 +7,36 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
     field: 'terminal',
     headerName: 'Terminal',
     width: 150,
-    editable: false,
   },
   {
     field: 'crane',
     headerName: 'Crane',
     width: 150,
-    editable: false,
   },
   {
     field: 'deviceName',
     headerName: 'Device Name',
     width: 150,
-    editable: false,
   },
 
   {
     field: 'deviceMake',
     headerName: 'Device Make',
     description: 'This column has a value getter and is not sortable.',
-    sortable: false,
     width: 160,
   },
   {
     field: 'ipAddress',
     headerName: 'IP Address',
     description: 'This column has a value getter and is not sortable.',
-    sortable: false,
     width: 150,
   },
   {
     field: 'port',
     headerName: 'PORT',
     description: 'This column has a value getter and is not sortable.',
-    sortable: false,
     width: 150,
-  },
-  {
-    field: 'status',
-    headerName: 'Status',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (value, _) => value?"Active":"Inactive",
-  },
+  }
 ];
 
 
@@ -60,6 +46,12 @@ export default function ViewPlcList() {
       <DataGrid
         rows={CameraList}
         columns={columns}
+        disableColumnResize
+        disableColumnSorting
+        disableColumnSelector
+        disableEval
+        disableColumnMenu
+density='standard'
         initialState={{
           pagination: {
             paginationModel: {

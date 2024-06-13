@@ -11,6 +11,7 @@ import containeImg from '../../assets/img/container.png';
 import CameraPresetControls from './CameraPresetControls';
 import AddCameraPresetForm from './AddCameraPresetForm';
 import Popup from '../../components/common/Popup';
+import AdvancePresetConfig from './AdvancePresetConfig';
 
 const AddCameraPreset = () => {
   return (
@@ -46,7 +47,9 @@ const AddCameraPreset = () => {
             <AddCameraPresetForm />
           </Stack>
           <Stack spacing={1} sx={{ marginTop: '10px' }}>
-            <Popup btnText='Advance Setting' />
+            <Popup dialogTitle='Advance Setting' btnText='Advance Setting'>
+              <AdvancePresetConfig />
+            </Popup>
             <Button variant="contained">Apply</Button>
           </Stack>
         </Grid>

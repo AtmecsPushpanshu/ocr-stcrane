@@ -48,11 +48,11 @@ export const ButtonPtz = styled(Button)(() => ({
   borderRadius: 0,
   height: '52px',
   width: '52px',
-  background: '#24558D',
+  background: '#6B6F80',
 }));
 export const CameraButtonPtz = styled(Button)(() => ({
   padding: 0,
-  background: '#24558D',
+  background: '#6B6F80',
   position: 'absolute',
   width: '72px',
   height: '72px',

@@ -58,6 +58,11 @@ export default function ViewCameraList() {
   return (
     <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
+        disableColumnResize
+        disableColumnSorting
+        disableColumnSelector
+        disableEval
+        disableColumnMenu
         rows={CameraList}
         columns={columns}
         initialState={{

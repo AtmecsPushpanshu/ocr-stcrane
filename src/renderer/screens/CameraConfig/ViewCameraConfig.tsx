@@ -5,7 +5,7 @@ import Empty from '../../components/common/Empty';
 import { useNavigate } from 'react-router-dom';
 import ViewCameraList from './ViewCameraList';
 import SearchField from '../../components/common/SearchField';
-
+import AddIcon from '@mui/icons-material/Add';
 const Description: React.FC = () => (
   <>
     Click on <span>Add Device</span> to configure
@@ -17,12 +17,11 @@ const ViewCameraConfig: React.FC = () => {
     <Stack direction="column" height="inherit">
       <WithPadding>
         <Grid container justifyContent={'space-between'}>
-          <PageTitle>
-            Add Camera
-          </PageTitle>
+          <PageTitle>Add Camera</PageTitle>
           <Button
             variant="contained"
             onClick={() => navigate('/dashboard/add-camera')}
+            startIcon={<AddIcon />}
           >
             Add Device
           </Button>
@@ -32,16 +31,12 @@ const ViewCameraConfig: React.FC = () => {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={1} aria-label="basic tabs example">
             <Tab label="Devices" value={1} sx={TabTextCss} />
-            <Tab
-              label="Preset Setting"
-              value={2}
-              sx={TabTextCss}
-            />
+            <Tab label="Preset Setting" value={2} sx={TabTextCss} />
           </Tabs>
         </Box>
       </Box>
       <WithPadding>
-        <Grid container sx={{marginBottom: 2}}>
+        <Grid container sx={{ marginBottom: 2 }}>
           <Grid item>
             <SearchField />
           </Grid>

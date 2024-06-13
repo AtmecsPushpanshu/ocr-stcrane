@@ -1,7 +1,7 @@
 export const SystemColors = {
   link: {
     icons: {
-      active: '#24558D',
+      active: '#6B6F80',
       inactive: '#ABA7AF',
     },
   },

@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Divider } from '@mui/material';
+import { Box, Button, Grid, Divider, Stack } from '@mui/material';
 import { PageTitle, WithPadding, HeadText16 } from '../../components/Styles';
 import SelectField from '../../components/common/SelectField';
 import TextField from '../../components/common/TextField';
@@ -26,14 +26,6 @@ const AddPlcDevice = () => {
             <Grid item xs={3}>
               <SelectField label="Choose crane" placeholder="IP Address" />
             </Grid>
-            <Grid item xs={3} alignSelf={'self-end'}>
-              <Button type="button" variant="contained">
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
-          <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
-          <Grid container spacing={3} columns={12}>
             <Grid item xs={3}>
               <TextField label="PLC Name" placeholder="PLC Name" />
             </Grid>
@@ -45,65 +37,52 @@ const AddPlcDevice = () => {
               <TextField label="Port Number" placeholder="Port Number" />
             </Grid>
           </Grid>
-
+          <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
           <HeadText16 sx={{ marginTop: 3, marginBottom: 3 }}>
-            Trolley Parameters
+            Threshold Values
           </HeadText16>
-          <Grid container spacing={3} columns={12}>
-            <Grid item xs={3}>
-              <TextField
-                label="Spreader Landed"
-                placeholder="Spreader Landed"
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField label="Move Direction" placeholder="Move Direction" />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Hoist Up Request"
-                placeholder="Hoist Up Request"
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Hoist Down Request"
-                placeholder="Hoist Down Request"
-                disabled
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField label="Twist Lock" placeholder="Twist Lock" disabled />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Min Hoist Speed"
-                placeholder="Min Hoist Speed"
-                disabled
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Max Hoist Speed"
-                placeholder="Max Hoist Speed"
-                disabled
-              />
-            </Grid>
-          </Grid>
-          <HeadText16 sx={{ marginTop: 3, marginBottom: 3 }}>
-            Hoist Parameters
-          </HeadText16>
-          <Grid container spacing={3} columns={12}>
-            <Grid item xs={3}>
-              <TextField label="Hoist Position" placeholder="Hoist Position" />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Trolley Position"
-                placeholder="Trolley Position"
-              />
-            </Grid>
-            <Grid item xs={3}>
+          <Grid container>
+            <Grid xs={9}>
+              <Grid container spacing={3} columns={9}>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Hoist Position"
+                    placeholder="Hoist Position"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Min Hoist Speed"
+                    placeholder="Min Hoist Speed"
+                    disabled
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Max Hoist Speed"
+                    placeholder="Max Hoist Speed"
+                    disabled
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Trolley Position"
+                    placeholder="Trolley Position"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Spreader Landed"
+                    placeholder="Spreader Landed"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Move Direction"
+                    placeholder="Move Direction"
+                  />
+                </Grid>
+                {/* <Grid item xs={3}>
               <TextField label="Trolley Width" placeholder="Trolley Width" />
             </Grid>
             <Grid item xs={3}>
@@ -112,12 +91,36 @@ const AddPlcDevice = () => {
                 placeholder="Trolley Parked"
                 disabled
               />
+            </Grid> */}
+
+                <Grid item xs={3}>
+                  <TextField
+                    label="Hoist Up Request"
+                    placeholder="Hoist Up Request"
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Hoist Down Request"
+                    placeholder="Hoist Down Request"
+                    disabled
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Twist Lock"
+                    placeholder="Twist Lock"
+                    disabled
+                  />
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
+
           <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
           <Grid item xs={6} textAlign={'start'}>
             <Button type="submit" variant="contained">
-              Next
+              Save
             </Button>
           </Grid>
         </Box>

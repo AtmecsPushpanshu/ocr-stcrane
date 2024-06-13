@@ -48,17 +48,13 @@ export const SideMenuPaths = [
         Icon: null,
         link: '',
       },
-      {
-        name: 'Image Analysis',
-        Icon: null,
-        link: '',
-      },
+
     ],
   },
-  {
-    name: 'Central Server',
-    Icon: ServerIcon,
-  },
+  // {
+  //   name: 'Central Server',
+  //   Icon: ServerIcon,
+  // },
   {
     name: 'PLC',
     Icon: PlcIcon,

@@ -93,13 +93,19 @@ export const AddCameraFormManual = () => {
         sx={{ mt: 1, flexDirection: 'row' }}
       >
         <Grid container>
-          <Grid item xs={12} md={6}>
-            <Grid container spacing={3} columns={6}>
+          <Grid item xs={12} md={9}>
+            <Grid container spacing={3} columns={9}>
               <Grid item xs={3}>
                 <SelectField label="Terminal" placeholder="IP Address" />
               </Grid>
               <Grid item xs={3}>
-                <SelectField label="Choose crane" placeholder="IP Address" />
+                <SelectField label="Choose crane" placeholder="Choose crane" />
+              </Grid>
+              <Grid item xs={3}>
+                <SelectField
+                  label="Choose Location"
+                  placeholder="Choose Location"
+                />
               </Grid>
               <Grid item xs={3}>
                 <TextField label="Device Name" placeholder="Device Name" />
@@ -116,8 +122,12 @@ export const AddCameraFormManual = () => {
               <Grid item xs={3}>
                 <TextField label="Port Number" placeholder="Port Number" />
               </Grid>
-              <Grid item xs={6} textAlign={'end'}>
-                <Button type="submit" variant="contained" onClick={()=>navigate("/dashboard/add-camera-preset")}>
+              <Grid item xs={6} textAlign={'start'}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  onClick={() => navigate('/dashboard/add-camera-preset')}
+                >
                   Next
                 </Button>
               </Grid>
@@ -125,7 +135,6 @@ export const AddCameraFormManual = () => {
           </Grid>
         </Grid>
       </Box>
-
     </>
   );
 };
