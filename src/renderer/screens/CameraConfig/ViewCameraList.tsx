@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { GridColDef } from '@mui/x-data-grid';
 import { CameraList } from '../../data/mock';
+import { StyledDataGrid } from '../../components/Styles/DataGridStyles';
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
@@ -57,7 +58,7 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
 export default function ViewCameraList() {
   return (
     <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
+      <StyledDataGrid
         disableColumnResize
         disableColumnSorting
         disableColumnSelector

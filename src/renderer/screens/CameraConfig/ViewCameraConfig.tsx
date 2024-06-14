@@ -43,7 +43,7 @@ const ViewCameraConfig: React.FC = () => {
       </WithPadding>
 
       <WithPadding sx={{ paddingBottom: 0 }}>
-        <Grid container>
+        <Grid container sx={{ marginBottom: 2 }}>
           <Grid item>
             <SearchField />
           </Grid>

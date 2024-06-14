@@ -3,7 +3,7 @@ import { createTheme, ThemeOptions, ThemeProvider } from '@mui/material/styles';
 import '@fontsource/open-sans';
 import App from './App';
 import { CssBaseline } from '@mui/material';
-import './index.css'
+import './index.css';
 
 declare module '@mui/material/styles' {
   interface ThemeOptions {
@@ -48,10 +48,18 @@ const themeOptions: ThemeOptions = {
       styleOverrides: {
         root: {
           textTransform: 'none', // Disable uppercase transformation
-          boxShadow:'none',
+          boxShadow: 'none',
           borderRadius: '4px',
         },
       },
+    },
+  },
+  mixins: {
+    MuiDataGrid: {
+      // Pinned columns sections
+      // pinnedBackground: '#340606',
+      // Headers, and top & bottom fixed rows
+      containerBackground: '#EFEEEE',
     },
   },
 };

@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { GridColDef } from '@mui/x-data-grid';
 import { CameraList } from '../../data/mock';
+import { StyledDataGrid } from '../../components/Styles/DataGridStyles';
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
@@ -42,7 +43,7 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
 export default function ViewPlcList() {
   return (
     <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
+      <StyledDataGrid
         rows={CameraList}
         columns={columns}
         disableColumnResize
@@ -50,9 +51,7 @@ export default function ViewPlcList() {
         disableColumnSelector
         disableEval
         disableColumnMenu
-        sx={{'&.MuiDataGrid-columnHeader':{
-          backGround:'#DDD'
-        }}}
+        disableAutosize
         density="standard"
         initialState={{
           pagination: {
