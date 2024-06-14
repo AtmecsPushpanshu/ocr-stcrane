@@ -18,8 +18,7 @@ function SuccessLoader(props: SuccessLoaderProps) {
         top: 0,
         width: '100%',
         height: '100%',
-        background: '#000',
-        opacity: 0.75,
+        background: '#00000085',
         display: loader ? 'flex' : 'none',
         zIndex: 99,
       }}

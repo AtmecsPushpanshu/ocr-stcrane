@@ -14,24 +14,8 @@ export const SideMenuPaths = [
   {
     name: 'Cranes',
     Icon: CraneIcon,
-    link: '',
-    items: [
-      {
-        name: 'Add Device',
-        Icon: null,
-        link: 'view-camera-config',
-      },
-      {
-        name: 'Live View',
-        Icon: null,
-        link: '',
-      },
-      {
-        name: 'Image Analysis',
-        Icon: null,
-        link: '',
-      },
-    ],
+    link: 'view-cranes',
+
   },
   {
     name: 'Camera Configuration',

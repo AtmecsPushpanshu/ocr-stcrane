@@ -35,7 +35,6 @@ const Title = styled(Typography)(({ theme }) => ({
 const Description = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(3),
   fontSize: '16px',
-  fontWeight: 600,
   lineHeight: '22.4px',
   textAlign: 'center',
   color: '#909090',

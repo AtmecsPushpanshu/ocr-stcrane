@@ -107,6 +107,11 @@ export const mockData = {
       id: 2,
       name: 'Lower sill beam',
       value: 'lower',
-    }
-  ]
+    },
+    {
+      id: 3,
+      name: 'Back Reach',
+      value: 'backreach',
+    },
+  ],
 };

@@ -5,10 +5,10 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput, { OutlinedInputProps } from '@mui/material/OutlinedInput';
 
 const BootstrapInput = styled(OutlinedInput)(() => ({
-  borderRadius: 1,
+  borderRadius: '4px',
   fontSize: '14px',
   '& .MuiInputBase-input': {
-    padding: '6.5px 6px',
+    padding: '6.5px 8px',
     //border: '1px solid #E5E0EB',
   },
 }));
@@ -19,7 +19,7 @@ const Label = styled(InputLabel)(() => ({
 }));
 
 interface TextFieldProps extends OutlinedInputProps {
-  label: string;
+  label?: string;
   required?: boolean;
   testId?: string;
   direction?: StackOwnProps['direction']

@@ -1,8 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
+
 .grid-container {
   display: grid;
   height: 100vh; /* Full viewport height */

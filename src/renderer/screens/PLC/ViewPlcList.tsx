@@ -36,9 +36,8 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
     headerName: 'PORT',
     description: 'This column has a value getter and is not sortable.',
     width: 150,
-  }
+  },
 ];
-
 
 export default function ViewPlcList() {
   return (
@@ -51,7 +50,10 @@ export default function ViewPlcList() {
         disableColumnSelector
         disableEval
         disableColumnMenu
-density='standard'
+        sx={{'&.MuiDataGrid-columnHeader':{
+          backGround:'#DDD'
+        }}}
+        density="standard"
         initialState={{
           pagination: {
             paginationModel: {

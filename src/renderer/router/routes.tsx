@@ -6,6 +6,7 @@ import SuspenseLoader from '../components/SuspenseLoader';
 import { Navigate } from 'react-router-dom';
 
 
+
 const Loader =
   <P extends object>(Component: ComponentType<P>) =>
   (props: P) => {
@@ -33,6 +34,7 @@ const Login = Loader(lazy(() => import('../screens/Login/index')));
 const ViewPlc = Loader(lazy(() => import('../screens/PLC/ViewPlc')));
 const AddPlcDevice = Loader(lazy(() => import('../screens/PLC/AddPlcDevice')));
 const LiveView = Loader(lazy(() => import('../screens/LiveView/LiveView')));
+const ViewCranes = Loader(lazy(() => import('../screens/Cranes/ViewCranes')));
 
 const Routes: RouteObject[] = [
   {
@@ -53,6 +55,10 @@ const Routes: RouteObject[] = [
     path: 'dashboard',
     element: <MainLayout />,
     children: [
+      {
+        path: 'view-cranes',
+        element: <ViewCranes />,
+      },
       {
         path: 'view-camera-config',
         element: <ViewCameraConfig />,

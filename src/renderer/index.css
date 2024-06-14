@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.bold-400 {
+    font-weight: 400; /* Normal or regular weight */
+}
+
+.bold-600 {
+    font-weight: 600; /* Semi-bold or bold weight */
+}

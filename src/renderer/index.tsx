@@ -3,6 +3,7 @@ import { createTheme, ThemeOptions, ThemeProvider } from '@mui/material/styles';
 import '@fontsource/open-sans';
 import App from './App';
 import { CssBaseline } from '@mui/material';
+import './index.css'
 
 declare module '@mui/material/styles' {
   interface ThemeOptions {

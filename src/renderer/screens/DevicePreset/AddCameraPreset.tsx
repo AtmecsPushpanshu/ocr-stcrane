@@ -16,6 +16,7 @@ import SuccessLoader from '../../components/messages/SuccessLoader';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../constants/paths';
+import AxisCamera from '../../components/VideoPlayer/VideoPlayer';
 
 const AddCameraPreset = () => {
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ const AddCameraPreset = () => {
   const applyForm =() =>{
     setLoader(true)
     setTimeout(()=>{
-      navigate(`../../${PATHS.DASHBOARD.viewcameraconfig}`);
+      navigate(`../../${PATHS.DASHBOARD.viewcameraconfig}`, {state:'added'});
     }, 1000)
   }
   return (
@@ -39,6 +40,7 @@ const AddCameraPreset = () => {
                 alt="img"
                 style={{ maxHeight: '600px' }}
               />
+              {/* <AxisCamera /> */}
             </GridWithBorder>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
@@ -46,6 +48,7 @@ const AddCameraPreset = () => {
             <Grid container columns={8} columnSpacing={2}>
               <Grid item xs={4}>
                 <ImageFill src={containeImg} alt="img" />
+
               </Grid>
               <Grid item xs={4}>
                 <ImageFill src={containeImg} alt="img" />

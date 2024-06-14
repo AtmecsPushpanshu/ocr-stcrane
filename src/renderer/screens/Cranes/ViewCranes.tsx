@@ -1,37 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Button, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Button, Grid, Stack } from '@mui/material';
 import {
   WithPadding,
-  HeadTextCss,
-  TabTextCss,
   PageTitle,
 } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
-import { useLocation, useNavigate } from 'react-router-dom';
-import ViewCameraList from './ViewCameraList';
+import { useNavigate } from 'react-router-dom';
 import SearchField from '../../components/common/SearchField';
 import AddIcon from '@mui/icons-material/Add';
 const Description: React.FC = () => (
   <>
-    Click on <span>Add Device</span> to configure
+    Click on <span className='bold-600'>Add Cranes</span> to configure
   </>
 );
-const ViewCameraConfig: React.FC = () => {
+const ViewCranes: React.FC = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state;
-  useEffect(() => {
-    if (state === 'added') {
-      setToggle(true);
-    }
-  }, [state]);
+
 
   return (
     <Stack direction="column" height="inherit">
       <WithPadding>
         <Grid container justifyContent={'space-between'}>
-          <PageTitle>Camera Configuration</PageTitle>
+          <PageTitle>Cranes</PageTitle>
           <Button
             variant="contained"
             onClick={() => navigate('/dashboard/add-camera')}
@@ -42,22 +33,22 @@ const ViewCameraConfig: React.FC = () => {
         </Grid>
       </WithPadding>
 
-      <WithPadding sx={{ paddingBottom: 0 }}>
+      <WithPadding sx={{ py: 0 }}>
         <Grid container>
           <Grid item>
             <SearchField />
           </Grid>
           <Grid item></Grid>
         </Grid>
-        {toggle && <ViewCameraList />}
+        {toggle && "List cranes component"}
       </WithPadding>
       {!toggle && (
         <WithPadding flexGrow={1}>
-          <Empty title="No devices" description={<Description />} />
+          <Empty title="No Cranes" description={<Description />} />
         </WithPadding>
       )}
     </Stack>
   );
 };
 
-export default ViewCameraConfig;
+export default ViewCranes;

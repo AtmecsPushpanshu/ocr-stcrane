@@ -21,7 +21,7 @@ const ViewPlc: React.FC = () => {
             </Button>
           </Grid>
         </WithPadding>
-        <WithPadding>
+        <WithPadding sx={{py:0}}>
           <Grid container sx={{ marginBottom: 2 }}>
             <Grid item>
               <SearchField />
