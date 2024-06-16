@@ -15,11 +15,15 @@ export default function Login() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('userId'),
+    const resp = {
+      email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+    console.log(resp);
+
     navigate(PATHS.DASHBOARD.viewcameraconfig);
+    if (resp.email === 'admin' && resp.password === 'admin') {
+    }
   };
 
   return (
@@ -61,6 +65,7 @@ export default function Login() {
                 backgroundColor: '#FFF',
                 padding: 2,
                 borderRadius: 4,
+                minWidth: '350px'
               }}
             >
               <Typography variant="h6" fontSize="32px" fontWeight="600">
@@ -73,8 +78,8 @@ export default function Login() {
                 sx={{ mt: 1 }}
               >
                 <Stack spacing={2}>
-                  <TextField label="Email" />
-                  <TextField label="Password" />
+                  <TextField label="Email" name='email'/>
+                  <TextField label="Password" name='password' type='password'/>
                 </Stack>
 
                 <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
