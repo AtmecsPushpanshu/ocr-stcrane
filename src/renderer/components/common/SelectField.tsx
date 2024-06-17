@@ -41,6 +41,7 @@ interface SelectFieldProps extends OutlinedSelectProps {
   items?: any;
   selectedValue?: string;
   selectedName?: string;
+  helperText?: any;
 }
 
 const SelectField: React.FC<SelectFieldProps> = (props) => {

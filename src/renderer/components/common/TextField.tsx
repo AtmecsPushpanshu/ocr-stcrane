@@ -23,10 +23,10 @@ interface TextFieldProps extends OutlinedInputProps {
   required?: boolean;
   testId?: string;
   direction?: StackOwnProps['direction'];
+  helperText?: any;
 }
 
 const TextField: React.FC<TextFieldProps> = (props) => {
-  console.log(props)
   const {
     label,
     required,
