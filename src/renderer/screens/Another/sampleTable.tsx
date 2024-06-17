@@ -1,11 +1,11 @@
-import * as React from 'react'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 function createData(
   event: string,
@@ -15,15 +15,15 @@ function createData(
   direction: string,
   lane: string,
   l1: string,
-  l2: string
+  l2: string,
 ) {
-  return { event, st, duration, arrange, direction, lane, l1, l2 }
+  return { event, st, duration, arrange, direction, lane, l1, l2 };
 }
 
 const rows = [
   createData('1', '14-May-2024', '0:00:0', '_40', 'Up', '5o', '', ''),
   createData('2', '14-May-2024', '0:00:0', '_40', 'Down', '5o', '', ''),
-]
+];
 
 export default function BasicTable() {
   return (
@@ -62,5 +62,5 @@ export default function BasicTable() {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }

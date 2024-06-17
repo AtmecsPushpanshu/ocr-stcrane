@@ -70,12 +70,17 @@ const AdvancePresetConfig = () => {
           <SelectField label="Imge Resolution" placeholder="Imge Resolution" />
         </Grid>
       </Grid>
-      <Stack direction={'row'} spacing={1} justifyContent={'flex-end'} mt={'10px'}>
-        <Button variant='outlined'>Cancel</Button>
-        <Button variant='contained'>Save</Button>
+      <Stack
+        direction={'row'}
+        spacing={1}
+        justifyContent={'flex-end'}
+        mt={'10px'}
+      >
+        <Button variant="outlined">Cancel</Button>
+        <Button variant="contained">Save</Button>
       </Stack>
     </>
   );
-}
+};
 
 export default AdvancePresetConfig;

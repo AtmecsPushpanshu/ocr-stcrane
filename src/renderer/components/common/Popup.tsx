@@ -36,7 +36,7 @@ export default function Popup(props: PopupProps) {
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        PaperProps={{ sx: {minWidth: '40%', minHeight: '20%'} }}
+        PaperProps={{ sx: { minWidth: '40%', minHeight: '20%' } }}
       >
         <DialogTitle id="responsive-dialog-title">{dialogTitle}</DialogTitle>
         <DialogContent>{children}</DialogContent>

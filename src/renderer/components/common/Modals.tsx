@@ -104,7 +104,7 @@ const ModalContent = styled('div')(
     border-radius: 8px;
     box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
     padding: 24px;
-    color:  grey[900];
+    color: grey[900];
 
     & .modal-title {
       margin: 0;

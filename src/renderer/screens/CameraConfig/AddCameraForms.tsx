@@ -4,16 +4,18 @@ import {
   Grid,
   Divider,
   Stack,
-  Typography,
   List,
   ListItem,
   ListItemText,
 } from '@mui/material';
-import { FormEvent, useState } from 'react';
+import { FormEvent } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import TextField from '../../components/common/TextField';
 import SelectField from '../../components/common/SelectField';
 import { cameraDetails, mockData } from '../../data/mock';
-import { useNavigate } from 'react-router-dom';
 import {
   CameraDetailHeadText,
   HeadText16,
@@ -90,10 +92,28 @@ export const AddCameraFormAuto = () => {
 };
 
 export const AddCameraFormManual = () => {
+  const schema = yup.object().shape({
+    terminal: yup.string().required('Select Terminal'),
+    crane: yup.string().required('Select Crane'),
+    location: yup.string().required('Select Location'),
+    deviceName: yup.string().required('Device name is required'),
+    deviceMake: yup.string().required('Device Make is required'),
+    deviceModel: yup.string().required('Device Model is required'),
+    ipAddress: yup.string().required('IP Address is required'),
+    port: yup.string().required('Port Number is required'),
+  });
+  const {
+    getValues,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  console.log(getValues())
+  console.log(errors)
   const navigate = useNavigate();
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const onSubmit = (data) => {
     console.log(data);
   };
   return (
@@ -101,7 +121,7 @@ export const AddCameraFormManual = () => {
       <Box
         component="form"
         noValidate
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         sx={{ mt: 1, flexDirection: 'row' }}
       >
         <Grid container>
@@ -110,8 +130,10 @@ export const AddCameraFormManual = () => {
               <Grid item xs={3}>
                 <SelectField
                   label="Terminal"
-                  placeholder="IP Address"
                   items={mockData.terminal}
+                  {...register('terminal')}
+                  error={!!errors.terminal}
+                  helperText={errors.terminal?.message}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -119,6 +141,9 @@ export const AddCameraFormManual = () => {
                   label="Choose crane"
                   placeholder="Choose crane"
                   items={mockData.crane}
+                  {...register('crane')}
+                  error={!!errors.crane}
+                  helperText={errors.crane?.message}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -126,30 +151,63 @@ export const AddCameraFormManual = () => {
                   label="Choose Location"
                   placeholder="Choose Location"
                   items={mockData.location}
+                  {...register('location')}
+                  error={!!errors.location}
+                  helperText={errors.location?.message}
                 />
               </Grid>
               <Grid item xs={3}>
-                <TextField label="Device Name" placeholder="Device Name" />
+                <TextField
+                  label="Device Name"
+                  placeholder="Device Name"
+                  {...register('deviceName')}
+                  error={!!errors.deviceName}
+                  helperText={errors.deviceName?.message}
+                />
               </Grid>
               <Grid item xs={3}>
-                <TextField label="Device Make" placeholder="Device Make" />
+                <TextField
+                  label="Device Make"
+                  placeholder="Device Make"
+                  {...register('deviceMake')}
+                  error={!!errors.deviceMake}
+                  helperText={errors.deviceMake?.message}
+                />
               </Grid>
               <Grid item xs={3}>
-                <TextField label="Device Model" placeholder="Device Model" />
+                <TextField
+                  label="Device Model"
+                  placeholder="Device Model"
+                  {...register('deviceModel')}
+                  error={!!errors.deviceModel}
+                  helperText={errors.deviceModel?.message}
+                />
               </Grid>
               <Grid item xs={3}>
-                <TextField label="IP Address" placeholder="IP Address" />
+                <TextField
+                  label="IP Address"
+                  placeholder="IP Address"
+                  {...register('ipAddress')}
+                  error={!!errors.ipAddress}
+                  helperText={errors.ipAddress?.message}
+                />
               </Grid>
               <Grid item xs={3}>
-                <TextField label="Port Number" placeholder="Port Number" />
+                <TextField
+                  label="Port Number"
+                  placeholder="Port Number"
+                  {...register('port')}
+                  error={!!errors.port}
+                  helperText={errors.port?.message}
+                />
               </Grid>
               <Grid item xs={6} textAlign={'start'}>
                 <Button
                   type="submit"
                   variant="contained"
-                  onClick={() => navigate('/dashboard/add-camera-preset')}
+                  //onClick={() => navigate('/dashboard/add-camera-preset')}
                 >
-                  Next
+                  Save
                 </Button>
               </Grid>
             </Grid>

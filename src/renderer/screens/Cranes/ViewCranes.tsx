@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
 import { Button, Grid, Stack } from '@mui/material';
-import {
-  WithPadding,
-  PageTitle,
-} from '../../components/Styles';
+import { WithPadding, PageTitle } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
 import { useNavigate } from 'react-router-dom';
 import SearchField from '../../components/common/SearchField';
 import AddIcon from '@mui/icons-material/Add';
 const Description: React.FC = () => (
   <>
-    Click on <span className='bold-600'>Add Cranes</span> to configure
+    Click on <span className="bold-600">Add Cranes</span> to configure
   </>
 );
 const ViewCranes: React.FC = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const navigate = useNavigate();
-
 
   return (
     <Stack direction="column" height="inherit">
@@ -40,7 +36,7 @@ const ViewCranes: React.FC = () => {
           </Grid>
           <Grid item></Grid>
         </Grid>
-        {toggle && "List cranes component"}
+        {toggle && 'List cranes component'}
       </WithPadding>
       {!toggle && (
         <WithPadding flexGrow={1}>

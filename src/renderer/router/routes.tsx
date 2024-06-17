@@ -5,8 +5,6 @@ import BaseLayout from '../components/Layout/baseLayout';
 import SuspenseLoader from '../components/SuspenseLoader';
 import { Navigate } from 'react-router-dom';
 
-
-
 const Loader =
   <P extends object>(Component: ComponentType<P>) =>
   (props: P) => {

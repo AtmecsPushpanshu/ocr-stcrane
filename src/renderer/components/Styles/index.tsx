@@ -145,22 +145,22 @@ export const TabTextCss: TabOwnProps['sx'] = {
   textTransform: 'none',
 };
 
-export const TabPresetTextCss:  TabOwnProps['sx'] = {
+export const TabPresetTextCss: TabOwnProps['sx'] = {
   fontSize: '14px',
   fontWeight: '600',
   lineHeight: '24px',
   textAlign: 'center',
-  minHeight:'42px',
+  minHeight: '42px',
   padding: '8px 10px',
   border: '1px solid #c4c4c4',
   borderBottom: 'none',
   textDecoration: 'none',
   textTransform: 'none',
   width: '50%',
-  '&.Mui-selected':{
+  '&.Mui-selected': {
     color: '#FFFFFF',
-    backgroundColor:'#24558D'
-  }
+    backgroundColor: '#24558D',
+  },
 };
 
 export const GreyBox = styled(Box)(() => ({

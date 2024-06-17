@@ -1,14 +1,14 @@
-import { Grid } from '@mui/material'
-import React, { useState, useEffect } from 'react'
-import moment from 'moment'
+import { Grid } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 const Stopwatch = ({ isRunning, time, setTime }) => {
   // Function to push elements to the array
 
   useEffect(() => {
-    let timer
+    let timer;
     if (isRunning) {
       timer = setInterval(() => {
-        let date = new Date()
+        let date = new Date();
         setTime((prevArray) => {
           // If array length is equal to maxArrayLength, pop the first element
           if (prevArray.length === 10) {
@@ -16,18 +16,18 @@ const Stopwatch = ({ isRunning, time, setTime }) => {
             return [
               ...prevArray.slice(1),
               moment(date).format('DD-MMM-YY hh:mm:ss'),
-            ]
+            ];
           } else {
             // Return the array with the new element pushed
-            return [...prevArray, moment(date).format('DD-MMM-YY hh:mm:ss')]
+            return [...prevArray, moment(date).format('DD-MMM-YY hh:mm:ss')];
           }
-        })
-      }, 1000)
+        });
+      }, 1000);
     } else {
-      clearInterval(timer)
+      clearInterval(timer);
     }
-    return () => clearInterval(timer)
-  }, [isRunning])
+    return () => clearInterval(timer);
+  }, [isRunning]);
 
   return (
     <Grid container>
@@ -39,7 +39,7 @@ const Stopwatch = ({ isRunning, time, setTime }) => {
         ))}
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default Stopwatch
+export default Stopwatch;

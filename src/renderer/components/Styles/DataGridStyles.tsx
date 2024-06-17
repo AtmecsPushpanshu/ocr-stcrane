@@ -8,8 +8,8 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   //   borderRadius:'8px',
   //   border: 'none'
   // },
-  '.MuiDataGrid-columnHeaders:hover .MuiDataGrid-columnSeparator':{
-    visibility:'hidden'
+  '.MuiDataGrid-columnHeaders:hover .MuiDataGrid-columnSeparator': {
+    visibility: 'hidden',
   },
   '.MuiDataGrid-columnHeader:focus-within': {
     outline: 'none', // Change header background color

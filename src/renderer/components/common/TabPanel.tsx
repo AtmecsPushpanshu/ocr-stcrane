@@ -7,7 +7,7 @@ interface TabPanelProps {
   index: number;
   value: number;
   sxBox?: BoxProps['sx'];
-  style?: React.CSSProperties
+  style?: React.CSSProperties;
 }
 
 export default function TabPanel(props: TabPanelProps) {

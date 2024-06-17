@@ -6,7 +6,7 @@ interface SliderFieldProps {
 }
 
 const SliderField = (props: SliderFieldProps) => {
-  const { initialValue='', finalValue='' } = props;
+  const { initialValue = '', finalValue = '' } = props;
   return (
     <Box>
       <PrettoSlider
@@ -15,12 +15,8 @@ const SliderField = (props: SliderFieldProps) => {
         defaultValue={100}
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <SubHeadText sx={{ cursor: 'pointer' }}>
-          {initialValue}
-        </SubHeadText>
-         <SubHeadText sx={{ cursor: 'pointer' }}>
-          {finalValue}
-        </SubHeadText>
+        <SubHeadText sx={{ cursor: 'pointer' }}>{initialValue}</SubHeadText>
+        <SubHeadText sx={{ cursor: 'pointer' }}>{finalValue}</SubHeadText>
       </Box>
     </Box>
   );

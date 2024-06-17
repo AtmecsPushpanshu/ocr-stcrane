@@ -39,7 +39,6 @@ export function AnotherScreen() {
         <Button variant="outlined" onClick={() => navigate('/')}>
           <ArrowBackIcon />
         </Button>
-
       </Grid>
       <Grid container sx={{ marginBottom: 2 }} justifyContent="flex-end">
         <Button variant="contained" onClick={handleReset}>

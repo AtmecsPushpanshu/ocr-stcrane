@@ -1035,7 +1035,6 @@ export const PureLightTheme = createTheme({
         },
       },
     },
-
   },
 
   shadows: [

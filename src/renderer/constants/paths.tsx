@@ -15,7 +15,6 @@ export const SideMenuPaths = [
     name: 'Cranes',
     Icon: CraneIcon,
     link: 'view-cranes',
-
   },
   {
     name: 'Camera Configuration',
@@ -32,7 +31,6 @@ export const SideMenuPaths = [
         Icon: null,
         link: 'live-view',
       },
-
     ],
   },
   // {

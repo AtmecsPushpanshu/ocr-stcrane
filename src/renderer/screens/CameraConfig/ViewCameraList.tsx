@@ -50,10 +50,9 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 160,
-    valueGetter: (value, _) => value?"Active":"Inactive",
+    valueGetter: (value, _) => (value ? 'Active' : 'Inactive'),
   },
 ];
-
 
 export default function ViewCameraList() {
   return (

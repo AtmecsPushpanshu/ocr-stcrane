@@ -65,7 +65,7 @@ export default function Login() {
                 backgroundColor: '#FFF',
                 padding: 2,
                 borderRadius: 4,
-                minWidth: '350px'
+                minWidth: '350px',
               }}
             >
               <Typography variant="h6" fontSize="32px" fontWeight="600">
@@ -78,8 +78,8 @@ export default function Login() {
                 sx={{ mt: 1 }}
               >
                 <Stack spacing={2}>
-                  <TextField label="Email" name='email'/>
-                  <TextField label="Password" name='password' type='password'/>
+                  <TextField label="Email" name="email" />
+                  <TextField label="Password" name="password" type="password" />
                 </Stack>
 
                 <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>

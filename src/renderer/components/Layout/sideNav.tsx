@@ -24,7 +24,11 @@ function SideNav() {
         alignItems="center"
         sx={{ height: '64px', background: '#24558D' }}
       >
-        <Box component={Link} to={PATHS.AUTH.signIn} sx={{ display: 'inline-flex' }}>
+        <Box
+          component={Link}
+          to={PATHS.AUTH.signIn}
+          sx={{ display: 'inline-flex' }}
+        >
           <Logo color="light" height={38} width={130} />
         </Box>
       </Stack>

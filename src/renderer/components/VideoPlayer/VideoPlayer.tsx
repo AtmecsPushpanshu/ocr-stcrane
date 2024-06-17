@@ -3,7 +3,9 @@ import React, { useEffect, useRef } from 'react';
 interface CameraProps {
   wsUrl?: string;
 }
-const AxisCamera = ({ wsUrl='wss://20.20.20.19/rtsp-over-websocket' }: CameraProps) => {
+const AxisCamera = ({
+  wsUrl = 'wss://20.20.20.19/rtsp-over-websocket',
+}: CameraProps) => {
   const videoRef = useRef(null);
 
   useEffect(() => {

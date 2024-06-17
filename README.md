@@ -1,4 +1,3 @@
-
 ## Starting Development
 
 Start the app in the `dev` environment:
@@ -28,5 +27,3 @@ Join our Discord: https://discord.gg/Fjy3vfgy5q
 <a href="https://palette.dev">
   <img src=".erb/img/palette-sponsor-banner.svg" width="100%" />
 </a>
-
-

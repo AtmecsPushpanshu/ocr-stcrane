@@ -22,16 +22,24 @@ interface TextFieldProps extends OutlinedInputProps {
   label?: string;
   required?: boolean;
   testId?: string;
-  direction?: StackOwnProps['direction']
+  direction?: StackOwnProps['direction'];
 }
 
 const TextField: React.FC<TextFieldProps> = (props) => {
-  const { label, required, name, direction='column', size = 'small', ...inputProps } = props;
+  console.log(props)
+  const {
+    label,
+    required,
+    name,
+    direction = 'column',
+    size = 'small',
+    ...inputProps
+  } = props;
   return (
     <>
       <Stack spacing={1} direction={direction}>
         <Label htmlFor={name}>{label}</Label>
-        <BootstrapInput id={name} size={size} fullWidth {...inputProps} />
+        <BootstrapInput {...inputProps} id={name} size={size} fullWidth />
       </Stack>
     </>
   );

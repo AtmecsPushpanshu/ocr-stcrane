@@ -7,18 +7,18 @@ import SuccessLoader from '../../components/messages/SuccessLoader';
 import { useState } from 'react';
 
 const AddPlcDevice = () => {
-  const [loader, setLoader] = useState<boolean>(false)
+  const [loader, setLoader] = useState<boolean>(false);
   const navigate = useNavigate();
-  const applyForm =() =>{
-    setLoader(true)
-    setTimeout(()=>{
+  const applyForm = () => {
+    setLoader(true);
+    setTimeout(() => {
       navigate(`../view-plc-config`);
-    }, 1000)
-  }
+    }, 1000);
+  };
   return (
     <>
       <WithPadding>
-      <SuccessLoader loader={loader} />
+        <SuccessLoader loader={loader} />
         <Grid container justifyContent={'space-between'}>
           <PageTitle>PLC Interface</PageTitle>
         </Grid>

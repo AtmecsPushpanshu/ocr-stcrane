@@ -25,7 +25,7 @@ export type MenuItemProps = MenuItemPropsWithoutItems & {
 };
 
 const MenuItem: React.FC<MenuItemProps> = (props) => {
-  const { name,link, Icon, items = [] } = props;
+  const { name, link, Icon, items = [] } = props;
   const isExpandable = items && items?.length > 0;
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();

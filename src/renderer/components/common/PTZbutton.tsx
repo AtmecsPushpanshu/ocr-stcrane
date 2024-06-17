@@ -1,5 +1,10 @@
 import React from 'react';
-import { ButtonGroupPtz, ButtonPtz, CameraBG, CameraButtonPtz } from '../Styles';
+import {
+  ButtonGroupPtz,
+  ButtonPtz,
+  CameraBG,
+  CameraButtonPtz,
+} from '../Styles';
 import { Box } from '@mui/material';
 import {
   BottomLeftPtzIcon,
@@ -26,7 +31,7 @@ const PTZbutton: React.FC = () => {
       case 1: {
         return (
           <ButtonPtz>
-            <TopPtzIcon style={{marginBottom: '15px'}} />
+            <TopPtzIcon style={{ marginBottom: '15px' }} />
           </ButtonPtz>
         );
       }
@@ -47,7 +52,9 @@ const PTZbutton: React.FC = () => {
       case 4: {
         return (
           <CameraButtonPtz>
-            <CameraBG><CameraPtzIcon /></CameraBG>
+            <CameraBG>
+              <CameraPtzIcon />
+            </CameraBG>
           </CameraButtonPtz>
         );
       }
@@ -68,7 +75,7 @@ const PTZbutton: React.FC = () => {
       case 7: {
         return (
           <ButtonPtz>
-            <BottomPtzIcon style={{marginTop: '20px'}} />
+            <BottomPtzIcon style={{ marginTop: '20px' }} />
           </ButtonPtz>
         );
       }
