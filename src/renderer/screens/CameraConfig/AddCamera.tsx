@@ -1,8 +1,7 @@
 import { FC, SyntheticEvent, useState } from 'react';
-import { Box, Grid, Tab, Tabs } from '@mui/material';
-import { WithPadding, TabTextCss, PageTitle } from '../../components/Styles';
-import TabPanel, { a11yProps } from '../../components/common/TabPanel';
-import { AddCameraFormAuto, AddCameraFormManual } from './AddCameraForms';
+import { Grid } from '@mui/material';
+import { WithPadding, PageTitle } from '../../components/Styles';
+import { AddCameraFormManual } from './AddCameraForms';
 
 interface AddCameraProps {}
 

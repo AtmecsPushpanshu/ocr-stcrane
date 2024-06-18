@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import { GridColDef } from '@mui/x-data-grid';
 import { CameraList } from '../../data/mock';
 import { StyledDataGrid } from '../../components/Styles/DataGridStyles';
+import useHttpGet from "../../data/useHttpGet";
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
@@ -55,6 +56,9 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
 ];
 
 export default function ViewCameraList() {
+ const { data: getData } = useHttpGet('/cameraconfig');
+ console.log(getData)
+
   return (
     <Box sx={{ height: 400, width: '100%' }}>
       <StyledDataGrid

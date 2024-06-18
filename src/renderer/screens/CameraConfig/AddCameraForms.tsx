@@ -2,28 +2,21 @@ import {
   Box,
   Button,
   Grid,
-  Divider,
-  Stack,
-  List,
-  ListItem,
-  ListItemText,
 } from '@mui/material';
-import { FormEvent } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextField from '../../components/common/TextField';
 import SelectField from '../../components/common/SelectField';
-import { cameraDetails, mockData } from '../../data/mock';
-import {
-  CameraDetailHeadText,
-  HeadText16,
-  HeadText,
-} from '../../components/Styles';
-
+import { mockData } from '../../data/mock';
+import useHttpPost from '../../data/useHttpPost';
 
 export const AddCameraFormManual = () => {
+const {
+  mutate: postData,
+  error: postError,
+} = useHttpPost<any>('/cameraconfig', 'AddCameraConfig');
   const schema = yup.object().shape({
     terminal: yup.string().required('Select Terminal'),
     crane: yup.string().required('Select Crane'),
@@ -36,17 +29,16 @@ export const AddCameraFormManual = () => {
   });
   const {
     control,
-    getValues,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    await postData(data);
   };
+
   return (
     <>
       <Box
@@ -102,7 +94,6 @@ export const AddCameraFormManual = () => {
                       label="Choose Location"
                       placeholder="Choose Location"
                       items={mockData.location}
-                      {...register('location')}
                       error={!!errors.location}
                       helperText={errors.location?.message}
                     />

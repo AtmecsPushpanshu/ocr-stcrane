@@ -17,7 +17,7 @@ const Description: React.FC = () => (
   </>
 );
 const ViewCameraConfig: React.FC = () => {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [toggle, setToggle] = useState<boolean>(true);
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state;
