@@ -1,22 +1,22 @@
-import {
-  Box,
-  Button,
-  Grid,
-} from '@mui/material';
+import * as yup from 'yup';
+import { Box, Button, Grid } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import TextField from '../../components/common/TextField';
 import SelectField from '../../components/common/SelectField';
 import { mockData } from '../../data/mock';
-import useHttpPost from '../../data/useHttpPost';
+import { usePostData } from '../../data/apiHooks';
 
 export const AddCameraFormManual = () => {
-const {
-  mutate: postData,
-  error: postError,
-} = useHttpPost<any>('/cameraconfig', 'AddCameraConfig');
+  const navigate = useNavigate();
+  const mutation = usePostData('/cameraconfig', {
+    mutationKey: ['postData', { endpoint: '/cameraconfig' }], // Example mutationKey
+    onSuccess: () => {
+      navigate('../view-camera-config');
+    },
+  });
+
   const schema = yup.object().shape({
     terminal: yup.string().required('Select Terminal'),
     crane: yup.string().required('Select Crane'),
@@ -27,6 +27,7 @@ const {
     ipAddress: yup.string().required('IP Address is required'),
     port: yup.string().required('Port Number is required'),
   });
+
   const {
     control,
     handleSubmit,
@@ -34,9 +35,10 @@ const {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
+
+
   const onSubmit = async (data: any) => {
-    await postData(data);
+    mutation.mutate(data);
   };
 
   return (
@@ -181,11 +183,7 @@ const {
                 />
               </Grid>
               <Grid item xs={6} textAlign={'start'}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  //onClick={() => navigate('/dashboard/add-camera-preset')}
-                >
+                <Button type="submit" variant="contained">
                   Save
                 </Button>
               </Grid>

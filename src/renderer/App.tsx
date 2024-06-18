@@ -4,19 +4,7 @@ import AppRouter from './router/AppRouter';
 import './App.css';
 
 export default function App() {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            // Global query options
-            retry: false, // Disable automatic retries
-            refetchOnWindowFocus: false, // Disable refetching on window focus
-        },
-        mutations: {
-            // Global mutation options
-            retry: false, // Disable automatic retries
-        },
-    },
-});
+  const queryClient = new QueryClient({});
   return (
     <QueryClientProvider client={queryClient}>
       <Router>

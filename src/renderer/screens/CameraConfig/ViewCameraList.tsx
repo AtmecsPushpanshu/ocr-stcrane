@@ -2,7 +2,8 @@ import Box from '@mui/material/Box';
 import { GridColDef } from '@mui/x-data-grid';
 import { CameraList } from '../../data/mock';
 import { StyledDataGrid } from '../../components/Styles/DataGridStyles';
-import useHttpGet from "../../data/useHttpGet";
+import { useGetData } from '../../data/apiHooks';
+
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
@@ -56,8 +57,8 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
 ];
 
 export default function ViewCameraList() {
- const { data: getData } = useHttpGet('/cameraconfig');
- console.log(getData)
+  const { data: getData, isLoading } = useGetData('/cameraconfig');
+  console.log(getData);
 
   return (
     <Box sx={{ height: 400, width: '100%' }}>
@@ -67,7 +68,8 @@ export default function ViewCameraList() {
         disableColumnSelector
         disableEval
         disableColumnMenu
-        rows={CameraList}
+        loading={isLoading}
+        rows={isLoading ? [] : getData}
         columns={columns}
         initialState={{
           pagination: {
@@ -76,6 +78,7 @@ export default function ViewCameraList() {
             },
           },
         }}
+        getRowId={(row) => row?._id}
         pageSizeOptions={[5]}
       />
     </Box>
