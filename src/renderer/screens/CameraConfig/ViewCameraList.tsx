@@ -2,13 +2,13 @@ import Box from '@mui/material/Box';
 import { GridColDef } from '@mui/x-data-grid';
 import { CameraList } from '../../data/mock';
 import { StyledDataGrid } from '../../components/Styles/DataGridStyles';
-import { useGetData } from '../../data/apiHooks';
 import { useNavigate } from 'react-router-dom';
-
-
-export default function ViewCameraList() {
+interface ViewCameraListProps {
+  data: any
+}
+export default function ViewCameraList({data=[]}: ViewCameraListProps) {
   const navigate = useNavigate()
-  const { data: getData, isLoading } = useGetData('/cameraconfig');
+
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
@@ -72,8 +72,7 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
         disableColumnSelector
         disableEval
         disableColumnMenu
-        loading={isLoading}
-        rows={isLoading ? [] : getData}
+        rows={data}
         columns={columns}
         initialState={{
           pagination: {

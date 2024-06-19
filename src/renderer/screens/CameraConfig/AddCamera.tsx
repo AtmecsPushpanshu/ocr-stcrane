@@ -1,7 +1,8 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { Grid } from '@mui/material';
-import { WithPadding, PageTitle } from '../../components/Styles';
+import { WithPadding } from '../../components/Styles';
 import { AddCameraFormManual } from './AddCameraForms';
+import PageHeader from '../../components/common/PageHeader';
 
 interface AddCameraProps {}
 
@@ -15,7 +16,7 @@ const AddCamera: FC<AddCameraProps> = () => {
     <>
       <WithPadding>
         <Grid container justifyContent={'space-between'}>
-          <PageTitle>Add Camera</PageTitle>
+          <PageHeader title='Add Camera' />
         </Grid>
         <AddCameraFormManual />
       </WithPadding>

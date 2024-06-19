@@ -4,7 +4,7 @@ import LiveViewForm from './LiveViewForm';
 
 function LiveView() {
   return (
-    <WithPadding>
+    <WithPadding sx={{paddingRight:0}}>
       <PageHeader title="Live View" />
       <LiveViewForm />
     </WithPadding>

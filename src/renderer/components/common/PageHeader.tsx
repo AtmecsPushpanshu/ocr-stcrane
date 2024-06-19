@@ -24,7 +24,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, showBackIcon = false, ri
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: '10px'
+        marginBottom: '30px'
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center' }}>

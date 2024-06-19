@@ -1,31 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Button, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
+import React, {  } from 'react';
+import { Button, Grid, Stack } from '@mui/material';
 import {
   WithPadding,
-  HeadTextCss,
-  TabTextCss,
   PageTitle,
 } from '../../components/Styles';
 import Empty from '../../components/common/Empty';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ViewCameraList from './ViewCameraList';
 import SearchField from '../../components/common/SearchField';
 import AddIcon from '@mui/icons-material/Add';
+import { useGetData } from '../../data/apiHooks';
 const Description: React.FC = () => (
   <>
     Click on <span>Add Device</span> to configure
   </>
 );
 const ViewCameraConfig: React.FC = () => {
-  const [toggle, setToggle] = useState<boolean>(true);
+
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state;
-  useEffect(() => {
-    if (state === 'added') {
-      setToggle(true);
-    }
-  }, [state]);
+
+  const { data, isLoading } = useGetData('/cameraconfig');
 
   return (
     <Stack direction="column" height="inherit">
@@ -49,9 +43,9 @@ const ViewCameraConfig: React.FC = () => {
           </Grid>
           <Grid item></Grid>
         </Grid>
-        {toggle && <ViewCameraList />}
+        {!isLoading && <ViewCameraList data={data} />}
       </WithPadding>
-      {!toggle && (
+      {isLoading && (
         <WithPadding flexGrow={1}>
           <Empty title="No devices" description={<Description />} />
         </WithPadding>

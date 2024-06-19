@@ -12,6 +12,7 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { HeadText16 } from '../../components/Styles';
 
 const PresetList: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -62,9 +63,9 @@ const PresetList: React.FC = () => {
 
   return (
     <Box sx={{ width: '100%', maxWidth: 360, mx: 'auto' }}>
-      <Typography variant="h6" component="div" sx={{ mb: 2 }}>
-        Available Presets
-      </Typography>
+      <Box sx={{ bgcolor: '#24558D', color: 'primary.contrastText', p: 1 }}>
+        <HeadText16 textAlign={'center'}>Available Presets</HeadText16>
+      </Box>
       <List sx={{ width: '100%' }}>
         {options.map((option, index) => (
           <ListItem

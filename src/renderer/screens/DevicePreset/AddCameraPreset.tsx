@@ -12,10 +12,9 @@ import {
   ImageFill,
   WithPadding,
 } from '../../components/Styles';
-import { PATHS } from '../../constants/paths';
-import AddCameraPresetForm from './AddCameraPresetForm';
 import AdvancePresetConfig from './AdvancePresetConfig';
 import CameraPresetControls from './CameraPresetControls';
+import AddCameraPresetForm from './AddCameraPresetForm';
 
 const AddCameraPreset = () => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const AddCameraPreset = () => {
   const applyForm = () => {
     setLoader(true);
     setTimeout(() => {
-      navigate(`../../${PATHS.DASHBOARD.viewcameraconfig}`, { state: 'added' });
+      navigate(-1);
     }, 1000);
   };
   return (
@@ -38,7 +37,6 @@ const AddCameraPreset = () => {
                 alt="img"
                 style={{ maxHeight: '600px' }}
               />
-              {/* <AxisCamera /> */}
             </GridWithBorder>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
@@ -56,14 +54,25 @@ const AddCameraPreset = () => {
         <Grid sx={{ paddingBottom: '40px' }}>
           <Stack direction="row" spacing={1}>
             <CameraPresetControls />
-
+            <AddCameraPresetForm />
+          </Stack>
+          <Stack direction={'row'} spacing={1} sx={{ marginTop: '10px' }}>
+            <Button variant="outlined" sx={{ width: '100%' }}>
+              Reconnect
+            </Button>
+            <Button variant="outlined" sx={{ width: '100%' }}>
+              Disconnect
+            </Button>
+            <Button variant="outlined" sx={{ width: '100%' }}>
+              Power Recycle
+            </Button>
           </Stack>
           <Stack spacing={1} sx={{ marginTop: '10px' }}>
             <Popup dialogTitle="Advance Setting" btnText="Advance Setting">
               <AdvancePresetConfig />
             </Popup>
             <Button variant="contained" onClick={applyForm}>
-              Apply
+              Save Preset
             </Button>
           </Stack>
         </Grid>

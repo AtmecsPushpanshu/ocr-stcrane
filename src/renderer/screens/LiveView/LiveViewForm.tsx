@@ -1,10 +1,9 @@
-import React from 'react';
-import { Box, Button, Grid, Stack } from '@mui/material';
+import { Button, Grid, Stack } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import SelectField from '../../components/common/SelectField';
 import containeImg from '../../assets/img/container.png';
 import { mockData } from '../../data/mock';
-import { CameraPresetGrid, ImageFill } from '../../components/Styles';
+import { ImageFill } from '../../components/Styles';
 import SideCameraList from './SideCameraList';
 
 const LiveViewForm = () => {
@@ -16,7 +15,7 @@ const LiveViewForm = () => {
   } = useForm({});
 
   return (
-    <Stack direction={'row'} spacing={3}>
+    <Stack direction={'row'} spacing={3} >
       <Grid container>
         <Grid item xs={12} md={12}>
           <Grid container spacing={3} columns={9}>
@@ -61,16 +60,16 @@ const LiveViewForm = () => {
           </Grid>
           <Grid container columns={8} columnSpacing={1} sx={{ marginTop: '15px' }}>
             <Grid item xs={4}>
-              <ImageFill src={containeImg} alt="img" />
+              <ImageFill src={containeImg} alt="img" style={{height: '291px'}} />
             </Grid>
             <Grid item xs={4}>
-              <ImageFill src={containeImg} alt="img" />
+              <ImageFill src={containeImg} alt="img" style={{height: '291px'}} />
             </Grid>
             <Grid item xs={4}>
-              <ImageFill src={containeImg} alt="img" />
+              <ImageFill src={containeImg} alt="img" style={{height: '291px'}} />
             </Grid>
             <Grid item xs={4}>
-              <ImageFill src={containeImg} alt="img" />
+              <ImageFill src={containeImg} alt="img" style={{height: '291px'}} />
             </Grid>
           </Grid>
         </Grid>

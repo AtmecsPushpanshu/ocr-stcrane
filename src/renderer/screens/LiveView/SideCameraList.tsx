@@ -10,10 +10,13 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
+import { SmallCameraIcon } from '../../constants/systemIcons';
+import { HeadText16 } from '../../components/Styles';
 
 const cameras = {
   'Upper Sil Beam': ['Camera 1', 'Camera 2'],
   'Lower Sil Beam': ['Camera 3', 'Camera 4', 'Camera 5'],
+  'Back Reach': ['Camera 6', 'Camera 7', 'Camera 8'],
 };
 
 interface CameraItemProps {
@@ -24,11 +27,9 @@ interface CameraItemProps {
 const CameraItem: React.FC<CameraItemProps> = ({ name, selected }) => (
   <ListItem disablePadding>
     <ListItemButton selected={selected}>
-      {selected && (
-        <ListItemIcon>
-          <VideoCameraFrontIcon />
-        </ListItemIcon>
-      )}
+      <ListItemIcon>
+        <SmallCameraIcon />
+      </ListItemIcon>
       <ListItemText primary={name} />
     </ListItemButton>
   </ListItem>
@@ -36,13 +37,15 @@ const CameraItem: React.FC<CameraItemProps> = ({ name, selected }) => (
 
 const SideCameraList: React.FC = () => {
   return (
-    <Box sx={{ width: 240, bgcolor: 'background.paper' }}>
-      <Box
-        sx={{ bgcolor: 'primary.main', color: 'primary.contrastText', p: 1 }}
-      >
-        <Typography variant="h6" align="center">
-          Preview
-        </Typography>
+    <Box
+      sx={{
+        width: 340,
+        bgcolor: 'background.paper',
+        borderLeft: '1px solid rgba(0, 0, 0, 0.12)',
+      }}
+    >
+      <Box sx={{ bgcolor: '#24558D', color: 'primary.contrastText', p: 1 }}>
+        <HeadText16 textAlign={'center'}>Preview</HeadText16>
       </Box>
       <Divider />
       {Object.entries(cameras).map(([section, items], index) => (

@@ -1,32 +1,35 @@
-import { Box, Stack } from '@mui/material';
-import { SyntheticEvent, useState } from 'react';
-
-import SliderField from '../../components/common/SliderField';
+import { List, ListItem, ListItemText } from '@mui/material';
 import {
   GridWithBorder,
-  SubHeadText,
+  HeadText16,
   WithPadding,
 } from '../../components/Styles';
+import TextField from '../../components/common/TextField';
 
 const AddCameraPresetForm = () => {
-
   return (
-    <Box sx={{ width: '100%' }}>
-      <Stack spacing={1}>
-        <GridWithBorder sx={{ height: 'inherit', width: '100%' }}>
-          <WithPadding sx={{ height: 'inherit', padding: '5px 15px' }}>
-            <SubHeadText>Zoom</SubHeadText>
-            <SliderField initialValue="T" finalValue="Z" />
-          </WithPadding>
-        </GridWithBorder>
-        <GridWithBorder sx={{ height: 'inherit', width: '100%' }}>
-          <WithPadding sx={{ height: 'inherit', padding: '5px 15px' }}>
-            <SubHeadText>Focus</SubHeadText>
-            <SliderField initialValue="Far" finalValue="Never" />
-          </WithPadding>
-        </GridWithBorder>
-      </Stack>
-    </Box>
+    <GridWithBorder sx={{ height: 'inherit', width: '100%' }}>
+      <WithPadding sx={{ padding: '10px' }}>
+        <HeadText16 sx={{ marginBottom: '4px' }}>Threshold</HeadText16>
+        <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+        >
+          <ListItem sx={{padding: '10px'}}>
+            <TextField label='Start Hoist Position' value={'10000'} />
+          </ListItem>
+          <ListItem sx={{padding: '10px'}}>
+            <TextField label='End Hoist Position' value={'10000'} />
+          </ListItem>
+          <ListItem sx={{padding: '10px'}}>
+            <TextField label='Start Trolley Position' value={'10000'} />
+          </ListItem>
+          <ListItem sx={{padding: '10px'}}>
+            <TextField label='End Trolley Position' value={'10000'} />
+          </ListItem>
+
+        </List>
+      </WithPadding>
+    </GridWithBorder>
   );
 };
 
