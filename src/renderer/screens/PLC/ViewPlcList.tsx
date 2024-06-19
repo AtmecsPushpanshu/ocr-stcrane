@@ -1,7 +1,8 @@
 import Box from '@mui/material/Box';
 import { GridColDef } from '@mui/x-data-grid';
-import { CameraList } from '../../data/mock';
+
 import { StyledDataGrid } from '../../components/Styles/DataGridStyles';
+import { CameraList } from '../../data/mock';
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {

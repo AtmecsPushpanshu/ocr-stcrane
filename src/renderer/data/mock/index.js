@@ -47,71 +47,71 @@ export const mockData = {
     {
       id: 1,
       name: 'Terminal A',
-      value: 'terminal_a',
+      value: 'Terminal A',
     },
     {
       id: 2,
       name: 'Terminal B',
-      value: 'terminal_b',
+      value: 'Terminal B',
     },
     {
       id: 3,
       name: 'Terminal C',
-      value: 'terminal_c',
+      value: 'Terminal C',
     },
     {
       id: 4,
       name: 'Terminal D',
-      value: 'terminal_d',
+      value: 'Terminal D',
     },
     {
       id: 5,
       name: 'Terminal E',
-      value: 'terminal_e',
+      value: 'Terminal E',
     },
   ],
   crane: [
     {
       id: 1,
       name: 'Crane Alpha',
-      value: 'crane_alpha',
+      value: 'Crane Alpha',
     },
     {
       id: 2,
       name: 'Crane Bravo',
-      value: 'crane_bravo',
+      value: 'Crane Bravo',
     },
     {
       id: 3,
       name: 'Crane Charlie',
-      value: 'crane_charlie',
+      value: 'Crane Charlie',
     },
     {
       id: 4,
       name: 'Crane Delta',
-      value: 'crane_delta',
+      value: 'Crane Delta',
     },
     {
       id: 5,
       name: 'Crane Echo',
-      value: 'crane_echo',
+      value: 'Crane Echo',
     },
   ],
   location: [
     {
       id: 1,
       name: 'Upper sill beam',
-      value: 'upper',
+      value: 'Upper sill beam',
     },
     {
       id: 2,
       name: 'Lower sill beam',
-      value: 'lower',
+      value: 'Lower sill beam',
     },
     {
       id: 3,
       name: 'Back Reach',
-      value: 'backreach',
+      value: 'Back Reach',
     },
   ],
 };

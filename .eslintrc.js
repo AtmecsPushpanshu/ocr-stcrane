@@ -14,9 +14,14 @@ module.exports = {
   ],
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
+    'import/prefer-default-export': 'off',
+    'react/require-default-props': 'off',
+    'react/function-component-definition': 'off',
+    'import/extensions': 'off',
+    'react/jsx-filename-extension': 'off',
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 0,
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+    'prettier/prettier': ['error', {}],
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

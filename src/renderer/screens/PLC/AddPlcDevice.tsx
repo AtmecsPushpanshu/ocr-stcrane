@@ -1,12 +1,13 @@
-import { Box, Button, Grid, Divider, Stack } from '@mui/material';
-import { PageTitle, WithPadding, HeadText16 } from '../../components/Styles';
+import { Box, Button, Divider, Grid } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import SelectField from '../../components/common/SelectField';
 import TextField from '../../components/common/TextField';
-import { useNavigate } from 'react-router-dom';
 import SuccessLoader from '../../components/messages/SuccessLoader';
-import { useState } from 'react';
+import { HeadText16, PageTitle, WithPadding } from '../../components/Styles';
 
-const AddPlcDevice = () => {
+function AddPlcDevice() {
   const [loader, setLoader] = useState<boolean>(false);
   const navigate = useNavigate();
   const applyForm = () => {
@@ -19,7 +20,7 @@ const AddPlcDevice = () => {
     <>
       <WithPadding>
         <SuccessLoader loader={loader} />
-        <Grid container justifyContent={'space-between'}>
+        <Grid container justifyContent="space-between">
           <PageTitle>PLC Interface</PageTitle>
         </Grid>
       </WithPadding>
@@ -130,7 +131,7 @@ const AddPlcDevice = () => {
           </Grid>
 
           <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
-          <Grid item xs={6} textAlign={'start'}>
+          <Grid item xs={6} textAlign="start">
             <Button type="button" variant="contained" onClick={applyForm}>
               Save
             </Button>
@@ -139,6 +140,6 @@ const AddPlcDevice = () => {
       </WithPadding>
     </>
   );
-};
+}
 
 export default AddPlcDevice;

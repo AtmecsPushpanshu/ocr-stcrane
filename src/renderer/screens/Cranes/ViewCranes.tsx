@@ -21,10 +21,10 @@ const ViewCranes: React.FC = () => {
           <PageTitle>Cranes</PageTitle>
           <Button
             variant="contained"
-            onClick={() => navigate('/dashboard/add-camera')}
+            onClick={() => navigate('/dashboard')}
             startIcon={<AddIcon />}
           >
-            Add Device
+            Add Crane
           </Button>
         </Grid>
       </WithPadding>

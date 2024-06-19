@@ -1,22 +1,21 @@
 import { Button, Grid, Stack } from '@mui/material';
-import {
-  HeadText16,
-  GridWithBorder,
-  ImageFill,
-  WithPadding,
-  PageTitle,
-  CameraPresetGrid,
-} from '../../components/Styles';
-import containeImg from '../../assets/img/container.png';
-import CameraPresetControls from './CameraPresetControls';
-import AddCameraPresetForm from './AddCameraPresetForm';
-import Popup from '../../components/common/Popup';
-import AdvancePresetConfig from './AdvancePresetConfig';
-import SuccessLoader from '../../components/messages/SuccessLoader';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import containeImg from '../../assets/img/container.png';
+import PageHeader from '../../components/common/PageHeader';
+import Popup from '../../components/common/Popup';
+import {
+  CameraPresetGrid,
+  GridWithBorder,
+  HeadText16,
+  ImageFill,
+  WithPadding,
+} from '../../components/Styles';
 import { PATHS } from '../../constants/paths';
-import AxisCamera from '../../components/VideoPlayer/VideoPlayer';
+import AddCameraPresetForm from './AddCameraPresetForm';
+import AdvancePresetConfig from './AdvancePresetConfig';
+import CameraPresetControls from './CameraPresetControls';
 
 const AddCameraPreset = () => {
   const navigate = useNavigate();
@@ -29,8 +28,7 @@ const AddCameraPreset = () => {
   };
   return (
     <WithPadding sx={{ paddingTop: '10px' }}>
-      <SuccessLoader loader={loader} />
-      <PageTitle sx={{ paddingBottom: '10px' }}>Device Preset</PageTitle>
+      <PageHeader title="Device Preset" showBackIcon />
       <CameraPresetGrid>
         <Grid sx={{ paddingRight: '10px' }}>
           <Stack>
@@ -56,9 +54,9 @@ const AddCameraPreset = () => {
           </Stack>
         </Grid>
         <Grid sx={{ paddingBottom: '40px' }}>
-          <Stack direction={'row'} spacing={1}>
+          <Stack direction="row" spacing={1}>
             <CameraPresetControls />
-            <AddCameraPresetForm />
+
           </Stack>
           <Stack spacing={1} sx={{ marginTop: '10px' }}>
             <Popup dialogTitle="Advance Setting" btnText="Advance Setting">

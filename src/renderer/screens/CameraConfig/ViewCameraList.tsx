@@ -3,7 +3,12 @@ import { GridColDef } from '@mui/x-data-grid';
 import { CameraList } from '../../data/mock';
 import { StyledDataGrid } from '../../components/Styles/DataGridStyles';
 import { useGetData } from '../../data/apiHooks';
+import { useNavigate } from 'react-router-dom';
 
+
+export default function ViewCameraList() {
+  const navigate = useNavigate()
+  const { data: getData, isLoading } = useGetData('/cameraconfig');
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
@@ -28,37 +33,36 @@ const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
     field: 'deviceMake',
     headerName: 'Device Make',
-    description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 160,
   },
   {
     field: 'ipAddress',
     headerName: 'IP Address',
-    description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 150,
   },
   {
     field: 'port',
     headerName: 'PORT',
-    description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 150,
   },
   {
     field: 'status',
     headerName: 'Status',
-    description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 160,
     valueGetter: (value, _) => (value ? 'Active' : 'Inactive'),
   },
+  {
+    field: 'preset',
+    headerName: 'Preset',
+    sortable: false,
+    width: 160,
+    renderCell: (params) => <a onClick={() => navigate('../view-camera-preset')}>4 preset</a>
+  },
 ];
-
-export default function ViewCameraList() {
-  const { data: getData, isLoading } = useGetData('/cameraconfig');
-  console.log(getData);
 
   return (
     <Box sx={{ height: 400, width: '100%' }}>

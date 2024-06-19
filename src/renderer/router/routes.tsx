@@ -28,6 +28,9 @@ const AddCamera = Loader(
 const AddCameraPreset = Loader(
   lazy(() => import('../screens/DevicePreset/AddCameraPreset')),
 );
+const ViewCameraPreset = Loader(
+  lazy(() => import('../screens/DevicePreset/ViewCameraPreset')),
+);
 const Login = Loader(lazy(() => import('../screens/Login/index')));
 const ViewPlc = Loader(lazy(() => import('../screens/PLC/ViewPlc')));
 const AddPlcDevice = Loader(lazy(() => import('../screens/PLC/AddPlcDevice')));
@@ -64,6 +67,10 @@ const Routes: RouteObject[] = [
       {
         path: 'add-camera',
         element: <AddCamera />,
+      },
+      {
+        path: 'view-camera-preset',
+        element: <ViewCameraPreset />,
       },
       {
         path: 'add-camera-preset',

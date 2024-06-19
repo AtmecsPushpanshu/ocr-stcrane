@@ -1,12 +1,14 @@
-import React from 'react';
-import { HeadText, WithPadding } from '../../components/Styles';
+import PageHeader from '../../components/common/PageHeader';
+import { WithPadding } from '../../components/Styles';
+import LiveViewForm from './LiveViewForm';
 
-const LiveView = () => {
+function LiveView() {
   return (
     <WithPadding>
-      <HeadText>Live View</HeadText>
+      <PageHeader title="Live View" />
+      <LiveViewForm />
     </WithPadding>
   );
-};
+}
 
 export default LiveView;
