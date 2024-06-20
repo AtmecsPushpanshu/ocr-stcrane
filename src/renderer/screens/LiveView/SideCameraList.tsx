@@ -12,6 +12,8 @@ import {
 import React from 'react';
 import { SmallCameraIcon } from '../../constants/systemIcons';
 import { HeadText16 } from '../../components/Styles';
+import { mockData } from '../../data/mock';
+import SelectField from '../../components/common/SelectField';
 
 const cameras = {
   'Upper Sil Beam': ['Camera 1', 'Camera 2'],
@@ -45,7 +47,12 @@ const SideCameraList: React.FC = () => {
       }}
     >
       <Box sx={{ bgcolor: '#24558D', color: 'primary.contrastText', p: 1 }}>
-        <HeadText16 textAlign={'center'}>Preview</HeadText16>
+        <HeadText16 >Crane</HeadText16>
+        <SelectField
+          placeholder="Choose crane"
+          items={mockData.crane}
+          sx={{bgcolor:'#fff'}}
+        />
       </Box>
       <Divider />
       {Object.entries(cameras).map(([section, items], index) => (
