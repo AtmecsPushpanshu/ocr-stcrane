@@ -6,46 +6,37 @@ import { CameraList } from '../../data/mock';
 
 const columns: GridColDef<(typeof CameraList)[number]>[] = [
   {
-    field: 'terminal',
-    headerName: 'Terminal',
-    width: 150,
-  },
-  {
     field: 'crane',
     headerName: 'Crane',
     width: 150,
   },
   {
-    field: 'deviceName',
-    headerName: 'Device Name',
+    field: 'plcName',
+    headerName: 'PLC Name',
     width: 150,
   },
 
   {
-    field: 'deviceMake',
-    headerName: 'Device Make',
-    description: 'This column has a value getter and is not sortable.',
-    width: 160,
-  },
-  {
     field: 'ipAddress',
     headerName: 'IP Address',
-    description: 'This column has a value getter and is not sortable.',
     width: 150,
   },
   {
     field: 'port',
     headerName: 'PORT',
-    description: 'This column has a value getter and is not sortable.',
     width: 150,
   },
 ];
 
-export default function ViewPlcList() {
+interface ViewPlcListProps {
+  data: any;
+}
+
+export default function ViewPlcList({ data = [] }: ViewPlcListProps) {
   return (
     <Box sx={{ height: 400, width: '100%' }}>
       <StyledDataGrid
-        rows={CameraList}
+        rows={data}
         columns={columns}
         disableColumnResize
         disableColumnSorting
@@ -54,6 +45,7 @@ export default function ViewPlcList() {
         disableColumnMenu
         disableAutosize
         density="standard"
+        getRowId={(row) => row?._id}
         initialState={{
           pagination: {
             paginationModel: {

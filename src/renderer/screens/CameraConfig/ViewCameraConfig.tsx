@@ -1,22 +1,20 @@
-import React, {  } from 'react';
-import { Button, Grid, Stack } from '@mui/material';
-import {
-  WithPadding,
-  PageTitle,
-} from '../../components/Styles';
-import Empty from '../../components/common/Empty';
-import { useNavigate } from 'react-router-dom';
-import ViewCameraList from './ViewCameraList';
-import SearchField from '../../components/common/SearchField';
 import AddIcon from '@mui/icons-material/Add';
+import { Button, Grid, Stack } from '@mui/material';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import Empty from '../../components/common/Empty';
+import SearchField from '../../components/common/SearchField';
+import { PageTitle, WithPadding } from '../../components/Styles';
 import { useGetData } from '../../data/apiHooks';
+import ViewCameraList from './ViewCameraList';
+
 const Description: React.FC = () => (
   <>
     Click on <span>Add Device</span> to configure
   </>
 );
 const ViewCameraConfig: React.FC = () => {
-
   const navigate = useNavigate();
 
   const { data, isLoading } = useGetData('/cameraconfig');
@@ -24,7 +22,7 @@ const ViewCameraConfig: React.FC = () => {
   return (
     <Stack direction="column" height="inherit">
       <WithPadding>
-        <Grid container justifyContent={'space-between'}>
+        <Grid container justifyContent="space-between">
           <PageTitle>Camera Configuration</PageTitle>
           <Button
             variant="contained"
@@ -41,7 +39,7 @@ const ViewCameraConfig: React.FC = () => {
           <Grid item>
             <SearchField />
           </Grid>
-          <Grid item></Grid>
+          <Grid item />
         </Grid>
         {!isLoading && <ViewCameraList data={data} />}
       </WithPadding>

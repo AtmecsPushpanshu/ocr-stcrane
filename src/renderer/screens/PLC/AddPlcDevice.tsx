@@ -1,21 +1,47 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, Divider, Grid } from '@mui/material';
 import { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
 
 import SelectField from '../../components/common/SelectField';
 import TextField from '../../components/common/TextField';
 import SuccessLoader from '../../components/messages/SuccessLoader';
-import { HeadText16, PageTitle, WithPadding } from '../../components/Styles';
+import { PageTitle, WithPadding } from '../../components/Styles';
+import { usePostData } from '../../data/apiHooks';
+import { mockData } from '../../data/mock';
 
 function AddPlcDevice() {
   const [loader, setLoader] = useState<boolean>(false);
   const navigate = useNavigate();
-  const applyForm = () => {
-    setLoader(true);
-    setTimeout(() => {
-      navigate(`../view-plc-config`);
-    }, 1000);
+  const mutation = usePostData('/plcconfig', {
+    mutationKey: ['PLC', { endpoint: '/plcconfig' }], // Example mutationKey
+    onSuccess: () => {
+      setLoader(true);
+      navigate('../view-plc-config');
+    },
+  });
+
+  const schema = yup.object().shape({
+    crane: yup.string().required('Select Crane'),
+    ipAddress: yup.string().required('IP Address is required'),
+    plcName: yup.string().required('PLC Name is required'),
+    port: yup.string().required('Port Number is required'),
+  });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: any) => {
+    mutation.mutate(data);
   };
+
   return (
     <>
       <WithPadding>
@@ -29,110 +55,81 @@ function AddPlcDevice() {
         <Box
           component="form"
           noValidate
-          onSubmit={() => null}
+          onSubmit={handleSubmit(onSubmit)}
           sx={{ mt: 1, flexDirection: 'row' }}
         >
           <Grid container spacing={2} columns={12}>
             <Grid item xs={3}>
-              <SelectField label="Terminal" placeholder="IP Address" />
-            </Grid>
-            <Grid item xs={3}>
-              <SelectField label="Choose crane" placeholder="IP Address" />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField label="PLC Name" placeholder="PLC Name" />
-            </Grid>
-
-            <Grid item xs={3}>
-              <TextField label="IP Address" placeholder="IP Address" />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField label="Port Number" placeholder="Port Number" />
-            </Grid>
-          </Grid>
-          <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
-          <HeadText16 sx={{ marginTop: 3, marginBottom: 3 }}>
-            Threshold Values
-          </HeadText16>
-          <Grid container>
-            <Grid xs={9}>
-              <Grid container spacing={3} columns={9}>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Hoist Position"
-                    placeholder="Hoist Position"
+              <Controller
+                name="crane"
+                defaultValue="select"
+                control={control}
+                render={({ field }) => (
+                  <SelectField
+                    {...field}
+                    items={mockData.crane}
+                    label="Choose crane"
+                    placeholder="Choose crane"
+                    error={!!errors.crane}
+                    helperText={errors.crane?.message}
                   />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Min Hoist Speed"
-                    placeholder="Min Hoist Speed"
-                    disabled
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Max Hoist Speed"
-                    placeholder="Max Hoist Speed"
-                    disabled
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Trolley Position"
-                    placeholder="Trolley Position"
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Spreader Landed"
-                    placeholder="Spreader Landed"
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Move Direction"
-                    placeholder="Move Direction"
-                  />
-                </Grid>
-                {/* <Grid item xs={3}>
-              <TextField label="Trolley Width" placeholder="Trolley Width" />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Trolley Parked"
-                placeholder="Trolley Parked"
-                disabled
+                )}
               />
-            </Grid> */}
+            </Grid>
+            <Grid item xs={3}>
+              <Controller
+                name="plcName"
+                defaultValue=""
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="PLC Name"
+                    placeholder="PLC Name"
+                    error={!!errors.plcName}
+                    helperText={errors.plcName?.message}
+                  />
+                )}
+              />
+            </Grid>
 
-                <Grid item xs={3}>
+            <Grid item xs={3}>
+              <Controller
+                name="ipAddress"
+                defaultValue=""
+                control={control}
+                render={({ field }) => (
                   <TextField
-                    label="Hoist Up Request"
-                    placeholder="Hoist Up Request"
+                    {...field}
+                    label="IP Address"
+                    placeholder="IP Address"
+                    error={!!errors.ipAddress}
+                    helperText={errors.ipAddress?.message}
                   />
-                </Grid>
-                <Grid item xs={3}>
+                )}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Controller
+                name="port"
+                defaultValue=""
+                control={control}
+                render={({ field }) => (
                   <TextField
-                    label="Hoist Down Request"
-                    placeholder="Hoist Down Request"
-                    disabled
+                    {...field}
+                    label="Port Number"
+                    placeholder="Port Number"
+                    error={!!errors.port}
+                    helperText={errors.port?.message}
                   />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Twist Lock"
-                    placeholder="Twist Lock"
-                    disabled
-                  />
-                </Grid>
-              </Grid>
+                )}
+              />
             </Grid>
           </Grid>
 
           <Divider sx={{ marginTop: 3, marginBottom: 3 }} />
           <Grid item xs={6} textAlign="start">
-            <Button type="button" variant="contained" onClick={applyForm}>
+            <Button type="submit" variant="contained">
               Save
             </Button>
           </Grid>

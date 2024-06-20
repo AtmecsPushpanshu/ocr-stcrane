@@ -1,22 +1,18 @@
-import { FC, SyntheticEvent, useState } from 'react';
 import { Grid } from '@mui/material';
+import { FC } from 'react';
+
+import PageHeader from '../../components/common/PageHeader';
 import { WithPadding } from '../../components/Styles';
 import { AddCameraFormManual } from './AddCameraForms';
-import PageHeader from '../../components/common/PageHeader';
 
 interface AddCameraProps {}
 
 const AddCamera: FC<AddCameraProps> = () => {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event: SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
   return (
     <>
       <WithPadding>
-        <Grid container justifyContent={'space-between'}>
-          <PageHeader title='Add Camera' />
+        <Grid container justifyContent="space-between">
+          <PageHeader title="Add Camera" />
         </Grid>
         <AddCameraFormManual />
       </WithPadding>
