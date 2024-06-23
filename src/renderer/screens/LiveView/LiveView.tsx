@@ -4,6 +4,7 @@ import { WithPadding } from '../../components/Styles';
 import LiveViewForm from './LiveViewForm';
 import { useEffect } from 'react';
 import axios from 'axios';
+import VideoStream from './test';
 
 function LiveView() {
   useEffect(() => {
@@ -29,7 +30,8 @@ function LiveView() {
         playing
       /> */}
       <PageHeader title="Live View" />
-      <LiveViewForm />
+      <VideoStream />
+      {/* <LiveViewForm /> */}
     </WithPadding>
   );
 }

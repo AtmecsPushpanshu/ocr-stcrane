@@ -1,19 +1,18 @@
 import { ComponentType, lazy, Suspense } from 'react';
 import { RouteObject } from 'react-router';
-import MainLayout from '../components/Layout/mainLayout';
-import BaseLayout from '../components/Layout/baseLayout';
-import SuspenseLoader from '../components/SuspenseLoader';
 import { Navigate } from 'react-router-dom';
+
+import BaseLayout from '../components/Layout/baseLayout';
+import MainLayout from '../components/Layout/mainLayout';
+import SuspenseLoader from '../components/SuspenseLoader';
 
 const Loader =
   <P extends object>(Component: ComponentType<P>) =>
   (props: P) => {
     return (
-      <>
-        <Suspense fallback={<SuspenseLoader />}>
-          <Component {...props} />
-        </Suspense>
-      </>
+      <Suspense fallback={<SuspenseLoader />}>
+        <Component {...props} />
+      </Suspense>
     );
   };
 
@@ -36,6 +35,9 @@ const ViewPlc = Loader(lazy(() => import('../screens/PLC/ViewPlc')));
 const AddPlcDevice = Loader(lazy(() => import('../screens/PLC/AddPlcDevice')));
 const LiveView = Loader(lazy(() => import('../screens/LiveView/LiveView')));
 const ViewCranes = Loader(lazy(() => import('../screens/Cranes/ViewCranes')));
+const AddCraneForm = Loader(
+  lazy(() => import('../screens/Cranes/AddCraneForm')),
+);
 
 const Routes: RouteObject[] = [
   {
@@ -59,6 +61,10 @@ const Routes: RouteObject[] = [
       {
         path: 'view-cranes',
         element: <ViewCranes />,
+      },
+      {
+        path: 'add-cranes',
+        element: <AddCraneForm />,
       },
       {
         path: 'view-camera-config',

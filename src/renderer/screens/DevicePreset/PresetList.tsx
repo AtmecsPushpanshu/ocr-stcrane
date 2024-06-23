@@ -59,7 +59,13 @@ const PresetList: React.FC = () => {
     setSwitchIndex(index === switchIndex ? null : index);
   };
 
-  const options = ['Preset 1', 'Preset 2', 'Preset 3', 'Preset 4', 'Preset 5'];
+  const options = [
+    'Preset + threshold 1',
+    'Preset + threshold 2',
+    'Preset + threshold 3',
+    'Preset + threshold 4',
+    'Preset + threshold 5',
+  ];
 
   return (
     <Box sx={{ width: '100%', maxWidth: 360, mx: 'auto' }}>

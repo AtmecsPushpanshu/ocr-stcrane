@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
-import { Button, Grid, Stack } from '@mui/material';
-import { WithPadding, PageTitle } from '../../components/Styles';
-import Empty from '../../components/common/Empty';
-import { useNavigate } from 'react-router-dom';
-import SearchField from '../../components/common/SearchField';
 import AddIcon from '@mui/icons-material/Add';
+import { Button, Grid, Stack } from '@mui/material';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import Empty from '../../components/common/Empty';
+import SearchField from '../../components/common/SearchField';
+import { PageTitle, WithPadding } from '../../components/Styles';
+import { useGetData } from '../../data/apiHooks';
+import ViewCranesList from './ViewCranesList';
+
 const Description: React.FC = () => (
   <>
     Click on <span className="bold-600">Add Cranes</span> to configure
   </>
 );
 const ViewCranes: React.FC = () => {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const { data, isLoading } = useGetData('/craneconfig');
   const navigate = useNavigate();
 
   return (
     <Stack direction="column" height="inherit">
       <WithPadding>
-        <Grid container justifyContent={'space-between'}>
+        <Grid container justifyContent="space-between">
           <PageTitle>Cranes</PageTitle>
           <Button
             variant="contained"
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate('../add-cranes')}
             startIcon={<AddIcon />}
           >
             Add Crane
@@ -30,17 +34,17 @@ const ViewCranes: React.FC = () => {
       </WithPadding>
 
       <WithPadding sx={{ py: 0 }}>
-        <Grid container>
+        <Grid container sx={{ marginBottom: 2 }}>
           <Grid item>
             <SearchField />
           </Grid>
-          <Grid item></Grid>
+          <Grid item />
         </Grid>
-        {toggle && 'List cranes component'}
+        {!isLoading && <ViewCranesList data={data} />}
       </WithPadding>
-      {!toggle && (
+      {isLoading && (
         <WithPadding flexGrow={1}>
-          <Empty title="No Cranes" description={<Description />} />
+          <Empty title="No devices" description={<Description />} />
         </WithPadding>
       )}
     </Stack>

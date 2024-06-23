@@ -6,7 +6,7 @@ const AdvancePresetConfig = () => {
   return (
     <>
       <Grid container spacing={2} columns={6}>
-        <Grid item xs={3}>
+        {/* <Grid item xs={3}>
           <SelectField label="Offset X" placeholder="Offset X" />
         </Grid>
         <Grid item xs={3}>
@@ -41,7 +41,7 @@ const AdvancePresetConfig = () => {
             label="Max Line Scan Rate"
             placeholder="Max Line Scan Rate"
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={3}>
           <SelectField
             label="Frames Per Second"

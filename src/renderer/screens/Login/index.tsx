@@ -1,28 +1,36 @@
-import { FormEvent } from 'react';
-import Button from '@mui/material/Button';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Stack } from '@mui/material';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import stcrane from '../../assets/img/smart-tecs.png';
+import * as yup from 'yup';
+
 import mainimage from '../../assets/img/ship.png';
-import { PATHS } from '../../constants/paths';
+import stcrane from '../../assets/img/smart-tecs.png';
 import TextField from '../../components/common/TextField';
-import { Stack } from '@mui/material';
+
 export default function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const resp = {
-      email: data.get('email'),
-      password: data.get('password'),
-    };
-    console.log(resp);
+  const schema = yup.object().shape({
+    email: yup.string().required('Enter Email'),
+    password: yup.string().required('Password is required'),
+  });
 
-    navigate(PATHS.DASHBOARD.viewcameraconfig);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (resp) => {
     if (resp.email === 'admin' && resp.password === 'admin') {
+      navigate('/dashboard/view-cranes');
     }
   };
 
@@ -74,12 +82,37 @@ export default function Login() {
               <Box
                 component="form"
                 noValidate
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
                 sx={{ mt: 1 }}
               >
                 <Stack spacing={2}>
-                  <TextField label="Email" name="email" />
-                  <TextField label="Password" name="password" type="password" />
+                  <Controller
+                    name="email"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        label="Email"
+                        placeholder="EMail"
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
+                      />
+                    )}
+                  />
+                  <Controller
+                    name="password"
+                    defaultValue=""
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        label="Password"
+                        placeholder="Password"
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
+                      />
+                    )}
+                  />
                 </Stack>
 
                 <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
