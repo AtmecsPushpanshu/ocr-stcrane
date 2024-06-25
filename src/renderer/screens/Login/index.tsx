@@ -29,6 +29,7 @@ export default function Login() {
   });
 
   const onSubmit = (resp) => {
+    navigate('/dashboard/view-cranes');
     if (resp.email === 'admin' && resp.password === 'admin') {
       navigate('/dashboard/view-cranes');
     }

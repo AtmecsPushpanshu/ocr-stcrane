@@ -46,7 +46,7 @@ const Routes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Login />,
+        element: <LiveView />,
       },
       {
         path: 'overview',

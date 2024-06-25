@@ -1,37 +1,32 @@
-import ReactPlayer from 'react-player';
+import ReactHlsPlayer from 'react-hls-player';
+import RxPlayer from "rx-player";
 import PageHeader from '../../components/common/PageHeader';
 import { WithPadding } from '../../components/Styles';
-import LiveViewForm from './LiveViewForm';
-import { useEffect } from 'react';
-import axios from 'axios';
-import VideoStream from './test';
-
+import VideoPlayer from './VideoPlayer';
+import WebRTCComponent from "./SocketPlayer";
+import WebRTCVideo from './WebRTCVideo';
+import HLSPlayer from './HLSPlayer'
 function LiveView() {
-  useEffect(() => {
-    const fetchStreamUrl = async () => {
-      try {
-        const response = await axios.get(`http://localhost:4000/onvif/stream`);
-        console.log(response);
-      } catch (error) {
-        console.error('Error fetching stream URL:', error);
-      }
-    };
-
-    fetchStreamUrl();
-  }, []);
+  const videoUrl = 'http://localhost:8083/play/dash/H264_AAC/manifest.mpd'; // Provided URL
 
   return (
     <WithPadding sx={{ paddingRight: 0 }}>
-      {/* <ReactPlayer
-        url="https://www.youtube.com/watch?v=XfX2Ap30pwU&ab_channel=CodeRadiance"
-        width="640"
-        height="360"
-        controls
-        playing
-      /> */}
       <PageHeader title="Live View" />
-      <VideoStream />
-      {/* <LiveViewForm /> */}
+      {/* <HLSPlayer /> */}
+      {/*<WebRTCVideo />*/}
+      {/* <WebRTCComponent /> */}
+      {/* <VideoPlayer url={videoUrl} /> */}
+     <ReactHlsPlayer
+        src="http://localhost:8080/stream.m3u8"
+        autoplay
+        controls
+        style={{ width: '600px', height: 'auto' }}
+        hlsConfig={{
+          maxLoadingDelay: 1,
+          minAutoBitrate: 0,
+          lowLatencyMode: true,
+        }}
+      />
     </WithPadding>
   );
 }
