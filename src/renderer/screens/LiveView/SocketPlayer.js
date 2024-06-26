@@ -5,7 +5,7 @@ const WebSocketVideo = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const socket = io('http://localhost:5000/video');
+    const socket = io('http://localhost:8080/video');
 
     socket.on('connect', () => {
       console.log('Connected to WebSocket server');

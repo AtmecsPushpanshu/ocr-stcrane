@@ -1,68 +1,46 @@
 import React, { useEffect, useRef } from 'react';
-import Peer from 'peerjs';
 
 const WebRTCVideo = () => {
   const videoRef = useRef(null);
-  const peerRef = useRef(null);
 
   useEffect(() => {
     const initWebRTC = async () => {
-      // Initialize a new Peer instance
-      const peer = new Peer({});
+      const pc = new RTCPeerConnection();
 
-      // Open event listener for peer connection
-      peer.on('open', (peerId) => {
-        console.log('My peer ID is: ' + peerId);
+      // Handle incoming tracks
+      pc.ontrack = (event) => {
+        if (videoRef.current) {
+          videoRef.current.srcObject = event.streams[0];
+        }
+      };
 
-        // Call the server with the generated peerId
-        fetch('http://localhost:5000/offer', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ peerId }),
-        })
-        .then(response => response.json())
-        .then(answer => {
-          // Connect to the server's peerId and establish a WebRTC connection
-          const remotePeer = peer.connect(answer.peerId);
-          remotePeer.on('open', () => {
-            console.log('Connected to remote peer');
-            // Now you can start your video stream or other data exchange
-          });
-
-          // Handle any incoming stream from the remote peer
-          remotePeer.on('stream', (stream) => {
-            videoRef.current.srcObject = stream;
-          });
-        })
-        .catch(error => {
-          console.error('Error in fetch or signaling:', error);
-        });
+      // Create an SDP offer
+      const offer = await pc.createOffer();
+      await pc.setLocalDescription(offer);
+      console.log('====================================');
+      console.log(offer);
+      console.log('====================================');
+      // Send the offer to the signaling server
+      const response = await fetch('http://localhost:8080/offer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(offer),
       });
 
-      // Save the peer instance in the ref
-      peerRef.current = peer;
+      // Receive the SDP answer from the signaling server
+      const answer = await response.json();
+      console.log("Received SDP Answer: ", answer);
+
+      const remoteDesc = new RTCSessionDescription(answer);
+      await pc.setRemoteDescription(remoteDesc);
     };
 
-    // Initialize WebRTC on component mount
     initWebRTC();
+  }, []);
 
-    // Clean up function
-    return () => {
-      // Disconnect and destroy the peer connection when the component unmounts
-      if (peerRef.current) {
-        peerRef.current.disconnect();
-        peerRef.current.destroy();
-      }
-    };
-  }, []); // Empty dependency array ensures this effect runs only once
-
-  return (
-    <div>
-      <video ref={videoRef} autoPlay playsInline controls></video>
-    </div>
-  );
+  return <video ref={videoRef} autoPlay playsInline controls></video>;
 };
 
 export default WebRTCVideo;
