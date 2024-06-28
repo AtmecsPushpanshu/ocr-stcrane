@@ -40,7 +40,7 @@ const WebRTCVideo = () => {
     initWebRTC();
   }, []);
 
-  return <video ref={videoRef} autoPlay playsInline controls></video>;
+  return <video ref={videoRef} autoPlay playsInline controls width={'500px'}></video>;
 };
 
 export default WebRTCVideo;

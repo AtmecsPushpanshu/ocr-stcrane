@@ -80,6 +80,7 @@
     }
   },
   "dependencies": {
+    "@cycjimmy/jsmpeg-player": "^6.0.5",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fontsource/open-sans": "^5.0.28",
