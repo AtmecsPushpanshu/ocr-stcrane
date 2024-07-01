@@ -34,7 +34,7 @@ const handlePT = (value: number, currentValue: number): number => {
 };
 
 interface PTZbuttonProps {
-  handleCameraClick?: () => null;
+  handleCameraClick?: () => void;
 }
 
 const PTZbutton: React.FC = ({ handleCameraClick }: PTZbuttonProps) => {
@@ -56,7 +56,7 @@ const PTZbutton: React.FC = ({ handleCameraClick }: PTZbuttonProps) => {
     };
     try {
       const resp = await axios.post(
-        'http://localhost:5000/set_preset',
+        'http://localhost:5050/set_preset',
         presets,
       );
       console.log(resp);
@@ -81,7 +81,7 @@ const PTZbutton: React.FC = ({ handleCameraClick }: PTZbuttonProps) => {
         );
       case 1:
         return (
-          <ButtonPtz onClick={() => handleClick(0, 1)}>
+          <ButtonPtz onClick={() => handleClick(0, 0.01)}>
             <TopPtzIcon style={{ marginBottom: '15px' }} />
           </ButtonPtz>
         );

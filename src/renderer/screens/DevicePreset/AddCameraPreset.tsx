@@ -1,8 +1,8 @@
 import { Button, Grid, Stack } from '@mui/material';
+import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import containeImg from '../../assets/img/container.png';
 import PageHeader from '../../components/common/PageHeader';
 import Popup from '../../components/common/Popup';
 import {
@@ -18,6 +18,18 @@ import CameraPresetControls from './CameraPresetControls';
 
 const AddCameraPreset = () => {
   const navigate = useNavigate();
+  const [imgSources, setImgSources] = useState([]);
+  const handleCameraClick = async () => {
+    try {
+      const resp = await axios.get('http://localhost:5050/get-frame');
+      setImgSources((prev) => [
+        ...prev,
+        `data:image/jpeg;base64,${resp?.data}`,
+      ]);
+    } catch (error) {
+      console.log('error');
+    }
+  };
   const [loader, setLoader] = useState<boolean>(false);
   const applyForm = () => {
     setLoader(true);
@@ -37,24 +49,22 @@ const AddCameraPreset = () => {
                 alt="img"
                 style={{ maxHeight: '600px' }}
               />
-
             </GridWithBorder>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
             </HeadText16>
             <Grid container columns={8} columnSpacing={2}>
-              <Grid item xs={4}>
-                <ImageFill src={containeImg} alt="img" />
-              </Grid>
-              <Grid item xs={4}>
-                <ImageFill src={containeImg} alt="img" />
-              </Grid>
+              {imgSources.map((imgItem) => (
+                <Grid item xs={4}>
+                  <ImageFill src={imgItem} alt="img" />
+                </Grid>
+              ))}
             </Grid>
           </Stack>
         </Grid>
         <Grid sx={{ paddingBottom: '40px' }}>
           <Stack direction="row" spacing={1}>
-            <CameraPresetControls />
+            <CameraPresetControls handleCameraClick={handleCameraClick} />
             <AddCameraPresetForm />
           </Stack>
           <Stack direction="row" spacing={1} sx={{ marginTop: '10px' }}>

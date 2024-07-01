@@ -12,7 +12,7 @@ import { useRef } from 'react';
 import LiveViewForm from './LiveViewForm';
 function LiveView() {
   const videoUrl = 'http://localhost:8083/play/dash/H264_AAC/manifest.mpd'; // Provided URL
-  var videoSrc = 'http://localhost:5000/stream/index.m3u8';
+  var videoSrc = 'http://localhost:5050/stream/index.m3u8';
   const playerRef = useRef(null);
 
   const videoJsOptions = {

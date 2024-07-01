@@ -7,7 +7,7 @@ const VideoStream = () => {
 
   useEffect(() => {
     // Connect to the WebSocket server
-    socketRef.current = io('http://localhost:5000');
+    socketRef.current = io('http://localhost:5050');
 
     // On connection, start streaming
     socketRef.current.on('connect', () => {

@@ -9,14 +9,15 @@ import {
   SubHeadText,
   WithPadding,
 } from '../../components/Styles';
-import { useDeferredValue, useEffect } from 'react';
+import { useDeferredValue, useEffect, useState } from 'react';
 
-const CameraPresetControls = () => {
+const CameraPresetControls = ({handleCameraClick}) => {
   const deferredValue = useDeferredValue(0);
+
+
   const setZoom = async (data) => {
     try {
-      const resp = await axios.post('http://localhost:5000/set_zoom', data);
-      console.log(resp);
+      await axios.post('http://localhost:5050/set_zoom', data);
     } catch (error) {
       console.log('error');
     }
@@ -24,16 +25,16 @@ const CameraPresetControls = () => {
 
   const getZoomConfig = async (data) => {
     try {
-      const resp = await axios.get('http://localhost:5000/zoom_range');
+      const resp = await axios.get('http://localhost:5050/camera-info');
       console.log(resp);
     } catch (error) {
       console.log('error');
     }
   };
 
-  // useEffect(() => {
-  //   getZoomConfig();
-  // }, []);
+  useEffect(() => {
+    getZoomConfig();
+  }, []);
 
   const handleChange = (event: any) => {
     const zoomval = event?.target?.value as number;
@@ -46,14 +47,6 @@ const CameraPresetControls = () => {
     }
   };
 
-  const handleCameraClick = async () => {
-    try {
-      const resp = await axios.get('http://localhost:5000/get-frame');
-      console.log(resp?.data);
-    } catch (error) {
-      console.log('error');
-    }
-  };
 
   return (
     <GridWithBorder sx={{ width: '100%' }}>
