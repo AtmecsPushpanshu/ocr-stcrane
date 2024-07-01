@@ -8,6 +8,7 @@ import SearchField from '../../components/common/SearchField';
 import { PageTitle, WithPadding } from '../../components/Styles';
 import { useGetData } from '../../data/apiHooks';
 import ViewCameraList from './ViewCameraList';
+import { CameraList } from '../../data/mock';
 
 const Description: React.FC = () => (
   <>
@@ -41,9 +42,9 @@ const ViewCameraConfig: React.FC = () => {
           </Grid>
           <Grid item />
         </Grid>
-        {!isLoading && <ViewCameraList data={data} />}
+        {isLoading && <ViewCameraList data={CameraList} />}
       </WithPadding>
-      {isLoading && (
+      {!isLoading && (
         <WithPadding flexGrow={1}>
           <Empty title="No devices" description={<Description />} />
         </WithPadding>

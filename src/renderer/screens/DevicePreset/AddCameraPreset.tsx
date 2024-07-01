@@ -12,9 +12,9 @@ import {
   ImageFill,
   WithPadding,
 } from '../../components/Styles';
+import AddCameraPresetForm from './AddCameraPresetForm';
 import AdvancePresetConfig from './AdvancePresetConfig';
 import CameraPresetControls from './CameraPresetControls';
-import AddCameraPresetForm from './AddCameraPresetForm';
 
 const AddCameraPreset = () => {
   const navigate = useNavigate();
@@ -33,10 +33,11 @@ const AddCameraPreset = () => {
           <Stack>
             <GridWithBorder>
               <ImageFill
-                src={containeImg}
+                src="http://20.20.20.77/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
                 alt="img"
                 style={{ maxHeight: '600px' }}
               />
+
             </GridWithBorder>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
@@ -56,7 +57,7 @@ const AddCameraPreset = () => {
             <CameraPresetControls />
             <AddCameraPresetForm />
           </Stack>
-          <Stack direction={'row'} spacing={1} sx={{ marginTop: '10px' }}>
+          <Stack direction="row" spacing={1} sx={{ marginTop: '10px' }}>
             <Button variant="outlined" sx={{ width: '100%' }}>
               Reconnect
             </Button>

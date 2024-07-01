@@ -6,7 +6,7 @@ const StreamPlayer = () => {
   useEffect(() => {
     const url = 'ws://127.0.0.1:9999';
     let canvas = document.getElementById('video-canvas');
-    new JSMpeg.Player(url, { canvas: canvas, control: true });
+    new JSMpeg.Player(url, { canvas: canvas});
   }, []);
 
   const rtspurl = ''; //enter the rtsp url here

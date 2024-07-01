@@ -1,18 +1,20 @@
-import { Box } from '@mui/material';
+/* eslint-disable react/jsx-props-no-spreading */
+import { Box, SliderProps } from '@mui/material';
 import { PrettoSlider, SubHeadText } from '../Styles';
-interface SliderFieldProps {
+interface SliderFieldProps extends SliderProps {
   initialValue?: string;
   finalValue?: string;
 }
 
 const SliderField = (props: SliderFieldProps) => {
-  const { initialValue = '', finalValue = '' } = props;
+  const { initialValue = '', finalValue = '', ...remainingProps } = props;
+
   return (
     <Box>
       <PrettoSlider
         aria-label="slider"
         orientation="horizontal"
-        defaultValue={100}
+        {...remainingProps}
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <SubHeadText sx={{ cursor: 'pointer' }}>{initialValue}</SubHeadText>

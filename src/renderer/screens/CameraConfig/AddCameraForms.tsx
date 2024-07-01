@@ -27,6 +27,7 @@ export const AddCameraFormManual = () => {
     deviceModel: yup.string().required('Device Model is required'),
     ipAddress: yup.string().required('IP Address is required'),
     port: yup.string().required('Port Number is required'),
+    password: yup.string().required('Port Number is required'),
   });
 
   const {
@@ -177,6 +178,38 @@ export const AddCameraFormManual = () => {
                     placeholder="Port Number"
                     error={!!errors.port}
                     helperText={errors.port?.message}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Controller
+                name="username"
+                defaultValue=""
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="UserName"
+                    placeholder="User Name"
+                    error={!!errors.port}
+                    helperText={errors.port?.message}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Controller
+                name="password"
+                defaultValue=""
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Password"
+                    placeholder="Password"
+                    error={!!errors.password}
+                    helperText={errors.password?.message}
                   />
                 )}
               />

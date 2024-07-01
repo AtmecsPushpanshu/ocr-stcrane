@@ -1,11 +1,8 @@
-import React from 'react';
-import {
-  ButtonGroupPtz,
-  ButtonPtz,
-  CameraBG,
-  CameraButtonPtz,
-} from '../Styles';
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box } from '@mui/material';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
 import {
   BottomLeftPtzIcon,
   BottomPtzIcon,
@@ -17,81 +14,135 @@ import {
   TopPtzIcon,
   TopRightPtzIcon,
 } from '../../constants/systemIcons';
+import {
+  ButtonGroupPtz,
+  ButtonPtz,
+  CameraBG,
+  CameraButtonPtz,
+} from '../Styles';
 
-const PTZbutton: React.FC = () => {
+const handlePT = (value: number, currentValue: number): number => {
+  const sum = value + currentValue;
+  if (sum > 1) {
+    return 1;
+  }
+  if (sum < -1) {
+    return -1;
+  }
+
+  return sum;
+};
+
+interface PTZbuttonProps {
+  handleCameraClick?: () => null;
+}
+
+const PTZbutton: React.FC = ({ handleCameraClick }: PTZbuttonProps) => {
+  const [pan, setPan] = useState(0);
+  const [tilt, setTilt] = useState(0);
+  const handleClick = async (p: number, t: number) => {
+    // Function to handle PTZ commands
+    setPan((prev) => handlePT(prev, p));
+    setTilt((prev) => handlePT(prev, t));
+    // You can replace the console.log with the actual PTZ command logic
+    // Example:
+    // sendPtzCommand(pan, tilt);
+  };
+  const updatePreset = async () => {
+    const presets = {
+      preset_name: 'camera77',
+      pan,
+      tilt,
+    };
+    try {
+      const resp = await axios.post(
+        'http://localhost:5000/set_preset',
+        presets,
+      );
+      console.log(resp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    updatePreset();
+  }, [pan, tilt]);
+
   const getButton = (position: number) => {
     switch (position) {
-      case 0: {
+      case 0:
         return (
-          <ButtonPtz sx={{ borderTopLeftRadius: 16 }}>
+          <ButtonPtz
+            sx={{ borderTopLeftRadius: 16 }}
+            onClick={() => handleClick(-0.01, 0.01)}
+          >
             <TopLeftPtzIcon />
           </ButtonPtz>
         );
-      }
-      case 1: {
+      case 1:
         return (
-          <ButtonPtz>
+          <ButtonPtz onClick={() => handleClick(0, 1)}>
             <TopPtzIcon style={{ marginBottom: '15px' }} />
           </ButtonPtz>
         );
-      }
-      case 2: {
+      case 2:
         return (
-          <ButtonPtz sx={{ borderTopRightRadius: 16 }}>
+          <ButtonPtz
+            sx={{ borderTopRightRadius: 16 }}
+            onClick={() => handleClick(0.01, 0.01)}
+          >
             <TopRightPtzIcon />
           </ButtonPtz>
         );
-      }
-      case 3: {
+      case 3:
         return (
-          <ButtonPtz>
+          <ButtonPtz onClick={() => handleClick(-0.01, 0)}>
             <LeftPtzIcon style={{ marginRight: '15px' }} />
           </ButtonPtz>
         );
-      }
-      case 4: {
+      case 4:
         return (
-          <CameraButtonPtz>
+          <CameraButtonPtz onClick={() => handleCameraClick()}>
             <CameraBG>
               <CameraPtzIcon />
             </CameraBG>
           </CameraButtonPtz>
         );
-      }
-      case 5: {
+      case 5:
         return (
-          <ButtonPtz>
+          <ButtonPtz onClick={() => handleClick(0.01, 0)}>
             <RightPtzIcon style={{ marginLeft: '15px' }} />
           </ButtonPtz>
         );
-      }
-      case 6: {
+      case 6:
         return (
-          <ButtonPtz sx={{ borderBottomLeftRadius: 16 }}>
-            <BottomRightPtzIcon />
-          </ButtonPtz>
-        );
-      }
-      case 7: {
-        return (
-          <ButtonPtz>
-            <BottomPtzIcon style={{ marginTop: '20px' }} />
-          </ButtonPtz>
-        );
-      }
-      case 8: {
-        return (
-          <ButtonPtz sx={{ borderBottomRightRadius: 16 }}>
+          <ButtonPtz
+            sx={{ borderBottomLeftRadius: 16 }}
+            onClick={() => handleClick(-0.01, -0.01)}
+          >
             <BottomLeftPtzIcon />
           </ButtonPtz>
         );
-      }
-
-      default: {
+      case 7:
+        return (
+          <ButtonPtz onClick={() => handleClick(0, -0.01)}>
+            <BottomPtzIcon style={{ marginTop: '20px' }} />
+          </ButtonPtz>
+        );
+      case 8:
+        return (
+          <ButtonPtz
+            sx={{ borderBottomRightRadius: 16 }}
+            onClick={() => handleClick(0.01, -0.01)}
+          >
+            <BottomRightPtzIcon />
+          </ButtonPtz>
+        );
+      default:
         return <ButtonPtz>{` ${position + 1}`}</ButtonPtz>;
-      }
     }
   };
+
   return (
     <Box
       sx={{

@@ -78,7 +78,7 @@ export default function ViewCameraList({ data = [] }: ViewCameraListProps) {
             },
           },
         }}
-        getRowId={(row) => row?._id}
+
         pageSizeOptions={[5]}
       />
     </Box>

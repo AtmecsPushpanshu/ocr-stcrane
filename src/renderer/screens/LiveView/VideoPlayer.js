@@ -1,43 +1,51 @@
-// src/components/VideoPlayer.js
-import React, { useEffect, useRef } from 'react';
-import RxPlayer from "rx-player";
+import React, { useRef, useEffect } from 'react';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
 
-const VideoPlayer = ({ url }) => {
+export const VideoPlayer = (props) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
+  const { options, onReady } = props;
 
   useEffect(() => {
-    if (videoRef.current) {
-      playerRef.current = new RxPlayer({
-        videoElement: videoRef.current,
-      });
+    // Make sure Video.js player is only initialized once
+    if (!playerRef.current) {
+      // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode.
+      const videoElement = document.createElement('video-js');
 
-      playerRef.current.loadVideo({
-        url: url,
-        transport: 'dash', // or 'hls' depending on your stream
-        autoPlay: true,
-      });
+      videoElement.classList.add('vjs-big-play-centered');
+      videoRef.current.appendChild(videoElement);
 
-      // Event listeners for player events
-      playerRef.current.addEventListener('playerStateChange', (state) => {
-        console.log('Player state changed:', state);
-      });
+      const player = (playerRef.current = videojs(videoElement, options, () => {
+        videojs.log('player is ready');
+        onReady && onReady(player);
+      }));
 
-      playerRef.current.addEventListener('error', (error) => {
-        console.error('Player error:', error);
-      });
+      // You could update an existing player in the `else` block here
+      // on prop change, for example:
+    } else {
+      const player = playerRef.current;
 
-      return () => {
-        if (playerRef.current) {
-          playerRef.current.dispose();
-        }
-      };
+      player.autoplay(options.autoplay);
+      player.src(options.sources);
     }
-  }, [url]);
+  }, [options, videoRef]);
+
+  // Dispose the Video.js player when the functional component unmounts
+  useEffect(() => {
+    const player = playerRef.current;
+
+    return () => {
+      if (player && !player.isDisposed()) {
+        player.dispose();
+        playerRef.current = null;
+      }
+    };
+  }, [playerRef]);
 
   return (
-    <div className="video-player" style={{width:'500px'}}>
-      <video ref={videoRef} controls style={{ width: '100%' }} />
+    <div data-vjs-player style={{ width: '600px' }}>
+      <div ref={videoRef} />
     </div>
   );
 };
