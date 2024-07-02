@@ -44,7 +44,7 @@ function LiveView() {
   return (
     <WithPadding sx={{ paddingRight: 0, height: '1500px' }}>
       <PageHeader title="Live View" />
-      {/* <LiveViewForm /> */}
+      <LiveViewForm />
       {/* <HLSPlayer /> */}
       {/* <WebRTCVideo /> */}
       {/* <StreamPlayer /> */}
@@ -52,7 +52,7 @@ function LiveView() {
       {/* <WebRTCComponent /> */}
       {/* <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} /> */}
 
-      <ReactHlsPlayer
+      {/* <ReactHlsPlayer
         src="http://localhost:8080/stream.m3u8"
         autoplay
         controls
@@ -62,7 +62,7 @@ function LiveView() {
           minAutoBitrate: 0,
           lowLatencyMode: false,
         }}
-      />
+      /> */}
     </WithPadding>
   );
 }

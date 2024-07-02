@@ -59,9 +59,9 @@ const PTZbutton: React.FC = ({ handleCameraClick }: PTZbuttonProps) => {
         'http://localhost:5050/set_preset',
         presets,
       );
-      console.log(resp);
+
     } catch (error) {
-      console.log(error);
+      console.log("error");
     }
   };
   useEffect(() => {

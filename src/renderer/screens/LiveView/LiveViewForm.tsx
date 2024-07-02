@@ -19,21 +19,21 @@ const LiveViewForm = () => {
           <Grid container columns={8} columnSpacing={1}>
             <Grid item xs={4}>
               <ImageFill
-                src={containeImg}
+                src="http://20.20.20.77/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
                 alt="img"
                 style={{ height: '291px' }}
               />
             </Grid>
             <Grid item xs={4}>
               <ImageFill
-                src={containeImg}
+                src="http://20.20.20.76/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
                 alt="img"
                 style={{ height: '291px' }}
               />
             </Grid>
             <Grid item xs={4}>
               <ImageFill
-                src={containeImg}
+                src="http://20.20.20.78/stw-cgi/video.cgi?msubmenu=stream&action=view&Profile=1&CodecType=MJPEG&Resolution=800x450&FrameRate=15&CompressionLevel=10"
                 alt="img"
                 style={{ height: '291px' }}
               />
