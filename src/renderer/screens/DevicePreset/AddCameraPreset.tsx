@@ -45,7 +45,7 @@ const AddCameraPreset = () => {
           <Stack>
             <GridWithBorder>
               <ImageFill
-                src="http://20.20.20.77/axis-cgi/mjpg/video.cgi?camera=1&h264profile=high&resolution=800x450"
+                src="https://20.20.20.77/axis-cgi/mjpg/video.cgi?camera=1&h264profile=high&resolution=800x450"
                 alt="img"
                 style={{ maxHeight: '600px' }}
               />
