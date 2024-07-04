@@ -2,10 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 
 const WebSocketVideo = () => {
-  const canvasRef = useRef(null);
+  const imgRef = useRef(null);
+  const socketRef = useRef(null);
+  const imageUrlRef = useRef('');
 
   useEffect(() => {
     const socket = io('http://localhost:8080/video');
+    socketRef.current = socket;
 
     socket.on('connect', () => {
       console.log('Connected to WebSocket server');
@@ -15,35 +18,31 @@ const WebSocketVideo = () => {
       console.log('Disconnected from WebSocket server');
     });
 
+    socket.on('connect_error', (error) => {
+      console.error('Connection error:', error);
+    });
+
     const renderFrame = (data) => {
-      const frameBytes = new Uint8Array(data);
+      const frameBytes = new Uint8Array(data.frame);
 
       // Create Blob from received frame bytes
       const blob = new Blob([frameBytes], { type: 'image/jpeg' });
-      const imageUrl = URL.createObjectURL(blob);
+      const newImageUrl = URL.createObjectURL(blob);
 
-      // Render frame on canvas
-      const img = new Image();
-      img.onload = () => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        URL.revokeObjectURL(imageUrl);
-      };
-      img.src = imageUrl;
+      imgRef.current.src = newImageUrl;
     };
 
     socket.on('video_frame', renderFrame);
 
     return () => {
       socket.disconnect();
+      console.log('WebSocket disconnected');
     };
   }, []);
 
   return (
     <div>
-      <canvas ref={canvasRef} width="640" height="480"></canvas>
+      <img ref={imgRef} alt="Video Stream" width="640" height="480" />
     </div>
   );
 };

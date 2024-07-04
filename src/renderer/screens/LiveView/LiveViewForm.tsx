@@ -33,7 +33,7 @@ const LiveViewForm = () => {
             </Grid>
             <Grid item xs={4}>
               <ImageFill
-                src="http://20.20.20.78/stw-cgi/video.cgi?msubmenu=stream&action=view&Profile=1&CodecType=MJPEG&Resolution=800x450&FrameRate=15&CompressionLevel=10"
+                src="https://guest:guest@20.20.20.78/stw-cgi/video.cgi?msubmenu=stream&action=view&CodecType=MJPEG&FrameRate=15&CompressionLevel=10"
                 alt="img"
                 style={{ height: '291px' }}
               />

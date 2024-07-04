@@ -30,16 +30,16 @@ const handlePT = (value: number, currentValue: number): number => {
     return -1;
   }
 
-  return sum;
+  return Number(parseFloat(sum).toFixed(3));
 };
 
 interface PTZbuttonProps {
   handleCameraClick?: () => void;
 }
 
-const PTZbutton: React.FC = ({ handleCameraClick }: PTZbuttonProps) => {
-  const [pan, setPan] = useState(0);
-  const [tilt, setTilt] = useState(0);
+const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt }: PTZbuttonProps) => {
+  const [pan, setPan] = useState(-0.14);
+  const [tilt, setTilt] = useState(1);
   const handleClick = async (p: number, t: number) => {
     // Function to handle PTZ commands
     setPan((prev) => handlePT(prev, p));
@@ -66,6 +66,7 @@ const PTZbutton: React.FC = ({ handleCameraClick }: PTZbuttonProps) => {
   };
   useEffect(() => {
     updatePreset();
+    cbPantilt(pan, tilt);
   }, [pan, tilt]);
 
   const getButton = (position: number) => {

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const StreamPlayer = () => {
   useEffect(() => {
-    const url = 'ws://127.0.0.1:9999';
+    const url = 'ws://localhost:8080/video';
     let canvas = document.getElementById('video-canvas');
     new JSMpeg.Player(url, { canvas: canvas});
   }, []);

@@ -44,11 +44,11 @@ function LiveView() {
   return (
     <WithPadding sx={{ paddingRight: 0, height: '1500px' }}>
       <PageHeader title="Live View" />
-      <LiveViewForm />
+      {/* <LiveViewForm /> */}
       {/* <HLSPlayer /> */}
       {/* <WebRTCVideo /> */}
       {/* <StreamPlayer /> */}
-      {/* <WebSocketVideo /> */}
+      <WebSocketVideo />
       {/* <WebRTCComponent /> */}
       {/* <VideoPlayer options={videoJsOptions} onReady={handlePlayerReady} /> */}
 

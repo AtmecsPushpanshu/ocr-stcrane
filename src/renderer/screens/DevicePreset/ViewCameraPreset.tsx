@@ -34,7 +34,7 @@ const ViewCameraPreset = () => {
         <Grid sx={{ paddingRight: '10px' }}>
           <Stack>
             <GridWithBorder>
-              {toggle ? (
+              {!toggle ? (
                 <ImageFill
                   src="https://20.20.20.76/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
                   alt="img"

@@ -18,6 +18,9 @@ import CameraPresetControls from './CameraPresetControls';
 
 const AddCameraPreset = () => {
   const navigate = useNavigate();
+  const [pan, setPan] = useState(0)
+  const [tilt, setTilt] = useState(0)
+  const [zoom, setZoom] = useState(0)
   const [imgSources, setImgSources] = useState([]);
   const handleCameraClick = async () => {
     try {
@@ -37,6 +40,13 @@ const AddCameraPreset = () => {
       navigate(-1);
     }, 1000);
   };
+  const cbPantilt =(P, T)=>{
+    setTilt(T);
+    setPan(P);
+  }
+  const  cbZoom = (Z) => {
+    setZoom(Z)
+  }
   return (
     <WithPadding sx={{ paddingTop: '10px' }}>
       <PageHeader title="Device Preset" showBackIcon />
@@ -51,6 +61,9 @@ const AddCameraPreset = () => {
               />
             </GridWithBorder>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
+              Pan : {pan} &nbsp; Tilt : {tilt} &nbsp; Zoom: {zoom}
+            </HeadText16>
+            <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
             </HeadText16>
             <Grid container columns={8} columnSpacing={2}>
@@ -64,7 +77,7 @@ const AddCameraPreset = () => {
         </Grid>
         <Grid sx={{ paddingBottom: '40px' }}>
           <Stack direction="row" spacing={1}>
-            <CameraPresetControls handleCameraClick={handleCameraClick} />
+            <CameraPresetControls cbZoom={cbZoom} handleCameraClick={handleCameraClick} cbPantilt={cbPantilt} />
             <AddCameraPresetForm />
           </Stack>
           <Stack direction="row" spacing={1} sx={{ marginTop: '10px' }}>
