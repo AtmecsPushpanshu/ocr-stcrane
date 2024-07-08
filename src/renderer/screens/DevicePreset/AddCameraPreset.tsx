@@ -1,7 +1,7 @@
 import { Button, Grid, Stack } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import PageHeader from '../../components/common/PageHeader';
 import Popup from '../../components/common/Popup';
@@ -17,14 +17,19 @@ import AdvancePresetConfig from './AdvancePresetConfig';
 import CameraPresetControls from './CameraPresetControls';
 
 const AddCameraPreset = () => {
+  const { cameraId } = useParams();
+  console.log(cameraId);
+
   const navigate = useNavigate();
-  const [pan, setPan] = useState(0)
-  const [tilt, setTilt] = useState(0)
-  const [zoom, setZoom] = useState(0)
+  const [pan, setPan] = useState(0);
+  const [tilt, setTilt] = useState(0);
+  const [zoom, setZoom] = useState(0);
   const [imgSources, setImgSources] = useState([]);
   const handleCameraClick = async () => {
     try {
-      const resp = await axios.get('http://localhost:5050/get-frame');
+      const resp = await axios.get(
+        `http://localhost:5050/${cameraId}/get_frame`,
+      );
       setImgSources((prev) => [
         ...prev,
         `data:image/jpeg;base64,${resp?.data}`,
@@ -40,12 +45,15 @@ const AddCameraPreset = () => {
       navigate(-1);
     }, 1000);
   };
-  const cbPantilt =(P, T)=>{
+  const cbPantilt = (P, T) => {
     setTilt(T);
     setPan(P);
-  }
-  const  cbZoom = (Z) => {
-    setZoom(Z)
+  };
+  const cbZoom = (Z) => {
+    setZoom(Z);
+  };
+  if (!cameraId) {
+    navigate(-1);
   }
   return (
     <WithPadding sx={{ paddingTop: '10px' }}>
@@ -55,10 +63,15 @@ const AddCameraPreset = () => {
           <Stack>
             <GridWithBorder>
               <ImageFill
-                src="https://20.20.20.77/axis-cgi/mjpg/video.cgi?camera=1&h264profile=high&resolution=800x450"
+                src={`http://localhost:5050/${cameraId}/video_feed`}
                 alt="img"
                 style={{ maxHeight: '600px' }}
               />
+              {/* <ImageFill
+                src="http://20.20.20.76/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
+                alt="img"
+                style={{ maxHeight: '600px' }}
+              /> */}
             </GridWithBorder>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Pan : {pan} &nbsp; Tilt : {tilt} &nbsp; Zoom: {zoom}
@@ -77,7 +90,12 @@ const AddCameraPreset = () => {
         </Grid>
         <Grid sx={{ paddingBottom: '40px' }}>
           <Stack direction="row" spacing={1}>
-            <CameraPresetControls cbZoom={cbZoom} handleCameraClick={handleCameraClick} cbPantilt={cbPantilt} />
+            <CameraPresetControls
+              cbZoom={cbZoom}
+              handleCameraClick={handleCameraClick}
+              cbPantilt={cbPantilt}
+              cameraId={cameraId}
+            />
             <AddCameraPresetForm />
           </Stack>
           <Stack direction="row" spacing={1} sx={{ marginTop: '10px' }}>

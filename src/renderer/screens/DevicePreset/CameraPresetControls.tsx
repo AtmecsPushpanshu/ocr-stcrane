@@ -11,12 +11,12 @@ import {
   WithPadding,
 } from '../../components/Styles';
 
-const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom }) => {
+const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom, cameraId }) => {
   const deferredValue = useDeferredValue(0);
 
   const setZoom = async (data) => {
     try {
-      await axios.post('http://localhost:5050/set_zoom', data);
+      await axios.post(`http://localhost:5050/${cameraId}/set_zoom`, data);
     } catch (error) {
       console.log('error');
     }
@@ -24,7 +24,7 @@ const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom }) => {
 
   const setFocus = async (data) => {
     try {
-      await axios.post('http://localhost:5050/set_focus', data);
+      await axios.post(`http://localhost:5050/${cameraId}/set_focus`, data);
     } catch (error) {
       console.log('error');
     }
@@ -32,7 +32,7 @@ const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom }) => {
 
   const getZoomConfig = async (data) => {
     try {
-      const resp = await axios.get('http://localhost:5050/camera-info');
+      const resp = await axios.get(`http://localhost:5050/${cameraId}/camera-info`);
       console.log(resp);
     } catch (error) {
       console.log('error');
@@ -69,7 +69,7 @@ const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom }) => {
       <WithPadding sx={{ padding: '10px' }}>
         <HeadText16 sx={{ marginBottom: '4px' }}>Pan / Tilt</HeadText16>
         <Stack spacing={2} sx={{ width: '100%', alignItems: 'center' }}>
-          <PTZbutton handleCameraClick={handleCameraClick} cbPantilt={cbPantilt} />
+          <PTZbutton handleCameraClick={handleCameraClick} cbPantilt={cbPantilt} cameraId={cameraId} />
           <Stack spacing={1} sx={{ width: '100%' }}>
             <GridWithBorder sx={{ height: 'inherit', width: '100%' }}>
               <WithPadding sx={{ height: 'inherit', padding: '5px 15px' }}>

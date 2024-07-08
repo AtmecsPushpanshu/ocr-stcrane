@@ -23,7 +23,7 @@ const ViewCameraPreset = () => {
         rightSection={
           <Button
             variant="contained"
-            onClick={() => navigate('../add-camera-preset')}
+            onClick={() => navigate('../add-camera-preset/1')}
             startIcon={<AddIcon />}
           >
             Add Preset
@@ -36,13 +36,13 @@ const ViewCameraPreset = () => {
             <GridWithBorder>
               {!toggle ? (
                 <ImageFill
-                  src="https://20.20.20.76/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
+                  src="http://localhost:5050/1/video_feed"
                   alt="img"
                   style={{ maxHeight: '600px' }}
                 />
               ) : (
                 <ImageFill
-                  src="https://20.20.20.77/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
+                  src="http://localhost:5050/2/video_feed"
                   alt="img"
                   style={{ maxHeight: '600px' }}
                 />

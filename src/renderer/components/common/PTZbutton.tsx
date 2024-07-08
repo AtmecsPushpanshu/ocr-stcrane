@@ -37,9 +37,9 @@ interface PTZbuttonProps {
   handleCameraClick?: () => void;
 }
 
-const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt }: PTZbuttonProps) => {
-  const [pan, setPan] = useState(-0.14);
-  const [tilt, setTilt] = useState(1);
+const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt, cameraId }: PTZbuttonProps) => {
+  const [pan, setPan] = useState(0.12);
+  const [tilt, setTilt] = useState(-0.88);
   const handleClick = async (p: number, t: number) => {
     // Function to handle PTZ commands
     setPan((prev) => handlePT(prev, p));
@@ -56,7 +56,7 @@ const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt }: PTZbuttonProps) =
     };
     try {
       const resp = await axios.post(
-        'http://localhost:5050/set_preset',
+        `http://localhost:5050/${cameraId}/set_preset`,
         presets,
       );
 
@@ -82,7 +82,7 @@ const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt }: PTZbuttonProps) =
         );
       case 1:
         return (
-          <ButtonPtz onClick={() => handleClick(0, 0.01)}>
+          <ButtonPtz onClick={() => handleClick(0, -0.01)}>
             <TopPtzIcon style={{ marginBottom: '15px' }} />
           </ButtonPtz>
         );
@@ -126,7 +126,7 @@ const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt }: PTZbuttonProps) =
         );
       case 7:
         return (
-          <ButtonPtz onClick={() => handleClick(0, -0.01)}>
+          <ButtonPtz onClick={() => handleClick(0, 0.01)}>
             <BottomPtzIcon style={{ marginTop: '20px' }} />
           </ButtonPtz>
         );
