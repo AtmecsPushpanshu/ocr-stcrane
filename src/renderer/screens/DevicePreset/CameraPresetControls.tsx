@@ -45,7 +45,7 @@ const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom, cameraId }
 
   const handleChange = (event: any) => {
     const zoomval = event?.target?.value as number;
-
+    cbZoom(Number(zoomval/10));
     if (!isNaN(parseInt(zoomval))) {
       const zoom = zoomval / 100;
       setZoom({ zoom });

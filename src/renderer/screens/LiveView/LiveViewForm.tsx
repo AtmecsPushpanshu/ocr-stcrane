@@ -1,7 +1,6 @@
 import { Grid, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import containeImg from '../../assets/img/container.png';
 import { ImageFill } from '../../components/Styles';
 import SideCameraList from './SideCameraList';
 

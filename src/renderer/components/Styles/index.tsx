@@ -176,7 +176,7 @@ export const GreyBox = styled(Box)(() => ({
 export const ImageFill = styled('img')(() => ({
   width: '100%',
   height: 'auto',
-  minHeight: '430px',
+  maxHeight: '430px',
 }));
 
 export const PrettoSlider = styled(Slider)({

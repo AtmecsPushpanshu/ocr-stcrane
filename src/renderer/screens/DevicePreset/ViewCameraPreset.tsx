@@ -1,21 +1,53 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Button, Grid, Stack } from '@mui/material';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import DisplayInfo from '../../components/common/DisplayInfo';
+import ImageWithLoader from '../../components/common/ImageWithLoader';
 import PageHeader from '../../components/common/PageHeader';
 import {
   CameraPresetGrid,
   GridWithBorder,
-  ImageFill,
   WithPadding,
 } from '../../components/Styles';
 import PresetList from './PresetList';
 
 const ViewCameraPreset = () => {
+  const [options, setOptions] = useState([]);
+  const [info, setInfo] = useState({});
+  const { cameraId } = useParams();
   const navigate = useNavigate();
-  const [toggle, setToggle] = useState<boolean>(false);
-
+  const getPresets = async () => {
+    try {
+      const resp = await axios
+        .get(`http://localhost:5050/${cameraId}/get_presets`)
+        .then((resp) => resp?.data)
+        .then((data) => data);
+      if (Array.isArray(resp?.presets)) {
+        setOptions(resp?.presets);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getCamerInfo = async () => {
+    try {
+      const resp = await axios
+        .get(`http://localhost:5050/${cameraId}/camera-info`)
+        .then((resp) => resp?.data);
+      if (Object.keys(resp).length) {
+        setInfo(resp);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getPresets();
+    getCamerInfo();
+  }, []);
   return (
     <WithPadding sx={{ paddingTop: '10px' }}>
       <PageHeader
@@ -23,7 +55,7 @@ const ViewCameraPreset = () => {
         rightSection={
           <Button
             variant="contained"
-            onClick={() => navigate('../add-camera-preset/1')}
+            onClick={() => navigate(`../add-camera-preset/${cameraId}`)}
             startIcon={<AddIcon />}
           >
             Add Preset
@@ -34,31 +66,23 @@ const ViewCameraPreset = () => {
         <Grid sx={{ paddingRight: '10px' }}>
           <Stack>
             <GridWithBorder>
-              {!toggle ? (
-                <ImageFill
-                  src="http://localhost:5050/1/video_feed"
-                  alt="img"
-                  style={{ maxHeight: '600px' }}
-                />
-              ) : (
-                <ImageFill
-                  src="http://localhost:5050/2/video_feed"
-                  alt="img"
-                  style={{ maxHeight: '600px' }}
-                />
-              )}
-              {/* <AxisCamera /> */}
+              {/* <ImageFill
+                src={`http://localhost:5050/${cameraId}/video_feed`}
+                alt="img"
+                style={{ maxHeight: '600px' }}
+              /> */}
+              <ImageWithLoader
+                src={`http://localhost:5050/${cameraId}/video_feed`}
+                width="780px"
+                height="430px"
+                alt="default"
+              />
             </GridWithBorder>
-            <Button
-              variant="contained"
-              onClick={() => setToggle((prev) => !prev)}
-            >
-              Switch Camera
-            </Button>
+            <DisplayInfo data={info} />
           </Stack>
         </Grid>
         <Grid sx={{ paddingBottom: '40px' }}>
-          <PresetList />
+          <PresetList options={options} />
         </Grid>
       </CameraPresetGrid>
     </WithPadding>

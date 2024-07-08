@@ -1,10 +1,14 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid, Stack } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
+import * as yup from 'yup';
 
 import PageHeader from '../../components/common/PageHeader';
 import Popup from '../../components/common/Popup';
+import TextField from '../../components/common/TextField';
 import {
   CameraPresetGrid,
   GridWithBorder,
@@ -18,7 +22,17 @@ import CameraPresetControls from './CameraPresetControls';
 
 const AddCameraPreset = () => {
   const { cameraId } = useParams();
-  console.log(cameraId);
+  const schema = yup.object().shape({
+    presetName: yup.string().required('Enter Preset Name'),
+  });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const navigate = useNavigate();
   const [pan, setPan] = useState(0);
@@ -38,12 +52,23 @@ const AddCameraPreset = () => {
       console.log('error');
     }
   };
+  const savepreset = async (data) => {
+    try {
+      const resp = await axios
+        .post(`http://localhost:5050/${cameraId}/save_preset`, data)
+        .then(() => navigate(`../view-camera-preset/${cameraId}`));
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const [loader, setLoader] = useState<boolean>(false);
-  const applyForm = () => {
-    setLoader(true);
-    setTimeout(() => {
-      navigate(-1);
-    }, 1000);
+  const applyForm = ({ presetName }: any) => {
+    const final = { pan, tilt, zoom, preset_name: presetName };
+    console.log(final);
+
+    const resp = savepreset(final);
+    console.log(resp);
   };
   const cbPantilt = (P, T) => {
     setTilt(T);
@@ -73,9 +98,9 @@ const AddCameraPreset = () => {
                 style={{ maxHeight: '600px' }}
               /> */}
             </GridWithBorder>
-            <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
+            {/* <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Pan : {pan} &nbsp; Tilt : {tilt} &nbsp; Zoom: {zoom}
-            </HeadText16>
+            </HeadText16> */}
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
             </HeadText16>
@@ -113,9 +138,26 @@ const AddCameraPreset = () => {
             <Popup dialogTitle="Advance Setting" btnText="Advance Setting">
               <AdvancePresetConfig />
             </Popup>
-            <Button variant="contained" onClick={applyForm}>
-              Save Preset
-            </Button>
+            <Popup
+              variant="contained"
+              onSubmit={handleSubmit(applyForm)}
+              dialogTitle="Preset"
+              btnText="Save Preset"
+            >
+              <Controller
+                name="presetName"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Preset Name"
+                    placeholder="Preset Name"
+                    error={!!errors.presetName}
+                    helperText={errors.presetName?.message}
+                  />
+                )}
+              />
+            </Popup>
           </Stack>
         </Grid>
       </CameraPresetGrid>

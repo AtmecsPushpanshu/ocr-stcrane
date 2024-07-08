@@ -1,6 +1,7 @@
 import { MoreVert as MoreVertIcon } from '@mui/icons-material';
 import {
   Box,
+  Divider,
   IconButton,
   List,
   ListItem,
@@ -8,31 +9,17 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  Paper,
 } from '@mui/material';
+import axios from 'axios';
 import React, { useState } from 'react';
 
 import { HeadText16 } from '../../components/Styles';
-import axios from 'axios';
 
-const PresetList: React.FC = () => {
+const PresetList: React.FC = ({ options = [] }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [switchIndex, setSwitchIndex] = useState<number | null>(null);
-  const ptzoom = {
-    0: {
-      preset_name: 'NNAM',
-      pan: 0.75,
-      tilt: 0.9,
-      zoom: 0.3,
-    },
-    1: {
-      preset_name: 'NNAM',
-      pan: 0.7,
-      tilt: 0.9,
-      zoom: 0.3,
-    },
-  };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
     setAnchorEl(event.currentTarget);
@@ -65,22 +52,17 @@ const PresetList: React.FC = () => {
     }
   };
 
-  const handleListItemClick = (index: number) => {
-    setActiveIndex(index);
-  };
   const setPreset = async (data) => {
     try {
-      await axios.post('http://localhost:5050/set_preset_zoom', data);
+      await axios.post('http://localhost:5050/1/set_preset_zoom', data);
     } catch (error) {
       console.log(error);
     }
   };
   const handleSwitchChange = (index: number) => {
-    setPreset(ptzoom[index]);
+    setPreset(options[index]);
     setSwitchIndex(index === switchIndex ? null : index);
   };
-
-  const options = ['Preset 1', 'Preset 2'];
 
   return (
     <Box sx={{ width: '100%', maxWidth: 360, mx: 'auto' }}>
@@ -97,7 +79,7 @@ const PresetList: React.FC = () => {
             }}
             onClick={() => handleSwitchChange(index)}
           >
-            <ListItemText primary={option} />
+            <ListItemText primary={option?.preset_name} />
             <ListItemSecondaryAction>
               <IconButton
                 edge="end"
@@ -122,6 +104,40 @@ const PresetList: React.FC = () => {
           </ListItem>
         ))}
       </List>
+      {switchIndex !== null ? (
+        <Paper sx={{ mt: 3 }}>
+          <List>
+            <ListItem>
+              <ListItemText
+                primary="Preset Name"
+                secondary={options[switchIndex]?.preset_name}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="Pan"
+                secondary={options[switchIndex]?.pan}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="Tilt"
+                secondary={options[switchIndex]?.tilt}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary="Zoom"
+                secondary={options[switchIndex]?.zoom}
+              />
+            </ListItem>
+          </List>
+
+          <Divider />
+        </Paper>
+      ) : (
+        <Box>Please select preset</Box>
+      )}
     </Box>
   );
 };

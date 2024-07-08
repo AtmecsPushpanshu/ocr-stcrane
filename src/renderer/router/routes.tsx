@@ -75,7 +75,7 @@ const Routes: RouteObject[] = [
         element: <AddCamera />,
       },
       {
-        path: 'view-camera-preset',
+        path: 'view-camera-preset/:cameraId',
         element: <ViewCameraPreset />,
       },
       {
