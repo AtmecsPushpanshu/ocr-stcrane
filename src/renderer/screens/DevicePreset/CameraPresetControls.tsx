@@ -10,16 +10,18 @@ import {
   SubHeadText,
   WithPadding,
 } from '../../components/Styles';
+import useWebSocket from '../../hooks/useWebSocket';
 
-const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom, cameraId }) => {
+const CameraPresetControls = ({
+  handleCameraClick,
+  cbPantilt,
+  cbZoom,
+  cameraId,
+}) => {
   const deferredValue = useDeferredValue(0);
-
+  const { sendMessage } = useWebSocket({ url: 'http://localhost:5050' });
   const setZoom = async (data) => {
-    try {
-      await axios.post(`http://localhost:5050/${cameraId}/set_zoom`, data);
-    } catch (error) {
-      console.log('error');
-    }
+    sendMessage('set_zoom', data);
   };
 
   const setFocus = async (data) => {
@@ -32,7 +34,9 @@ const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom, cameraId }
 
   const getZoomConfig = async (data) => {
     try {
-      const resp = await axios.get(`http://localhost:5050/${cameraId}/camera-info`);
+      const resp = await axios.get(
+        `http://localhost:5050/${cameraId}/camera-info`,
+      );
       console.log(resp);
     } catch (error) {
       console.log('error');
@@ -45,12 +49,12 @@ const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom, cameraId }
 
   const handleChange = (event: any) => {
     const zoomval = event?.target?.value as number;
-    cbZoom(Number(zoomval/10));
+    cbZoom(Number(zoomval / 10));
     if (!isNaN(parseInt(zoomval))) {
       const zoom = zoomval / 100;
-      setZoom({ zoom });
+      setZoom({ zoom, cameraId });
     } else {
-      setZoom({ zoom: 0 });
+      setZoom({ zoom: 0, cameraId });
     }
   };
   const handleFocusChange = (event: any) => {
@@ -69,7 +73,11 @@ const CameraPresetControls = ({ handleCameraClick, cbPantilt, cbZoom, cameraId }
       <WithPadding sx={{ padding: '10px' }}>
         <HeadText16 sx={{ marginBottom: '4px' }}>Pan / Tilt</HeadText16>
         <Stack spacing={2} sx={{ width: '100%', alignItems: 'center' }}>
-          <PTZbutton handleCameraClick={handleCameraClick} cbPantilt={cbPantilt} cameraId={cameraId} />
+          <PTZbutton
+            handleCameraClick={handleCameraClick}
+            cbPantilt={cbPantilt}
+            cameraId={cameraId}
+          />
           <Stack spacing={1} sx={{ width: '100%' }}>
             <GridWithBorder sx={{ height: 'inherit', width: '100%' }}>
               <WithPadding sx={{ height: 'inherit', padding: '5px 15px' }}>

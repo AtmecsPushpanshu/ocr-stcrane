@@ -6,6 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 
+import ImageWithLoader from '../../components/common/ImageWithLoader';
 import PageHeader from '../../components/common/PageHeader';
 import Popup from '../../components/common/Popup';
 import TextField from '../../components/common/TextField';
@@ -19,6 +20,7 @@ import {
 import AddCameraPresetForm from './AddCameraPresetForm';
 import AdvancePresetConfig from './AdvancePresetConfig';
 import CameraPresetControls from './CameraPresetControls';
+import PTZCircular from '../../components/common/PTZCircular';
 
 const AddCameraPreset = () => {
   const { cameraId } = useParams();
@@ -87,20 +89,22 @@ const AddCameraPreset = () => {
         <Grid sx={{ paddingRight: '10px' }}>
           <Stack>
             <GridWithBorder>
-              <ImageFill
+              <ImageWithLoader
                 src={`http://localhost:5050/${cameraId}/video_feed`}
-                alt="img"
-                style={{ maxHeight: '600px' }}
+                width="780px"
+                height="430px"
+                alt="default"
               />
+
               {/* <ImageFill
                 src="http://20.20.20.76/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450"
                 alt="img"
                 style={{ maxHeight: '600px' }}
               /> */}
             </GridWithBorder>
-            {/* <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
-              Pan : {pan} &nbsp; Tilt : {tilt} &nbsp; Zoom: {zoom}
-            </HeadText16> */}
+            <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
+              Pan : {pan} &nbsp; Tilt : {tilt} &nbsp;
+            </HeadText16>
             <HeadText16 variant="h4" sx={{ marginTop: 2, marginBottom: '5px' }}>
               Captured Images
             </HeadText16>

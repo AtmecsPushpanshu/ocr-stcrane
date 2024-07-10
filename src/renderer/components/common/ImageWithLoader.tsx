@@ -1,5 +1,6 @@
 import { Box, CircularProgress } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import PTZCircular from './PTZCircular';
 
 interface ImageWithLoaderProps {
   src: string;
@@ -15,7 +16,7 @@ const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
   height,
 }) => {
   const [loading, setLoading] = useState(true);
-
+  const imageRef = useRef<HTMLDivElement>(null);
   const handleImageLoad = () => {
     setLoading(false);
   };
@@ -26,6 +27,8 @@ const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
       display="inline-block"
       width={width}
       height={height}
+      ref={imageRef}
+      sx={{zIndex: 99}}
     >
       {loading && (
         <Box
@@ -50,6 +53,7 @@ const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
           height: '100%',
         }}
       />
+      <PTZCircular ref={imageRef} />
     </Box>
   );
 };

@@ -20,6 +20,7 @@ import {
   CameraBG,
   CameraButtonPtz,
 } from '../Styles';
+import useWebSocket from '../../hooks/useWebSocket';
 
 const handlePT = (value: number, currentValue: number): number => {
   const sum = value + currentValue;
@@ -37,13 +38,25 @@ interface PTZbuttonProps {
   handleCameraClick?: () => void;
 }
 
-const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt, cameraId }: PTZbuttonProps) => {
-  const [pan, setPan] = useState(0.12);
-  const [tilt, setTilt] = useState(-0.88);
+const PTZbutton: React.FC = ({
+  handleCameraClick,
+  cbPantilt,
+  cameraId,
+}: PTZbuttonProps) => {
+  const [pan, setPan] = useState(0.75);
+  const [tilt, setTilt] = useState(1);
+  const { sendMessage } = useWebSocket({ url: 'http://localhost:5050' });
   const handleClick = async (p: number, t: number) => {
     // Function to handle PTZ commands
     setPan((prev) => handlePT(prev, p));
     setTilt((prev) => handlePT(prev, t));
+    const presets = {
+      preset_name: 'camera77',
+      pan: p,
+      tilt: t,
+      cameraId,
+    };
+    sendMessage('move_camera', presets);
     // You can replace the console.log with the actual PTZ command logic
     // Example:
     // sendPtzCommand(pan, tilt);
@@ -53,19 +66,12 @@ const PTZbutton: React.FC = ({ handleCameraClick, cbPantilt, cameraId }: PTZbutt
       preset_name: 'camera77',
       pan,
       tilt,
+      cameraId,
     };
-    try {
-      const resp = await axios.post(
-        `http://localhost:5050/${cameraId}/set_preset`,
-        presets,
-      );
-
-    } catch (error) {
-      console.log("error");
-    }
+    sendMessage('move_camera', presets);
   };
   useEffect(() => {
-    updatePreset();
+    // updatePreset();
     cbPantilt(pan, tilt);
   }, [pan, tilt]);
 

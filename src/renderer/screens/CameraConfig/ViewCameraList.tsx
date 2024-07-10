@@ -56,7 +56,9 @@ export default function ViewCameraList({ data = [] }: ViewCameraListProps) {
       sortable: false,
       width: 160,
       renderCell: (params) => (
-        <a onClick={() => navigate(`../view-camera-preset/${params?.id}`)}>4 preset</a>
+        <a onClick={() => navigate(`../view-camera-preset/${params?.id}`)}>
+          0 preset
+        </a>
       ),
     },
   ];
@@ -78,7 +80,6 @@ export default function ViewCameraList({ data = [] }: ViewCameraListProps) {
             },
           },
         }}
-
         pageSizeOptions={[5]}
       />
     </Box>

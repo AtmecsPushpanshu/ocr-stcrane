@@ -16,7 +16,7 @@ import React, { useState } from 'react';
 
 import { HeadText16 } from '../../components/Styles';
 
-const PresetList: React.FC = ({ options = [] }) => {
+const PresetList: React.FC = ({ options = [], cameraId=1 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [switchIndex, setSwitchIndex] = useState<number | null>(null);
@@ -54,7 +54,7 @@ const PresetList: React.FC = ({ options = [] }) => {
 
   const setPreset = async (data) => {
     try {
-      await axios.post('http://localhost:5050/1/set_preset_zoom', data);
+      await axios.post(`http://localhost:5050/${cameraId}/set_preset_zoom`, data);
     } catch (error) {
       console.log(error);
     }

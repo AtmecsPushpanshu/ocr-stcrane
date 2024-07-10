@@ -82,7 +82,7 @@ const ViewCameraPreset = () => {
           </Stack>
         </Grid>
         <Grid sx={{ paddingBottom: '40px' }}>
-          <PresetList options={options} />
+          <PresetList options={options}  cameraId={cameraId}/>
         </Grid>
       </CameraPresetGrid>
     </WithPadding>
