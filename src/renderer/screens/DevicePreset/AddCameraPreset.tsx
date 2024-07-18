@@ -17,10 +17,10 @@ import {
   ImageFill,
   WithPadding,
 } from '../../components/Styles';
+import useWebSocket from '../../hooks/useWebSocket';
 import AddCameraPresetForm from './AddCameraPresetForm';
 import AdvancePresetConfig from './AdvancePresetConfig';
 import CameraPresetControls from './CameraPresetControls';
-import PTZCircular from '../../components/common/PTZCircular';
 
 const AddCameraPreset = () => {
   const { cameraId } = useParams();
@@ -82,18 +82,41 @@ const AddCameraPreset = () => {
   if (!cameraId) {
     navigate(-1);
   }
+
+  const { sendMessage } = useWebSocket({ url: 'http://localhost:5050' });
+  const updatePreset = (pan, tilt) => {
+    const presets = {
+      preset_name: 'camera77',
+      pan,
+      tilt,
+      cameraId,
+    };
+    sendMessage('move_camera', presets);
+  };
+  const handlePanTiltChange = (pan: number, tilt: number) => {
+    updatePreset((pan / 100).toFixed(2), (tilt / 100).toFixed(2));
+  };
+  const stopCamera = () => {
+    sendMessage('stop_camera', { cameraId });
+  };
+
   return (
     <WithPadding sx={{ paddingTop: '10px' }}>
       <PageHeader title="Device Preset" showBackIcon />
       <CameraPresetGrid>
         <Grid sx={{ paddingRight: '10px' }}>
           <Stack>
+            <Button variant="contained" onClick={stopCamera}>
+              STOP
+            </Button>
             <GridWithBorder>
               <ImageWithLoader
                 src={`http://localhost:5050/${cameraId}/video_feed`}
                 width="780px"
                 height="430px"
                 alt="default"
+                handlePanTiltChange={handlePanTiltChange}
+                cbStop={stopCamera}
               />
 
               {/* <ImageFill

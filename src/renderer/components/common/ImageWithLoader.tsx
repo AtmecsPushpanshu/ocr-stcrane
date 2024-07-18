@@ -1,12 +1,16 @@
 import { Box, CircularProgress } from '@mui/material';
 import React, { useRef, useState } from 'react';
+
 import PTZCircular from './PTZCircular';
+import useWebSocket from '../../hooks/useWebSocket';
 
 interface ImageWithLoaderProps {
   src: string;
   alt: string;
   width?: string | number;
   height?: string | number;
+  handlePanTiltChange: (pan: number, tilt: number) => void;
+  cbStop: () => void;
 }
 
 const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
@@ -14,9 +18,12 @@ const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
   alt,
   width,
   height,
+  handlePanTiltChange,
+  cbStop,
 }) => {
   const [loading, setLoading] = useState(true);
   const imageRef = useRef<HTMLDivElement>(null);
+
   const handleImageLoad = () => {
     setLoading(false);
   };
@@ -28,7 +35,7 @@ const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
       width={width}
       height={height}
       ref={imageRef}
-      sx={{zIndex: 99}}
+      sx={{ zIndex: 99 }}
     >
       {loading && (
         <Box
@@ -51,9 +58,14 @@ const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
           display: loading ? 'none' : 'block',
           width: '100%',
           height: '100%',
+          pointerEvents: 'none',
         }}
       />
-      <PTZCircular ref={imageRef} />
+      <div
+        style={{ position: 'absolute', top: 0, width: '100%', height: '100%' }}
+      >
+        <PTZCircular onPanTiltChange={handlePanTiltChange} cbStop={cbStop} />
+      </div>
     </Box>
   );
 };

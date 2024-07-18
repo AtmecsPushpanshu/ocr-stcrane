@@ -1,50 +1,86 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-console */
 import React, { useEffect, useRef } from 'react';
-import io from 'socket.io-client';
 
-const WebSocketVideo = () => {
-  const imgRef = useRef(null);
-  const socketRef = useRef(null);
-  const imageUrlRef = useRef('');
+const VideoPlayer = () => {
+  const videoRef = useRef(null);
+  const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+  let mediaSource;
 
   useEffect(() => {
-    const socket = io('http://localhost:8080/video');
-    socketRef.current = socket;
+    const videoElement = videoRef.current;
 
-    socket.on('connect', () => {
-      console.log('Connected to WebSocket server');
-    });
+    const setupMediaSource = () => {
+      mediaSource = new MediaSource();
+      videoElement.src = URL.createObjectURL(mediaSource);
 
-    socket.on('disconnect', () => {
-      console.log('Disconnected from WebSocket server');
-    });
-
-    socket.on('connect_error', (error) => {
-      console.error('Connection error:', error);
-    });
-
-    const renderFrame = (data) => {
-      const frameBytes = new Uint8Array(data.frame);
-
-      // Create Blob from received frame bytes
-      const blob = new Blob([frameBytes], { type: 'image/jpeg' });
-      const newImageUrl = URL.createObjectURL(blob);
-
-      imgRef.current.src = newImageUrl;
+      mediaSource.addEventListener('sourceopen', handleSourceOpen);
+      mediaSource.addEventListener('sourceended', () => {
+        console.log('MediaSource ended');
+      });
+      mediaSource.addEventListener('sourceclose', () => {
+        console.log('MediaSource closed');
+      });
     };
 
-    socket.on('video_frame', renderFrame);
+    const handleSourceOpen = () => {
+      console.log('MediaSource readyState:', mediaSource.readyState); // Should log 'open'
+      const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+
+      const websocket = new WebSocket('ws://localhost:8765');
+      websocket.binaryType = 'arraybuffer';
+
+      websocket.onopen = () => {
+        console.log('WebSocket connection opened');
+      };
+      console.log(mediaSource?.readyState);
+      websocket.onmessage = (event) => {
+        console.log("=>",mediaSource?.readyState);
+        if (event.data instanceof ArrayBuffer) {
+          if (mediaSource.readyState === 'open') {
+            console.log(typeof event.data);
+            sourceBuffer.appendBuffer(event.data);
+          } else {
+            console.warn('Cannot append buffer: MediaSource not ready');
+          }
+        } else {
+          console.log('Text message received:', event.data);
+        }
+      };
+
+      websocket.onerror = (event) => {
+        console.error('WebSocket error observed:', event);
+      };
+
+      websocket.onclose = (event) => {
+        console.log('WebSocket connection closed:', event);
+      };
+
+      return () => {
+        websocket.close();
+        mediaSource.removeEventListener('sourceopen', handleSourceOpen);
+      };
+    };
+
+    if ('MediaSource' in window && MediaSource.isTypeSupported(mimeCodec)) {
+      setupMediaSource();
+    } else {
+      console.error('Unsupported MIME type or codec: ', mimeCodec);
+    }
 
     return () => {
-      socket.disconnect();
-      console.log('WebSocket disconnected');
+      if (mediaSource && mediaSource.readyState === 'open') {
+        mediaSource.endOfStream();
+      }
     };
   }, []);
 
   return (
     <div>
-      <img ref={imgRef} alt="Video Stream" width="640" height="480" />
+      <video ref={videoRef} controls autoPlay style={{ width: '100%' }} />
+      <h1>Hello</h1>
     </div>
   );
 };
 
-export default WebSocketVideo;
+export default VideoPlayer;

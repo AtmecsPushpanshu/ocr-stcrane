@@ -7,6 +7,7 @@ interface WebSocketProps {
 
 const useWebSocket = ({ url }: WebSocketProps) => {
   const [socket, setSocket] = useState<Socket | null>(null);
+  const [messages, setMessages] = useState<any[]>([]);
 
   useEffect(() => {
     const newSocket = io(url);
@@ -33,7 +34,20 @@ const useWebSocket = ({ url }: WebSocketProps) => {
     }
   };
 
-  return { sendMessage };
+  const getMessage = (handler: string, callback: (message: any) => void) => {
+    if (socket) {
+      console.log(handler);
+
+      socket.on(handler, (message: any) => {
+        console.log(message);
+
+        setMessages((prevMessages) => [...prevMessages, message]);
+        callback(message);
+      });
+    }
+  };
+
+  return { sendMessage, getMessage, messages };
 };
 
 export default useWebSocket;

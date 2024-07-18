@@ -10,6 +10,8 @@ import WebSocketVideo from './SocketPlayer';
 import StreamPlayer from './JpmegPlayer';
 import { useRef } from 'react';
 import LiveViewForm from './LiveViewForm';
+import CanvasPlayer from './CanvasPlayer';
+import VideoSockIm from './socketim';
 function LiveView() {
   const videoUrl = 'http://localhost:8083/play/dash/H264_AAC/manifest.mpd'; // Provided URL
   var videoSrc = 'http://localhost:5050/stream/index.m3u8';
@@ -44,9 +46,11 @@ function LiveView() {
   return (
     <WithPadding sx={{ paddingRight: 0, height: '1500px' }}>
       <PageHeader title="Live View" />
-      <LiveViewForm />
+      {/* <LiveViewForm /> */}
       {/* <HLSPlayer /> */}
       {/* <WebRTCVideo /> */}
+      {/* <CanvasPlayer /> */}
+      <VideoSockIm />
       {/* <StreamPlayer /> */}
       {/* <WebSocketVideo /> */}
       {/* <WebRTCComponent /> */}

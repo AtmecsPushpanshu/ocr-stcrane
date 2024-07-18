@@ -61,6 +61,9 @@ const PTZbutton: React.FC = ({
     // Example:
     // sendPtzCommand(pan, tilt);
   };
+  const stopCamera = () => {
+    sendMessage('stop_camera', { cameraId });
+  };
   const updatePreset = async () => {
     const presets = {
       preset_name: 'camera77',
@@ -81,7 +84,8 @@ const PTZbutton: React.FC = ({
         return (
           <ButtonPtz
             sx={{ borderTopLeftRadius: 16 }}
-            onClick={() => handleClick(-0.01, 0.01)}
+            onMouseDown={() => handleClick(-0.01, 0.01)}
+            onMouseUp={() => stopCamera()}
           >
             <TopLeftPtzIcon />
           </ButtonPtz>
